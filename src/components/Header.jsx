@@ -7,15 +7,20 @@ import { motion } from "framer-motion";
 import logoBlack from "../assets/images/logo_black.png";
 import Logo from "../assets/icons/Logo";
 import Figure from "../assets/icons/Figure";
-import { Accordeon } from ".";
+import { Accordeon } from "components";
 
 const Header = () => {
   const [openMenu, setOpenMenu] = useState(false);
   const [vh, setVh] = useState("");
 
-  const openMenuHandler = e => {
-    console.log(e.target);
+  const nestedList = [
+    { index: 0, label: "Инженерно-техническая эксплуатация" },
+    { index: 1, label: "Сервисное и бытовое обслуживание" },
+    { index: 2, label: "Корпоративное питание" },
+    { index: 3, label: "Транспортные и пассажирские перевозки" }
+  ];
 
+  const openMenuHandler = e => {
     e.stopPropagation();
     setOpenMenu(!openMenu);
   };
@@ -47,26 +52,24 @@ const Header = () => {
           </div>
         </div>
 
-        <div className='flex'>
-            <div className="w-10 h-10 border border-solid border-lightGrey rounded-full flex justify-center items-center">
-              <BiGlobe className="fill-grey" />
-            </div>
-    
-            <div className="px-1"></div>
-    
-            <button className="flex justify-center items-center">
-              <div
-                onClick={openMenuHandler}
-                className={openMenu ? "toggle active" : "toggle"}
-              >
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
-            </button>
-        </div>
+        <div className="flex">
+          <div className="w-10 h-10 border border-solid border-lightGrey rounded-full flex justify-center items-center">
+            <BiGlobe className="fill-grey" />
+          </div>
 
-        
+          <div className="px-1"></div>
+
+          <button className="flex justify-center items-center">
+            <div
+              onClick={openMenuHandler}
+              className={openMenu ? "toggle active" : "toggle"}
+            >
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </button>
+        </div>
       </nav>
 
       {openMenu && (
@@ -80,8 +83,8 @@ const Header = () => {
             className="w-full fixed right-0 bottom-0 z-50 bg-white"
             style={{ height: `${vh - 79}px` }}
           >
-            <div className="w-full h-full relative p-5">
-              <Accordeon />
+            <div className="w-full h-full relative p-7 overflow-hidden">
+              <Accordeon label={"Услуги"} items={nestedList} />
               <Figure className="absolute bottom-[20%] right-[-8%]" />
             </div>
           </div>

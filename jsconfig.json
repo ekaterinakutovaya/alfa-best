@@ -1,9 +1,9 @@
 {
-  // "moduleResolution": "node",
+  "moduleResolution": "node",
   "compilerOptions": {
-    "baseUrl": "."
+    "baseUrl": "src"
   },
-  // "include": [
-  //   "."
-  // ]
+  "include": [
+    "src"
+  ]
 }
