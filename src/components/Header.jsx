@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Link from "next/link";
 import Image from "next/image";
 import { BiGlobe } from "react-icons/bi";
 import { motion } from "framer-motion";
@@ -83,10 +84,31 @@ const Header = () => {
             className="w-full fixed right-0 bottom-0 z-50 bg-white"
             style={{ height: `${vh - 79}px` }}
           >
-            <div className="w-full h-full relative p-7 overflow-hidden">
-              <Accordeon label={"Услуги"} items={nestedList} />
-              <Figure className="absolute bottom-[20%] right-[-8%]" />
-            </div>
+            <ul className="w-full h-full relative p-7 overflow-hidden flex flex-col gap-y-8">
+              <li className="font-arimo font-bold text-2xl">
+                <Accordeon label={"Услуги"} items={nestedList} />
+              </li>
+
+              <li className="font-arimo font-bold text-2xl">
+                <Link href="#">Карьера</Link>
+              </li>
+              <li className="font-arimo font-bold text-2xl">
+                <Link href="#">О компании</Link>
+              </li>
+              <li className="font-arimo font-bold text-2xl">
+                <Link href="#">Карьера</Link>
+              </li>
+              <li className="font-arimo font-bold text-2xl">
+                <Link href="#">Закупки</Link>
+              </li>
+              <li className="font-arimo font-bold text-2xl">
+                <Link href="#">Сотрудничество</Link>
+              </li>
+              <li className="font-arimo font-bold text-2xl">
+                <Link href="#">Контакты</Link>
+              </li>
+            </ul>
+            <Figure className="absolute bottom-[20%] right-[-8%]" />
           </div>
         </motion.div>
       )}
