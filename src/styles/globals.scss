@@ -1,0 +1,123 @@
+@import 'scss-reset/_reset.scss';
+
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arimo:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    // --index: calc(1vh + 1vw);
+    // /*========== Colors ==========*/
+    // --green: #28C79E;
+    // --black: #1B2330;
+    // --grey: #8D9197;
+    // --white: #fff;
+
+    // /*========== Effects ==========*/
+    // --box-shadow: 0px 4px 34px rgba(0, 0, 0, 0.08);
+    // --border: 1px solid #F0F0F0;
+}
+
+
+body {
+    font-family: 'Exo 2', sans-serif;
+    font-size: 17px;
+    color: var(--black);
+    background-color: #fff;
+}
+
+.container {
+    min-width: 375px;
+    max-width: 1440px;
+    padding: 0 16px;
+}
+
+.alice-carousel__dots {
+    position: absolute !important;
+    bottom: 15px !important;
+    right: 0 !important;
+    left: 0 !important;
+    //   display: flex !important;
+    //   align-items: center !important;
+
+    //   margin: 30px 3px 20px !important;
+}
+
+.alice-carousel__dots-item {
+    width: 20px !important;
+    height: 20px !important;
+    background-color: transparent !important;
+    border: 1px solid #fff !important;
+    //   background-color: rgba(0, 0, 0, 0.3) !important;
+
+    //   transition: all 0.3s ease !important;
+
+    //   &:hover {
+    //     background-color: darken(#fff, 50%) !important;
+    //     transition: all 0.3s ease !important;
+    //   }
+}
+
+.alice-carousel__dots-item.__active {
+    width: 20px !important;
+    height: 20px !important;
+    background-color: #fff !important;
+}
+
+.alice-carousel__dots-item:not(.__custom):not(:last-child) {
+    margin-right: 15px !important;
+}
+
+
+.toggle {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    background: #28C79E;
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+}
+
+.toggle span {
+    position: absolute;
+    width: 13px;
+    height: 2px;
+    background: #fff;
+    border-radius: 13px;
+    transition: 0.5s;
+}
+
+.toggle span:nth-child(1) {
+    transform: translateY(-6px);
+    width: 18px;
+}
+
+.toggle.active span:nth-child(1) {
+    width: 18px;
+    transform: translateY(0px) rotate(45deg);
+}
+
+.toggle span:nth-child(2) {
+    transform: translateY(6px);
+    width: 18px;
+}
+
+.toggle span:nth-child(3) {
+    right: 11px;
+}
+
+.toggle.active span:nth-child(2) {
+    width: 18px;
+    transform: translateY(0px) rotate(-45deg);
+}
+
+.toggle.active span:nth-child(3) {
+    transform: translate(60px);
+}
