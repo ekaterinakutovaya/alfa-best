@@ -20,6 +20,14 @@
     // --border: 1px solid #F0F0F0;
 }
 
+input,
+textarea,
+button,
+select,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
 
 body {
     font-family: 'Exo 2', sans-serif;
