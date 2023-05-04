@@ -1,30 +1,24 @@
 import React from "react";
-import Image from "next/image";
 
 import { images } from "../constants";
 import styles from "../styles/styles";
 import Logo from "../assets/icons/Logo";
 import { Button } from ".";
-// import aboutCompany from "../assets/images/about_company.png";
+import AimsTable from "./AimsTable";
 
-const AboutPreview = () => {
-  // console.log(images);
-
+const OurAimSection = () => {
   return (
-    <section className="container ">
-      <div className="my-[50px] lg:flex lg:item-center lg:gap-[80px]">
-        <div className="w-full max-w-[445px] h-auto px-[17px] py-[20px] lg:p-0">
-          <img src={images.aboutCompany.src} alt="about company picture" />
-        </div>
+    <section className="container">
+      <div className="aim__inner my-[30px]">
 
         <div className="lg:flex lg:items-center">
           <div className="">
-            <div className='w-[44px]'>
+            <div className="w-[44px]">
               <Logo type="dark" className="w-full" />
             </div>
 
             <h2 className={`${styles.heading2} pt-[10px] pb-[20px]`}>
-              О нашей компании
+              Наша цель
             </h2>
 
             <div className="content flex flex-col gap-[15px] lg:max-w-[689px] pb-[30px]">
@@ -37,12 +31,14 @@ const AboutPreview = () => {
               ))}
             </div>
 
-            <Button>Узнать больше</Button>
+            
           </div>
         </div>
+
+        <AimsTable/>
       </div>
     </section>
   );
 };
 
-export default AboutPreview;
+export default OurAimSection;
