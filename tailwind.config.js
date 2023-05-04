@@ -25,8 +25,8 @@ module.exports = {
       xs: "375px",
       sm: "768px",
       md: "1060px",
-      lg: "1200px",
-      xl: "1700px"
+      lg: "1280px",
+      xl: "1440px"
     },
     transitionTimingFunction: {
       'out-flex': 'cubic-bezier(0.05, 0.6, 0.4, 0.9)',

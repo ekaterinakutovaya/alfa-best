@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 
 import { Layout } from '../layout/Layout';
 import Hero from "../components/Hero";
+import { AboutPreview } from 'components';
 
 
 // const inter = Inter({ subsets: ['latin'] })
@@ -10,7 +11,9 @@ import Hero from "../components/Hero";
 export default function Home() {
   return (
     <Layout>
-      <Hero/>
+      <Hero suppressHydrationWarning />
+
+      <AboutPreview />
     </Layout>
-  )
+  );
 }

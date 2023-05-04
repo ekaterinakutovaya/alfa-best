@@ -1,4 +1,6 @@
 @import 'scss-reset/_reset.scss';
+// @import "slick-carousel/slick/slick.css";
+// @import "slick-carousel/slick/slick-theme.css";
 
 @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Arimo:wght@400;500;600;700&display=swap');
@@ -31,7 +33,7 @@ a {
 
 body {
     font-family: 'Exo 2', sans-serif;
-    font-size: 17px;
+    font-size: 16px;
     color: var(--black);
     background-color: #fff;
 }
@@ -40,17 +42,33 @@ body {
     min-width: 375px;
     max-width: 1440px;
     padding: 0 16px;
+    margin: 0 auto;
+
+    @media screen and (min-width: 768px) {
+        padding: 0 90px;
+    }
 }
 
 .alice-carousel__dots {
     position: absolute !important;
-    bottom: 15px !important;
+    // bottom: 15px !important;
+    bottom: 165px !important;
     right: 0 !important;
     left: 0 !important;
     //   display: flex !important;
     //   align-items: center !important;
 
     //   margin: 30px 3px 20px !important;
+
+    @media screen and (min-width: 768px) {
+        bottom: 15px !important;
+    }
+
+    @media screen and (min-width: 1280px) {
+        right: 90px !important;
+        left: auto !important;
+        bottom: 60px !important;
+    }
 }
 
 .alice-carousel__dots-item {
@@ -66,12 +84,26 @@ body {
     //     background-color: darken(#fff, 50%) !important;
     //     transition: all 0.3s ease !important;
     //   }
+
+    @media screen and (min-width: 1280px) {
+        width: 30px !important;
+        height: 30px !important;
+    }
+
+
+
+
 }
 
 .alice-carousel__dots-item.__active {
     width: 20px !important;
     height: 20px !important;
     background-color: #fff !important;
+
+    @media screen and (min-width: 1280px) {
+        width: 30px !important;
+        height: 30px !important;
+    }
 }
 
 .alice-carousel__dots-item:not(.__custom):not(:last-child) {
@@ -128,4 +160,22 @@ body {
 
 .toggle.active span:nth-child(3) {
     transform: translate(60px);
+}
+
+
+
+.swiper-pagination-bullet {
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    font-size: 12px;
+    color: #000;
+    opacity: 1;
+    background: red;
+}
+
+.swiper-pagination-bullet-active {
+    color: #fff;
+    background: #007aff;
 }
