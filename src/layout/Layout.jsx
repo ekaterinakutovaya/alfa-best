@@ -1,8 +1,12 @@
 import Head from "next/head";
-import { Header } from "../components";
+import { Header, Footer, FooterMobile } from "../components";
 import NoSSR from "utils/NoSSR";
+import { useMediaQuery } from "react-responsive";
 
 export const Layout = ({ children }) => {
+  const isMobileorTablet = useMediaQuery({ query: "(max-width: 1279px)" });
+
+
   return (
     <>
       <Head>
@@ -18,6 +22,11 @@ export const Layout = ({ children }) => {
 
       <NoSSR>
         <main>{children}</main>
+      </NoSSR>
+
+      <NoSSR>
+        {isMobileorTablet ? <FooterMobile /> : <Footer />}
+        
       </NoSSR>
     </>
   );

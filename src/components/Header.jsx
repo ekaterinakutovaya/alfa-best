@@ -101,7 +101,7 @@ const Header = () => {
       </div>
 
       {/* SubNav */}
-      <div className="w-full flex justify-between h-[79px] px-[90px] py-[20px]">
+      <div className="hidden lg:w-full flex justify-between h-[79px] px-[90px] py-[20px]">
         <ul className="w-full flex justify-between">
           {subNavigation &&
             subNavigation.map((item, index) => (

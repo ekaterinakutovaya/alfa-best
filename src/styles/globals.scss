@@ -41,7 +41,7 @@ body {
 .container {
     min-width: 375px;
     max-width: 1440px;
-    padding: 0 16px;
+    padding: 0 25px;
     margin: 0 auto;
 
     @media screen and (min-width: 768px) {
@@ -183,4 +183,10 @@ body {
 
 .image-filter {
     filter: brightness(60%)
+}
+
+.colorBg {
+    background: rgba(0, 44, 99, 0.25);
+    opacity: 0.7;
+    backdrop-filter: blur(102.579px);
 }

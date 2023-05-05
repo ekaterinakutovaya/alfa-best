@@ -8,15 +8,17 @@ import {
 
 function Icon({ id, open }) {
   return (
-    <FiPlus
-      className={`${
-        id === open ? "rotate-90" : ""
-      } h-6 w-6 transition-transform`}
-    />
+    <div className="w-[40px] h-[40px] rounded-full bg-[#002c6340] opacity-70 backdrop-blur-[102.579px] flex justify-center items-center absolute top-[50%] translate-y-[-50%] right-0">
+      <FiPlus
+        className={`${
+          id === open ? "rotate-90" : ""
+        } h-7 w-7 transition-transform`}
+      />
+    </div>
   );
 }
 
-const Accordeon = ({ label, items }) => {
+const AccordeonDark = ({ label, items }) => {
   const [open, setOpen] = useState(0);
 
   const handleOpen = value => {
@@ -27,17 +29,13 @@ const Accordeon = ({ label, items }) => {
     <Accordion open={open === 1} icon={<Icon id={1} open={open} />}>
       <AccordionHeader
         onClick={() => handleOpen(1)}
-        className={
-          open
-            ? "font-arimo font-bold text-2xl text-green"
-            : "font-arimo font-bold text-2xl"
-        }
+        className="text-white font-arimo font-bold text-[18px] relative"
       >
         {label}
       </AccordionHeader>
 
       <AccordionBody>
-        <ul className="text-grey font-bold flex flex-col gap-y-3.5 py-3.5">
+        <ul className="text-grey text-[17px] font-bold flex flex-col gap-y-3.5 py-3.5">
           <li>
             <a href="#">Инженерно-техническая эксплуатация</a>
           </li>
@@ -52,9 +50,8 @@ const Accordeon = ({ label, items }) => {
           </li>
         </ul>
       </AccordionBody>
-
     </Accordion>
   );
 };
 
-export default Accordeon;
+export default AccordeonDark;

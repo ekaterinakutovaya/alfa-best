@@ -57,16 +57,16 @@ const CustomSlider = () => {
             </div>
 
             <div className="pagination pt-[20px] flex justify-between">
-              <button className="text-[24px] lg:text-[45px] text-gray-400 font-bold cursor-pointer ease-in-out duration-300 hover:text-green">
+              <button className="text-[24px] lg:text-[45px] text-gray-400 font-bold lg:cursor-pointer ease-in-out duration-300 hover:text-green">
                 2018
               </button>
-              <button className="text-[24px] lg:text-[45px] text-green font-bold">
+              <button className="text-[24px] lg:text-[45px] text-green font-bold lg:cursor-pointer">
                 2019
               </button>
-              <button className="text-[24px] lg:text-[45px] text-gray-400 font-bold cursor-pointer ease-in-out duration-300 hover:text-green">
+              <button className="text-[24px] lg:text-[45px] text-gray-400 font-bold lg:cursor-pointer ease-in-out duration-300 hover:text-green">
                 2020
               </button>
-              <button className="text-[24px] lg:text-[45px] text-gray-400 font-bold cursor-pointer ease-in-out duration-300 hover:text-green">
+              <button className="text-[24px] lg:text-[45px] text-gray-400 font-bold lg:cursor-pointer ease-in-out duration-300 hover:text-green">
                 2021
               </button>
               {/* <button className="text-[24px] lg:text-[45px] text-gray-400 font-bold cursor-pointer ease-in-out duration-300 hover:text-green">

@@ -31,7 +31,7 @@ const OurAimSection = () => {
 
         <div className="lg:w-[60%]">
           {[...Array(4).keys()].map((item, i) => (
-            <div className="w-full grid grid-cols-[0.3fr,2fr,1fr] py-[15px] border-solid border-b border-[#D9D9D9] last:border-b-0">
+            <div key={i} className="w-full grid grid-cols-[0.3fr,2fr,1fr] py-[15px] border-solid border-b border-[#D9D9D9] last:border-b-0">
               <div className="lg:font-semibold">01</div>
               <div className="w-[184px] lg:w-auto font-semibold lg:font-normal">
                 Сокращение издержек за счет оптимизации процессов
