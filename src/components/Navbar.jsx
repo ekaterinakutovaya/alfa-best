@@ -14,7 +14,8 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="w-full sm:w-60% fixed right-0 bottom-0 z-50 bg-white h-[calc(100vh_-_78px)]">
+    // <nav className="w-full h-[calc(100vh_-_78px)] sm:w-60% right-0 bottom-0 z-50 bg-white">
+    <nav className="w-full h-screen bg-white">
       <ul className="w-full h-full relative p-7 overflow-hidden flex flex-col gap-y-8">
         <li className="font-arimo font-bold text-2xl">
           <Accordeon label={"Услуги"} items={nestedList} />
