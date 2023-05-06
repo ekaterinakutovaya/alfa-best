@@ -30,7 +30,7 @@ const Slider = () => {
 
 
           <div className="w-full p-4 sm:px-20 absolute bottom-[60px] lg:bottom-[90px]">
-            <div className="w-[50%] pb-5">
+            <div className="w-[50%] h-[162px] pb-5 flex items-center">
               <h1 className="w-full text-[36px] lg:text-[45px] text-white font-bold break-words">
                 Корпоративное питание
               </h1>
@@ -42,14 +42,16 @@ const Slider = () => {
       </div>
       <div className="w-full">
         <div className="w-full h-[250px] sm:h-[350px] lg:h-[780px] relative bg-black">
-          <img className="w-full h-full object-cover opacity-60"
-            src={images.image001.src}
-            alt="header photo" />
 
-          <div className="w-full p-4 sm:px-20 absolute bottom-[60px]">
-            <div className="w-[50%] pb-5">
-              <h1 className="w-full text-[36px] text-white font-bold break-words">
-                Транспортные и пассажирские перевозки
+          <img className="w-full h-full object-cover opacity-60"
+            src={images.image002.src}
+            alt="header photo"/>
+
+
+          <div className="w-full p-4 sm:px-20 absolute bottom-[60px] lg:bottom-[90px]">
+            <div className="w-[50%] h-[162px] pb-5 flex items-center">
+              <h1 className="w-full text-[36px] lg:text-[45px] text-white font-bold break-words">
+                Транспортные перевозки
               </h1>
             </div>
 
@@ -59,13 +61,15 @@ const Slider = () => {
       </div>
       <div className="w-full">
         <div className="w-full h-[250px] sm:h-[350px] lg:h-[780px] relative bg-black">
-          <img className="w-full h-full object-cover opacity-60"
-            src={images.image001.src}
-            alt="header photo" />
 
-          <div className="w-full p-4 sm:px-20 absolute bottom-[60px]">
-            <div className="w-[50%] pb-5">
-              <h1 className="w-full text-[36px] text-white font-bold break-words">
+          <img className="w-full h-full object-cover opacity-60"
+            src={images.image003.src}
+            alt="header photo"/>
+
+
+          <div className="w-full p-4 sm:px-20 absolute bottom-[60px] lg:bottom-[90px]">
+            <div className="w-[50%] h-[162px] pb-5 flex items-center">
+              <h1 className="w-full text-[36px] lg:text-[45px] text-white font-bold break-words">
                 Сервисное и бытовое обслуживание
               </h1>
             </div>
@@ -76,13 +80,15 @@ const Slider = () => {
       </div>
       <div className="w-full">
         <div className="w-full h-[250px] sm:h-[350px] lg:h-[780px] relative bg-black">
-          <img className="w-full h-full object-cover opacity-60"
-            src={images.image001.src}
-            alt="header photo" />
 
-          <div className="w-full p-4 sm:px-20 absolute bottom-[60px]">
-            <div className="w-[50%] pb-5">
-              <h1 className="w-full text-[36px] text-white font-bold break-words">
+          <img className="w-full h-full object-cover opacity-60"
+            src={images.image004.src}
+            alt="header photo"/>
+
+
+          <div className="w-full p-4 sm:px-20 absolute bottom-[60px] lg:bottom-[90px]">
+            <div className="w-[50%] h-[162px] pb-5 flex items-center">
+              <h1 className="w-full text-[36px] lg:text-[45px] text-white font-bold break-words">
                 Инженерно-техническая эксплуатация
               </h1>
             </div>
@@ -91,6 +97,8 @@ const Slider = () => {
           </div>
         </div>
       </div>
+
+      
     </AliceCarousel>
   );
 };

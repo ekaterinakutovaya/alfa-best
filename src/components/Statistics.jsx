@@ -5,7 +5,7 @@ import SvgSelector from "../assets/icons/SvgSelector";
 const Statistics = () => {
   return (
     <section className="container">
-      <div className="statistics__inner w-full py-[50px] flex flex-col gap-[30px] lg:flex-row lg:justify-between">
+      <div className="statistics__inner w-full my-[50px] flex flex-col gap-[30px] lg:flex-row lg:justify-between">
         <div className="statistics__item">
           <div className="flex items-end gap-[10px]">
             <div className="icon w-[40px] h-[40px] mr-[10px]">

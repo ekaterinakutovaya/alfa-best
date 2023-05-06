@@ -24,9 +24,7 @@ export default function Home() {
 
       <HappyPartners/>
 
-      {/* <History/> */}
-
-      <div className='mb-[1000px]'></div>
+      <History/>
 
     </Layout>
   );

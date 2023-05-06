@@ -7,7 +7,7 @@ import { ControlButton } from "components";
 
 const CustomSlider = () => {
   return (
-    <div className="w-full">
+    <div className="w-full my-[50px]">
       {/* Header */}
       <div className="flex justify-between items-end">
         {/* Title */}

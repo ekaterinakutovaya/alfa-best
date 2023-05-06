@@ -8,7 +8,7 @@ const HappyPartners = () => {
     
     return (
       <section
-        className="w-full h-[300px] lg:h-[500px] my-[50px] lg:px-[90px] lg:py-[30px] relative"
+        className="w-full h-[300px] lg:h-[500px] my-[50px] py-[20px] lg:px-[90px] lg:py-[30px] relative"
       >
         <div className="w-full h-full overflow-hidden absolute left-0 right-0 bottom-0 -z-10">
           <img

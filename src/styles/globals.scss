@@ -1,26 +1,11 @@
 @import 'scss-reset/_reset.scss';
-// @import "slick-carousel/slick/slick.css";
-// @import "slick-carousel/slick/slick-theme.css";
 
-@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&display=swap'); 
 @import url('https://fonts.googleapis.com/css2?family=Arimo:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-:root {
-    // --index: calc(1vh + 1vw);
-    // /*========== Colors ==========*/
-    // --green: #28C79E;
-    // --black: #1B2330;
-    // --grey: #8D9197;
-    // --white: #fff;
-
-    // /*========== Effects ==========*/
-    // --box-shadow: 0px 4px 34px rgba(0, 0, 0, 0.08);
-    // --border: 1px solid #F0F0F0;
-}
 
 input,
 textarea,

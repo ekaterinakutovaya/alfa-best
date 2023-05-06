@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FiPlus } from "react-icons/fi";
+import { FiPlus, FiMinus } from "react-icons/fi";
 import {
   Accordion,
   AccordionHeader,
@@ -9,11 +9,25 @@ import {
 function Icon({ id, open }) {
   return (
     <div className="w-[40px] h-[40px] rounded-full bg-[#002c6340] opacity-70 backdrop-blur-[102.579px] flex justify-center items-center absolute top-[50%] translate-y-[-50%] right-0">
-      <FiPlus
+
+    {id === open ? (
+        <FiMinus
+          className={`${
+            id === open ? "" : ""
+            } h-7 w-7 transition-transform`}
+        />
+    ) : (
+          <FiPlus
+            className={`${
+              id === open ? "rotate-90" : ""
+              } h-7 w-7 transition-transform`}
+          />
+    )}
+      {/* <FiPlus
         className={`${
           id === open ? "rotate-90" : ""
         } h-7 w-7 transition-transform`}
-      />
+      /> */}
     </div>
   );
 }
