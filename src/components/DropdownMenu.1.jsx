@@ -1,11 +1,11 @@
 import React from "react";
 import Link from "next/link";
 
-import Figure from "../assets/icons/Figure";
+import Figure from "assets/icons/Figure";
 import { Accordeon } from "components";
-import { navigation } from "../constants/constants";
+import { navigation } from "constants/constants";
 
-const Navbar = () => {
+const DropdownMenu = () => {
   const nestedList = [
     { index: 0, label: "Инженерно-техническая эксплуатация" },
     { index: 1, label: "Сервисное и бытовое обслуживание" },
@@ -15,7 +15,8 @@ const Navbar = () => {
 
   return (
     // <nav className="w-full h-[calc(100vh_-_78px)] sm:w-60% right-0 bottom-0 z-50 bg-white">
-    <nav className="w-full h-screen bg-white">
+    // {/* <nav className="w-full h-screen bg-white"> */}
+    <nav>
       <ul className="w-full h-full relative p-7 overflow-hidden flex flex-col gap-y-8">
         <li className="font-arimo font-bold text-2xl">
           <Accordeon label={"Услуги"} items={nestedList} />
@@ -33,4 +34,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default DropdownMenu;

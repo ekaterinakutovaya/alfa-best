@@ -29,7 +29,7 @@ const Footer = () => {
             <div>
               {navigation &&
                 navigation.map((item, index) => (
-                  <div className="font-semibold text-[15px] text-white pb-[16px] last:pb-0 ease-in-out duration-300 hover:text-green">
+                  <div className="font-semibold text-[15px] text-white pb-[16px] last:pb-0 ease-in-out duration-300 hover:text-green" key={index}>
                     <Link href={item.path}>{item.title}</Link>
                   </div>
                 ))}
@@ -38,7 +38,7 @@ const Footer = () => {
             <div>
               {subNavigation &&
                 subNavigation.map((item, index) => (
-                  <div className="font-semibold text-[15px] text-white pb-[16px] last:pb-0 ease-in-out duration-300 hover:text-green">
+                  <div className="font-semibold text-[15px] text-white pb-[16px] last:pb-0 ease-in-out duration-300 hover:text-green" key={index}>
                     <Link href={item.path}>{item.title}</Link>
                   </div>
                 ))}

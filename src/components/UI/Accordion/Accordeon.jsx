@@ -37,7 +37,7 @@ const Accordeon = ({ label, items }) => {
       </AccordionHeader>
 
       <AccordionBody>
-        <ul className="text-grey font-bold flex flex-col gap-y-3.5 py-3.5">
+        <ul className="text-[17px] text-grey font-bold flex flex-col gap-y-3.5 py-3.5">
           <li>
             <a href="#">Инженерно-техническая эксплуатация</a>
           </li>

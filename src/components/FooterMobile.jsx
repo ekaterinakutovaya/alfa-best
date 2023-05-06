@@ -31,7 +31,7 @@ const FooterMobile = () => {
             <AccordeonDark label={"Услуги"} items={nestedList} />
             {navigation &&
               navigation.map((item, index) => (
-                <div className="font-arimo font-bold text-[18px] text-white">
+                <div className="font-arimo font-bold text-[18px] text-white" key={index}>
                   <Link href={item.path}>{item.title}</Link>
                 </div>
               ))}
