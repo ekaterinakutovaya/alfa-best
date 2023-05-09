@@ -8,7 +8,7 @@ const Statistics = () => {
       <div className="statistics__inner w-full my-[50px] flex flex-col gap-[30px] lg:flex-row lg:justify-between">
         <div className="statistics__item">
           <div className="flex items-end gap-[10px]">
-            <div className="icon w-[40px] h-[40px] mr-[10px]">
+            <div className="icon w-[40px] h-[40px]">
               <SvgSelector id="map" />
             </div>
 
@@ -21,7 +21,7 @@ const Statistics = () => {
         </div>
         <div className="statistics__item">
           <div className="flex items-end gap-[10px]">
-            <div className="icon w-[40px] h-[40px] mr-[10px]">
+            <div className="icon w-[40px] h-[40px]">
               <SvgSelector id="flag" />
             </div>
 
@@ -34,7 +34,7 @@ const Statistics = () => {
         </div>
         <div className="statistics__item">
           <div className="flex items-end gap-[10px]">
-            <div className="icon w-[40px] h-[40px] mr-[10px]">
+            <div className="icon w-[40px] h-[40px]">
               <SvgSelector id="bowl" />
             </div>
 
@@ -47,7 +47,7 @@ const Statistics = () => {
         </div>
         <div className="statistics__item">
           <div className="flex items-end gap-[10px]">
-            <div className="icon w-[40px] h-[40px] mr-[10px]">
+            <div className="icon w-[40px] h-[40px]">
               <SvgSelector id="person" />
             </div>
 

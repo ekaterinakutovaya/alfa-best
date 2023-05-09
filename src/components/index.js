@@ -6,6 +6,7 @@ import HeaderMobile from "./Header/HeaderMobile";
 import Hero from './Hero.jsx';
 import DropdownMenu from "./DropdownMenu";
 import OurAimSection from "./OurAimSection.jsx";
+import ServicesOverviewCard from "./ServicesOverviewCard.jsx";
 import SocialBar from "./SocialBar.jsx";
 import Statistics from "./Statistics.jsx";
 
@@ -15,10 +16,13 @@ import Accordeon from './UI/Accordion/Accordeon';
 import AccordeonDark from "./UI/Accordion/AccordeonDark";
 import Button from './UI/Button.jsx';
 import ControlButton from "./UI/ControlButton.jsx";
-import CustomSlider from "./UI/CustomSlider.jsx";
+import CustomSlider from "./UI/CustomSlider";
 import Slider from "./UI/Slider";
 import LanguageToggler from "./UI/LanguageToggler";
+import PeopleSlider from "./UI/PeopleSlider";
 import SliderMobile from "./UI/SliderMobile";
+import HistorySlider from "./UI/HistorySlider";
+
 
 export {
   AboutPreview,
@@ -36,9 +40,11 @@ export {
   Button,
   Slider,
   SliderMobile,
+  HistorySlider,
   LanguageToggler,
   ControlButton,
-  CustomSlider
+  CustomSlider,
+  PeopleSlider
 };
 
 

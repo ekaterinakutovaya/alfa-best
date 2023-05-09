@@ -4,7 +4,7 @@ import { images } from "../constants";
 import Logo from 'assets/icons/Logo';
 
 const HappyPartners = () => {
-    console.log(images);
+    // console.log(images);
     
     return (
       <section

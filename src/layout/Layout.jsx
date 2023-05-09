@@ -7,6 +7,10 @@ import HeaderMobile from "components/Header/HeaderMobile";
 export const Layout = ({ children }) => {
   const isMobileorTablet = useMediaQuery({ query: "(max-width: 1279px)" });
 
+  // const headerComponent = router.pathname == '/' ? <Header type='transparent'/> : <Header type='white' />;
+  // console.log(headerComponent);
+  
+  
 
   return (
     <>
@@ -18,15 +22,22 @@ export const Layout = ({ children }) => {
       </Head>
 
       <NoSSR>
-        {isMobileorTablet ? <HeaderMobile /> : <Header />}
-        
+        {/* <div className="header"> */}
+          {isMobileorTablet ? <HeaderMobile /> : <Header/>}
+        {/* </div> */}
       </NoSSR>
 
       <NoSSR>
-        <main>{children}</main>
+        {/* <div className="main"> */}
+          <main>{children}</main>
+        {/* </div> */}
       </NoSSR>
 
-      <NoSSR>{isMobileorTablet ? <FooterMobile /> : <Footer />}</NoSSR>
+      <NoSSR>
+        {/* <div className="footer"> */}
+          {isMobileorTablet ? <FooterMobile /> : <Footer />}
+        {/* </div> */}
+      </NoSSR>
     </>
   );
 };

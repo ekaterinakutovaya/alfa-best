@@ -19,10 +19,10 @@ const HeaderMobile = () => {
   };
 
   return (
-    <header className="w-full h-[79px] bg-white">
+    <header className="lg:hidden w-full h-[79px] bg-white fixed top-0 z-50 drop-shadow-md">
       {/* **** Nav main */}
-      <div className="flex items-center border-solid border-b">
-        <div className="w-full flex items-center justify-between h-[79px] lg:px-[90px] p-4 lg:py-[20px] border-solid border-red-500">
+      <div className="flex items-center">
+        <div className="w-full flex items-center justify-between h-[79px] lg:px-[90px] p-4 lg:py-[20px] ">
           <div className="grow">
             <div className="max-w-[110px]">
               <Logo type="dark-full" className="w-full" />
