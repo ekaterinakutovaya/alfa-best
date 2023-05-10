@@ -9,6 +9,8 @@ import OurAimSection from "./OurAimSection.jsx";
 import ServicesOverviewCard from "./ServicesOverviewCard.jsx";
 import SocialBar from "./SocialBar.jsx";
 import Statistics from "./Statistics.jsx";
+import TeamCard from "./TeamCard.jsx";
+import SectionHeading from "./SectionHeading.jsx";
 
 
 /* ********  UI  ***************** */
@@ -19,7 +21,6 @@ import ControlButton from "./UI/ControlButton.jsx";
 import CustomSlider from "./UI/CustomSlider";
 import Slider from "./UI/Slider";
 import LanguageToggler from "./UI/LanguageToggler";
-import PeopleSlider from "./UI/PeopleSlider";
 import SliderMobile from "./UI/SliderMobile";
 import HistorySlider from "./UI/HistorySlider";
 
@@ -44,7 +45,9 @@ export {
   LanguageToggler,
   ControlButton,
   CustomSlider,
-  PeopleSlider
+  ServicesOverviewCard,
+  TeamCard,
+  SectionHeading
 };
 
 

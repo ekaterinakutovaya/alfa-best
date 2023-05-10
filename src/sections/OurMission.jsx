@@ -4,6 +4,7 @@ import { images } from "constants";
 import styles from "styles/styles";
 import Logo from "assets/icons/Logo";
 import ServicesOverviewCard from "components/ServicesOverviewCard";
+import { SectionHeading } from "components";
 
 const OurMission = () => {
   return (
@@ -12,7 +13,7 @@ const OurMission = () => {
         <div className="lg:w-full lg:flex">
           <div className="lg:w-[60%]">
             {/* Title */}
-            <div>
+            {/* <div>
               <div className="w-[44px]">
                 <Logo type="dark" className="w-full" />
               </div>
@@ -20,7 +21,9 @@ const OurMission = () => {
               <h2 className="text-[18px] lg:text-[34px] font-bold pt-[10px] pb-[20px] lg:py-[10px]">
                 Наша миссия
               </h2>
-            </div>
+            </div> */}
+
+            <SectionHeading title={"Наша миссия"} />
             <div className="mission__text">
               <p>
                 Альфабест — предлагает комплексные решения по содержанию,
@@ -46,7 +49,7 @@ const OurMission = () => {
 
         <div className="w-full lg: grid lg:grid-cols-2 lg:gap-[60px] lg:my-[30px]">
           {[...Array(4).keys()].map((item, index) => (
-            <div className="w-full mb-[20px] lg:mb-0">
+            <div className="w-full mb-[20px] lg:mb-0" key={index}>
               <ServicesOverviewCard />
             </div>
           ))}

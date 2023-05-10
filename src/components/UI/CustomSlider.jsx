@@ -107,7 +107,7 @@ const CustomSlider = ({ items }) => {
       </div>
 
       {/* Main */}
-      <div className="lg:py-[30px]">
+      <div className="lg:py-[30px] select-none">
         <div className="lg:flex items-start gap-x-[120px]">
           <div className="w-full h-[210px] mb-[20px] lg:mb-0 lg:w-[500px] lg:min-w-[500px] lg:h-[320px] overflow-hidden rounded-[20px]">
             <img

@@ -19,7 +19,7 @@ const ServicesOverviewCard = () => {
       </Link>
 
       <img
-        className="w-[176px] lg:w-[253px] absolute bottom-[30px] z-50 right-[18px]"
+        className="w-[176px] lg:w-[253px] absolute bottom-[30px] z-10 right-[18px]"
         src={images.services001.src}
         alt="services photo"
       />

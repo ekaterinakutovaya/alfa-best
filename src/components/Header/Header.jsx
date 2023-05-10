@@ -85,8 +85,8 @@ const Header = () => {
 
   return (
     <header
-      // className={`w-full h-[141px] fixed top-0 z-50 ${navbarStyles.textColor} ${navbarStyles.bgColor}`}
-      className={`w-full h-[141px] ${navbarStyles.textColor} ${navbarStyles.bgColor}`} /* For my Laptop view dev */
+      className={`w-full h-[141px] fixed top-0 z-50 ${navbarStyles.textColor} ${navbarStyles.bgColor}`}
+      // className={`w-full h-[141px] ${navbarStyles.textColor} ${navbarStyles.bgColor}`} /* For my Laptop view dev */
     >
       {/***** Nav main *****/}
       <div
