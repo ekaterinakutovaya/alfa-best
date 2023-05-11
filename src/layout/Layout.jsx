@@ -22,21 +22,21 @@ export const Layout = ({ children }) => {
       </Head>
 
       <NoSSR>
-        {/* <div className="header"> */}
+        <div className="header">
           {isMobileorTablet ? <HeaderMobile /> : <Header/>}
-        {/* </div> */}
+        </div>
       </NoSSR>
 
       <NoSSR>
-        {/* <div className="main"> */}
+        <div className="main">
           <main>{children}</main>
-        {/* </div> */}
+        </div>
       </NoSSR>
 
       <NoSSR>
-        {/* <div className="footer"> */}
+        <div className="footer">
           {isMobileorTablet ? <FooterMobile /> : <Footer />}
-        {/* </div> */}
+        </div>
       </NoSSR>
     </>
   );

@@ -32,7 +32,7 @@ const CustomSlider = ({ items }) => {
           {/* Title */}
           <div>
             <div className="w-[44px]">
-              <Logo type="dark" className="w-full" />
+              <Logo type="dark" />
             </div>
 
             <h2 className={`${styles.heading2} py-[20px] lgpy-[10px]`}>

@@ -47,7 +47,7 @@ const OurMission = () => {
           </div>
         </div>
 
-        <div className="w-full lg: grid lg:grid-cols-2 lg:gap-[60px] lg:my-[30px]">
+        <div className="w-full lg:grid lg:grid-cols-2 lg:gap-[60px] lg:my-[30px]">
           {[...Array(4).keys()].map((item, index) => (
             <div className="w-full mb-[20px] lg:mb-0" key={index}>
               <ServicesOverviewCard />

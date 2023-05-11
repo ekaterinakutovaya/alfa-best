@@ -3,9 +3,8 @@ import { Inter } from 'next/font/google'
 
 
 import { Layout } from '../layout/Layout';
-import Hero from "../components/Hero";
-import { AboutPreview, Statistics, OurAimSection } from 'components';
-import { HappyPartners, History } from "sections";
+import { Statistics, OurAimSection } from 'components';
+import { AboutPreview, HappyPartners, History, Hero } from "sections";
 
 
 // const inter = Inter({ subsets: ['latin'] })
@@ -14,7 +13,7 @@ export default function Home() {
   
   return (
     <Layout>
-      <Hero suppressHydrationWarning />
+      <Hero />
 
       <AboutPreview />
 

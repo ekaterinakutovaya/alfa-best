@@ -76,8 +76,8 @@ const CustomSlider = ({ items }) => {
       <div className="flex justify-between items-end">
         {/* Title */}
         <div>
-          <div className="w-[44px]">
-            <Logo type="dark" className="w-full" />
+          <div className="">
+            <Logo type="dark" />
           </div>
 
           <h2 className={`${styles.heading2} py-[20px] lg:py-[10px]`}>

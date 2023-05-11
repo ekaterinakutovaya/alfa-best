@@ -8,8 +8,8 @@ import { Button } from ".";
 const OurAimSection = () => {
   return (
     <section className="container my-[30px]">
-      <div className="w-[44px]">
-        <Logo type="dark" className="w-full" />
+      <div className="">
+        <Logo type="dark" />
       </div>
 
       <h2 className={`${styles.heading2} py-[10px]`}>Наша цель</h2>

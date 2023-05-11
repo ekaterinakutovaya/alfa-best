@@ -5,8 +5,8 @@ import Logo from "assets/icons/Logo";
 const SectionHeading = ({title}) => {
     return (
         <div>
-            <div className="w-[44px]">
-                <Logo type="dark" className="w-full" />
+            <div className="">
+                <Logo type="dark" />
             </div>
 
             <h2 className="text-[18px] lg:text-[34px] font-bold pt-[10px] pb-[20px] lg:py-[10px]">

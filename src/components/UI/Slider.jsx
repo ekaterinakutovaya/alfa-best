@@ -23,11 +23,11 @@ const Slider = () => {
     <AliceCarousel {...settings}>
       <div className="w-full">
         <div className="w-full h-[250px] sm:h-[350px] lg:h-[780px] relative bg-black">
-
-          <img className="w-full h-full object-cover opacity-60"
+          <img
+            className="w-full h-full object-cover opacity-60"
             src={images.image001.src}
-            alt="header photo"/>
-
+            alt="header photo"
+          />
 
           <div className="w-full p-4 sm:px-20 absolute bottom-[60px] lg:bottom-[90px]">
             <div className="w-[50%] h-[162px] pb-5 flex items-center">
@@ -36,17 +36,17 @@ const Slider = () => {
               </h1>
             </div>
 
-            <Button>Узнать больше</Button>
+            <Button type="round">Узнать больше</Button>
           </div>
         </div>
       </div>
       <div className="w-full">
         <div className="w-full h-[250px] sm:h-[350px] lg:h-[780px] relative bg-black">
-
-          <img className="w-full h-full object-cover opacity-60"
+          <img
+            className="w-full h-full object-cover opacity-60"
             src={images.image002.src}
-            alt="header photo"/>
-
+            alt="header photo"
+          />
 
           <div className="w-full p-4 sm:px-20 absolute bottom-[60px] lg:bottom-[90px]">
             <div className="w-[50%] h-[162px] pb-5 flex items-center">
@@ -55,17 +55,17 @@ const Slider = () => {
               </h1>
             </div>
 
-            <Button>Узнать больше</Button>
+            <Button type="round">Узнать больше</Button>
           </div>
         </div>
       </div>
       <div className="w-full">
         <div className="w-full h-[250px] sm:h-[350px] lg:h-[780px] relative bg-black">
-
-          <img className="w-full h-full object-cover opacity-60"
+          <img
+            className="w-full h-full object-cover opacity-60"
             src={images.image003.src}
-            alt="header photo"/>
-
+            alt="header photo"
+          />
 
           <div className="w-full p-4 sm:px-20 absolute bottom-[60px] lg:bottom-[90px]">
             <div className="w-[50%] h-[162px] pb-5 flex items-center">
@@ -74,17 +74,17 @@ const Slider = () => {
               </h1>
             </div>
 
-            <Button>Узнать больше</Button>
+            <Button type="round">Узнать больше</Button>
           </div>
         </div>
       </div>
       <div className="w-full">
         <div className="w-full h-[250px] sm:h-[350px] lg:h-[780px] relative bg-black">
-
-          <img className="w-full h-full object-cover opacity-60"
+          <img
+            className="w-full h-full object-cover opacity-60"
             src={images.image004.src}
-            alt="header photo"/>
-
+            alt="header photo"
+          />
 
           <div className="w-full p-4 sm:px-20 absolute bottom-[60px] lg:bottom-[90px]">
             <div className="w-[50%] h-[162px] pb-5 flex items-center">
@@ -93,12 +93,10 @@ const Slider = () => {
               </h1>
             </div>
 
-            <Button>Узнать больше</Button>
+            <Button type="round">Узнать больше</Button>
           </div>
         </div>
       </div>
-
-      
     </AliceCarousel>
   );
 };

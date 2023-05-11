@@ -23,7 +23,7 @@ const Footer = () => {
         <div className="py-[60px] w-full flex gap-x-[40px] border-solid border-b border-[rgba(255,255,255,0.1)]">
           <div className="w-[80%] flex gap-x-[80px]">
             <div className="">
-              <Logo type="light-full" />
+              <Logo type="color-light-full" />
             </div>
 
             <div>

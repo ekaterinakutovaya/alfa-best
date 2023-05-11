@@ -38,7 +38,7 @@ const SliderMobile = () => {
             </h1>
           </div>
 
-          <Button>Узнать больше</Button>
+          <Button type="round">Узнать больше</Button>
         </div>
       </div>
 
@@ -57,7 +57,7 @@ const SliderMobile = () => {
             </h1>
           </div>
 
-          <Button>Узнать больше</Button>
+          <Button type="round">Узнать больше</Button>
         </div>
       </div>
       <div className="w-full">
@@ -75,7 +75,7 @@ const SliderMobile = () => {
             </h1>
           </div>
 
-          <Button>Узнать больше</Button>
+          <Button type="round">Узнать больше</Button>
         </div>
       </div>
       <div className="w-full">
@@ -93,7 +93,7 @@ const SliderMobile = () => {
             </h1>
           </div>
 
-          <Button>Узнать больше</Button>
+          <Button type="round">Узнать больше</Button>
         </div>
       </div>
     </AliceCarousel>

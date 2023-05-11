@@ -22,7 +22,7 @@ const FooterMobile = () => {
       <div className="container">
         <div className="w-full flex-col gap-y-[30px] py-[43px] border-solid border-b border-[rgba(255,255,255,0.1)]">
           <div className="head">
-            <div className="">
+            <div className="flex justify-center">
               <Logo type="light-full" className="w-full" />
             </div>
           </div>

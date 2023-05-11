@@ -1,9 +1,8 @@
-import AboutPreview from "./AboutPreview.jsx";
 import Footer from "./Footer";
 import FooterMobile from "./FooterMobile";
 import Header from './Header/Header';
 import HeaderMobile from "./Header/HeaderMobile";
-import Hero from './Hero.jsx';
+import Hero from 'sections/Hero';
 import DropdownMenu from "./DropdownMenu";
 import OurAimSection from "./OurAimSection.jsx";
 import ServicesOverviewCard from "./ServicesOverviewCard.jsx";
@@ -11,6 +10,10 @@ import SocialBar from "./SocialBar.jsx";
 import Statistics from "./Statistics.jsx";
 import TeamCard from "./TeamCard.jsx";
 import SectionHeading from "./SectionHeading.jsx";
+import ApplicationForm from "./ApplicationForm.jsx";
+import ContactsForm from "./ContactsForm.jsx";
+import QueryConfirmation from "./QueryConfirmation.jsx";
+import ServicesPageWrapper from "./ServicesPageWrapper.jsx";
 
 
 /* ********  UI  ***************** */
@@ -23,10 +26,11 @@ import Slider from "./UI/Slider";
 import LanguageToggler from "./UI/LanguageToggler";
 import SliderMobile from "./UI/SliderMobile";
 import HistorySlider from "./UI/HistorySlider";
+import DropdownSelect from "./UI/DropdownSelect";
+import Popup from "./UI/Popup";
 
 
 export {
-  AboutPreview,
   Accordeon,
   AccordeonDark,
   Footer,
@@ -47,7 +51,13 @@ export {
   CustomSlider,
   ServicesOverviewCard,
   TeamCard,
-  SectionHeading
+  SectionHeading,
+  DropdownSelect,
+  ApplicationForm,
+  ContactsForm,
+  Popup,
+  QueryConfirmation,
+  ServicesPageWrapper
 };
 
 

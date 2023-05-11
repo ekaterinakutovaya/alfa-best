@@ -3,9 +3,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Arimo:wght@400;500;600;700&display=swap");
 
-// @import "~slick-carousel/slick/slick.css";
-// @import "~slick-carousel/slick/slick-theme.css";
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -23,6 +20,7 @@ a {
 }
 
 html {
+
     @media screen and (min-width: 768px) {
         height: 100%;
     }
@@ -43,6 +41,7 @@ body {
 }
 
 #__next {
+
     @media screen and (min-width: 768px) {
         display: flex;
         flex: 1;
@@ -60,6 +59,18 @@ body {
 
     @media screen and (min-width: 768px) {
         padding: 0 90px;
+    }
+}
+
+.gallery-container {
+    width: 100%;
+    padding-left: 25px;
+
+    @media screen and (min-width: 768px) {
+        min-width: 375px;
+        max-width: 1440px;
+        padding: 0 90px;
+        margin: 0 auto;
     }
 }
 

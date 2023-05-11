@@ -1,9 +1,15 @@
 import React from 'react';
 import { Layout } from "../../layout/Layout";
-import CompanyProfile from 'sections/CompanyProfile';
-import { OurMission, Partners } from 'sections';
-import OurTeam from 'sections/OurTeam';
-import WithOurPartners from 'sections/WithOurPartners';
+import {
+  CompanyProfile,
+  OurMission,
+  Partners,
+  OurTeam,
+  WithOurPartners,
+  Gallery,
+    AboutHistory
+} from "sections";
+
 
 const About = () => {
     return (
@@ -13,6 +19,8 @@ const About = () => {
             <OurTeam/>
             <WithOurPartners/>
             <Partners/>
+            <Gallery/>
+            <AboutHistory/>
         </Layout>
     );
 };

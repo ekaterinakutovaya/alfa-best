@@ -1,10 +1,13 @@
 import React from 'react';
 
+import { Layout } from "../../layout/Layout";
+import { CareerSection } from "sections";
+
 const Carrier = () => {
     return (
-        <div>
-            Carrier
-        </div>
+        <Layout>
+            <CareerSection/>
+        </Layout>
     );
 };
 

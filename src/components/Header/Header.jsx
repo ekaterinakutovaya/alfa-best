@@ -19,8 +19,13 @@ const Header = () => {
     borderBottomColor: "",
     shadow: "",
     divider: "bg-white",
-    logoType: "light-full"
+    logoType: "color-light-full"
   });
+
+  const idleLink =
+    "flex items-center ease-in-out duration-300 font-semibold hover:text-[#28C79E]";
+  const activeLink =
+    "flex items-center ease-in-out duration-300 font-semibold text-green";
 
   const handleScroll = e => {
     setClientWindowHeight(window.scrollY);
@@ -34,7 +39,7 @@ const Header = () => {
         borderBottomColor: "",
         shadow: "",
         divider: "bg-white",
-        logoType: "light-full"
+        logoType: "color-light-full"
       });
 
       return;
@@ -46,7 +51,7 @@ const Header = () => {
       borderBottomColor: "border-b-[#ECECEC]",
       shadow: "drop-shadow-md",
       divider: "bg-black",
-      logoType: "dark-full"
+      logoType: "color-dark-full"
     });
   }, []);
 
@@ -58,7 +63,7 @@ const Header = () => {
         borderBottomColor: "border-b-[#ECECEC]",
         shadow: "drop-shadow-md",
         divider: "bg-black",
-        logoType: "dark-full"
+        logoType: "color-dark-full"
       });
 
       return;
@@ -94,7 +99,7 @@ const Header = () => {
       >
         <div className="w-full flex items-center justify-between h-[79px] lg:px-[90px] p-4 lg:py-[20px] border-solid border-red-500">
           <div className="grow">
-            <div className="max-w-[110px]">
+            <div className="max-w-[153px]">
               <Logo type={navbarStyles.logoType} className="w-full" />
             </div>
           </div>
@@ -104,7 +109,8 @@ const Header = () => {
               navigation.map((item, index) => (
                 <li
                   key={index}
-                  className="flex items-center ease-in-out duration-300 hover:text-[#28C79E]"
+                  // className="flex items-center ease-in-out duration-300 hover:text-[#28C79E]"
+                  className={router.pathname == item.path ? activeLink : idleLink}
                 >
                   <Link href={item.path}>{item.title}</Link>
                 </li>

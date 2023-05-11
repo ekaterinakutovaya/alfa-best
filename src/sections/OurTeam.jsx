@@ -31,8 +31,8 @@ const OurTeam = () => {
         {/* Head */}
         <div className="flex justify-between items-end mb-[30px] ">
           <div>
-            <div className="w-[44px]">
-              <Logo type="dark" className="w-full" />
+            <div className="">
+              <Logo type="dark" />
             </div>
 
             <h2 className="text-[18px] lg:text-[34px] font-bold">

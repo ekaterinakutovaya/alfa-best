@@ -15,7 +15,11 @@ const ServicesOverviewCard = () => {
         href="/engineering"
         className="flex items-center gap-x-[10px] font-medium lg:text-[17px]"
       >
-        Подробно <SvgSelector id="next" />
+        Подробно{" "}
+        <SvgSelector
+          id="next"
+          className="fill-black mt-[4px]"
+        />
       </Link>
 
       <img
@@ -24,8 +28,8 @@ const ServicesOverviewCard = () => {
         alt="services photo"
       />
 
-      <div className='w-full absolute bottom-0 right-[-30%] lg:right-[-22%] -z-10 lg:h-full'>
-          <SvgSelector id='curvy-bg' className='w-full h-full'/>
+      <div className="w-full absolute bottom-0 right-[-30%] lg:right-[-22%] -z-10 lg:h-full">
+        <SvgSelector id="curvy-bg" className="w-full h-full" />
       </div>
     </div>
   );

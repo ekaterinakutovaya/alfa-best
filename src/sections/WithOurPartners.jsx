@@ -19,7 +19,7 @@ const WithOurPartners = () => {
         <div className="container lg:py-[30px]">
           <div className="w-[70%] h-full">
             <div className="pb-[20px] lg:pb-[60px]">
-              <Logo type="light-full" />
+              <Logo type="color-light-full" />
             </div>
 
             <h2 className="lg-[536px] text-[16px] font-bold text-white pb-[17px] lg:text-[34px]">
