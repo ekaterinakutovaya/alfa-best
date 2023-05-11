@@ -15,19 +15,19 @@ const DropdownMenu = () => {
 
   return (
     <nav className="w-full h-[calc(100vh_-_78px)] bg-white absolute top-[78px] z-50 border-solid border-t-[#ECECEC]">
-      <ul className="w-full h-full p-7 flex flex-col gap-y-8 ">
+      <ul className="w-full p-7 flex flex-col gap-y-8 ">
         <li>
           <Accordeon label={"Услуги"} items={nestedList} />
         </li>
 
         {navigation &&
           navigation.map((item, index) => (
-            <li className="font-arimo font-bold text-2xl">
+            <li className="font-arimo font-bold text-[20px]">
               <Link href={item.path}>{item.title}</Link>
             </li>
           ))}
 
-        <li className="mt-[auto]">
+        <li className="mt-[40px]">
           <div className="font-arimo font-bold text-[18px] pb-[20px]">
             Следите в телеграмме
           </div>

@@ -29,8 +29,8 @@ const Accordeon = ({ label, items }) => {
         onClick={() => handleOpen(1)}
         className={
           open
-            ? "font-arimo font-bold text-2xl text-green"
-            : "font-arimo font-bold text-2xl"
+            ? "font-arimo font-bold text-[20px] text-green"
+            : "font-arimo font-bold text-[20px]"
         }
       >
         {label}

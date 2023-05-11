@@ -210,6 +210,7 @@ const SvgSelector = ({ id, className = '' }) => {
     case "telegram":
       return (
         <svg
+        className={className}
           width="20"
           height="20"
           viewBox="0 0 20 20"
@@ -227,7 +228,7 @@ const SvgSelector = ({ id, className = '' }) => {
           width="20"
           height="20"
           viewBox="0 0 20 20"
-
+          className={className}
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
@@ -238,7 +239,7 @@ const SvgSelector = ({ id, className = '' }) => {
 
       case 'facebook':
       return (
-          <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+        <svg className={className} width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
               <path d="M20 10C20 4.48 15.52 0 10 0C4.48 0 0 4.48 0 10C0 14.84 3.44 18.87 8 19.8V13H6V10H8V7.5C8 5.57 9.57 4 11.5 4H14V7H12C11.45 7 11 7.45 11 8V10H14V13H11V19.95C16.05 19.45 20 15.19 20 10Z" />
           </svg>
       )
