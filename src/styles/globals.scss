@@ -158,8 +158,8 @@ body {
 
 .toggle {
     position: relative;
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
     background: #28c79e;
     border-radius: 50%;
 
@@ -172,34 +172,34 @@ body {
 
 .toggle span {
     position: absolute;
-    width: 13px;
-    height: 2px;
+    width: 16px;
+    height: 3px;
     background: #fff;
     border-radius: 13px;
     transition: 0.5s;
 }
 
 .toggle span:nth-child(1) {
-    transform: translateY(-6px);
-    width: 18px;
+    transform: translateY(-7px);
+    width: 20px;
 }
 
 .toggle.active span:nth-child(1) {
-    width: 18px;
+    width: 20px;
     transform: translateY(0px) rotate(45deg);
 }
 
 .toggle span:nth-child(2) {
-    transform: translateY(6px);
-    width: 18px;
+    transform: translateY(7px);
+    width: 20px;
 }
 
 .toggle span:nth-child(3) {
-    right: 11px;
+    right: 13px;
 }
 
 .toggle.active span:nth-child(2) {
-    width: 18px;
+    width: 20px;
     transform: translateY(0px) rotate(-45deg);
 }
 
