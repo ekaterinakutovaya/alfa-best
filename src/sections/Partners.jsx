@@ -13,6 +13,10 @@ const Partners = () => {
       slidesPerView: 2,
       spaceBetween: 10
     },
+    768: {
+      slidesPerView: 4,
+      spaceBetween: 120
+    },
     1280: {
       slidesPerView: 5,
       spaceBetween: 120

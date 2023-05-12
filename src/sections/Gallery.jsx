@@ -14,6 +14,10 @@ const Gallery = () => {
       slidesPerView: 2,
       spaceBetween: 260
     },
+    768: {
+      slidesPerView: 2,
+      spaceBetween: 50
+    },
     1280: {
       slidesPerView: 3,
       spaceBetween: 350
