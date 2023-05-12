@@ -30,7 +30,7 @@ const Advantages = () => {
               <div>
                 <SvgSelector
                   id="certified"
-                  className="fill-green w-[30px] h-[30px] lg:w-[40px] lg:h-[40px]"
+                  className="fill-green w-[30px] h-[30px] lg:w-[40px] lg:h-[40px] mt-[6px]"
                 />
               </div>
               <div className="font-medium">

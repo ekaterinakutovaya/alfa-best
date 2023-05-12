@@ -32,7 +32,7 @@ const DropdownMenu = () => {
             Следите в телеграмме
           </div>
 
-          <SocialBar color="#1B2330" />
+          <SocialBar color="#1B2330" size='40'/>
         </li>
       </ul>
 

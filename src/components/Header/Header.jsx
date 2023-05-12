@@ -27,6 +27,9 @@ const Header = () => {
   const activeLink =
     "flex items-center ease-in-out duration-300 font-semibold text-green";
 
+  const subNavLinkIdle = 'text-[18px] font-bold cursor-pointer ease-in-out duration-300 hover:text-[#28C79E]';
+  const subNavLinkActive = 'text-[18px] font-bold cursor-pointer ease-in-out duration-300 text-[#28C79E]';
+
   const handleScroll = e => {
     setClientWindowHeight(window.scrollY);
   };
@@ -109,8 +112,9 @@ const Header = () => {
               navigation.map((item, index) => (
                 <li
                   key={index}
-                  // className="flex items-center ease-in-out duration-300 hover:text-[#28C79E]"
-                  className={router.pathname == item.path ? activeLink : idleLink}
+                  className={
+                    router.pathname == item.path ? activeLink : idleLink
+                  }
                 >
                   <Link href={item.path}>{item.title}</Link>
                 </li>
@@ -140,7 +144,9 @@ const Header = () => {
             subNavigation.map((item, index) => (
               <li
                 key={index}
-                className="text-[18px] font-bold cursor-pointer ease-in-out duration-300 hover:text-[#28C79E]"
+                className={
+                  router.pathname == item.path ? subNavLinkActive : subNavLinkIdle
+                }
               >
                 <Link href={item.path}>{item.title}</Link>
               </li>

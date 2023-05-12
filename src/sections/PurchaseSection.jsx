@@ -30,7 +30,7 @@ const PurchaseSection = () => {
 
       <Gallery />
 
-      <div className="container flex justify-center">
+      <div className="flex justify-center mt-[-20px] lg:mt-[-50px]">
         <Link href='/cooperation'>
           <Button type="round">Сотрудничество</Button>
         </Link>

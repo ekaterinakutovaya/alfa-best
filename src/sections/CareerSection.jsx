@@ -29,7 +29,7 @@ const CareerSection = () => {
         <div className=" pt-[30px] lg:pt-[60px]">
           <Logo type="dark" />
         </div>
-        <div className="content pt-[20px] lg:flex lg:w-full gap-x-[150px]">
+        <div className="content pt-[10px] lg:flex lg:w-full gap-x-[150px]">
           <div className="lg:w-[40%]">
             <div>
               <h2 className="text-[18px] lg:text-[34px] font-bold pb-[20px]">
@@ -46,7 +46,7 @@ const CareerSection = () => {
               эксплуатации, сервиса и пассажирских перевозок.
             </p>
 
-            <div className="mt-[20px] mb-[30px]">
+            <div className="my-[30px]">
               <div className="text-[16px] font-bold leading-[140%]">
                 Наши вакансии (ссылка на страницу в HH)
               </div>

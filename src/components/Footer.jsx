@@ -50,7 +50,7 @@ const Footer = () => {
               Подписывайтесь на нас
             </div>
 
-            <SocialBar color="white" />
+            <SocialBar color="white" size='30'/>
           </div>
         </div>
 

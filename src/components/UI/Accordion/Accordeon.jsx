@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+import Link from "next/link";
 import { FiPlus } from "react-icons/fi";
 import {
   Accordion,
   AccordionHeader,
   AccordionBody
 } from "@material-tailwind/react";
+
+import { subNavigation } from "constants/constants";
 
 function Icon({ id, open }) {
   return (
@@ -38,10 +41,14 @@ const Accordeon = ({ label, items }) => {
 
       <AccordionBody>
         <ul className="text-[17px] text-grey font-bold flex flex-col gap-y-3.5 py-3.5">
-          <li>
-            <a href="#">Инженерно-техническая эксплуатация</a>
-          </li>
-          <li>
+
+        {subNavigation && subNavigation.map((item, index) => (
+            <li key={index}>
+              <a href={item.path}>{item.title}</a>
+            </li>
+        ))}
+          
+          {/* <li>
             <a href="#">Сервисное и бытовое обслуживание</a>
           </li>
           <li>
@@ -49,7 +56,7 @@ const Accordeon = ({ label, items }) => {
           </li>
           <li>
             <a href="#">Транспортные и пассажирские перевозки</a>
-          </li>
+          </li> */}
         </ul>
       </AccordionBody>
 

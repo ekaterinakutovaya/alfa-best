@@ -6,7 +6,7 @@ import Logo from "assets/icons/Logo";
 
 const CooperationSection = () => {
   return (
-    <section className="w-full mt-[79px] lg:mt-[158px] py-[25px] lg:py-[50px] mb-[50px]">
+    <section className="w-full mt-[79px] lg:mt-[158px] pt-[25px] lg:pt-[50px] lg:my-[80px]">
       <div className="container relative">
         <div className="w-full h-[220px] lg:h-[500px] overflow-hidden rounded-[15px] relative">
           <img
@@ -27,7 +27,7 @@ const CooperationSection = () => {
         </div>
 
         <div className="content pt-[20px]">
-          <p className="text-[17px]">
+          <p className="">
             Компания Альфа-бест будет рада сотрудничеству с промышленными
             предприятиями, торговыми центрами, компаниями крупного и среднего
             бизнеса в области комплексного оказания услуг.

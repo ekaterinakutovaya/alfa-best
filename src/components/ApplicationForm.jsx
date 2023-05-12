@@ -27,7 +27,7 @@ const ApplicationForm = () => {
   };
 
   return (
-    <section className="w-full my-[60px]">
+    <section className="w-full my-[40px] lg:my-[80px]">
       <div className="container w-full">
         <div className="w-full bg-[#F2FCF9] rounded-[20px] py-[20px] lg:py-[40px] px-[15px] lg:px-[60px] flex flex-col lg:flex-row gap-y-[30px] items-center">
           {/* Form */}

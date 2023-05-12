@@ -20,7 +20,7 @@ const FooterMobile = () => {
     <footer className="bg-[#001836]">
       {/* Main */}
       <div className="container">
-        <div className="w-full flex-col gap-y-[30px] py-[43px] border-solid border-b border-[rgba(255,255,255,0.1)]">
+        <div className="w-full flex-col gap-y-[30px] py-[20px] border-solid border-b border-[rgba(255,255,255,0.1)]">
           <div className="head">
             <div className="flex justify-center">
               <Logo type="light-full" className="w-full" />
@@ -37,12 +37,12 @@ const FooterMobile = () => {
               ))}
           </div>
 
-          <div className="follow">
+          <div className="follow mt-[30px]">
             <div className="font-arimo font-bold text-[18px] text-white pb-[20px]">
               Следите в телеграмме
             </div>
 
-            <SocialBar color="white" />
+            <SocialBar color="white" size='32'/>
           </div>
         </div>
 

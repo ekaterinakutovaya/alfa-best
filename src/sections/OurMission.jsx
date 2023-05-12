@@ -8,7 +8,7 @@ import { SectionHeading } from "components";
 
 const OurMission = () => {
   return (
-    <section className="w-full my-[50px]">
+    <section className="w-full my-[50px] lg:my-[80px]">
       <div className="mission__inner container">
         <div className="lg:w-full lg:flex">
           <div className="lg:w-[60%]">

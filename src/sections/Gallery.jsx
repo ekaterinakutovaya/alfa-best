@@ -25,7 +25,7 @@ const Gallery = () => {
   const nextHandler = () => {};
 
   return (
-    <section className="w-full my-[50px] select-none">
+    <section className="w-full my-[50px] lg:my-[80px] select-none">
       <div className="gallery-container">
         <div className="flex justify-between items-end">
           <div>

@@ -26,7 +26,7 @@ const OurTeam = () => {
   const nextHandler = () => {};
 
   return (
-    <section className="w-full my-[50px]">
+    <section className="w-full my-[50px] lg:my-[100px]">
       <div className="mission__inner container">
         {/* Head */}
         <div className="flex justify-between items-end mb-[30px] ">

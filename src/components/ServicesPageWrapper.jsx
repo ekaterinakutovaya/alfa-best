@@ -8,7 +8,7 @@ import Gallery from "sections/Gallery";
 
 const ServicesPageWrapper = ({title, text}) => {
   return (
-    <section className="w-full mt-[79px] lg:mt-[158px] py-[25px] lg:py-[50px] mb-[50px]">
+    <section className="w-full mt-[79px] lg:mt-[158px] pt-[25px] lg:py-[50px]">
       <div className="container relative">
         <div className="w-full h-[220px] lg:h-[500px] overflow-hidden rounded-[15px] relative">
           <img
@@ -34,14 +34,14 @@ const ServicesPageWrapper = ({title, text}) => {
           </p>
         </div>
 
-        <div className='mt-[60px]'>
+        <div className='lg:mt-[60px]'>
           <ServicesDescription/>
         </div>
       </div>
 
       <WithOurPartners />
 
-      <div className='py-[30px]'>
+      <div className='lg:my-[30px]'>
         <Advantages/>
       </div>
 

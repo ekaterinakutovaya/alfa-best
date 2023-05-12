@@ -5,7 +5,8 @@ import Logo from 'assets/icons/Logo';
 
 const CompanyProfile = () => {
     return (
-      <section className="w-full mt-[79px] lg:mt-[158px] py-[25px] lg:py-[50px] mb-[50px]">
+      // <section className="w-full mt-[79px] lg:mt-[158px] py-[25px] lg:py-[50px] mb-[50px]">
+      <section className="w-full mt-[79px] lg:mt-[158px] pt-[25px] lg:pt-[50px] lg:my-[50px]">
         <div className="profile__inner container relative">
           <div className="w-full h-[220px] lg:h-[500px] overflow-hidden rounded-[15px] relative">
             <img
@@ -26,11 +27,11 @@ const CompanyProfile = () => {
           </div>
 
           <div className="content pt-[20px]">
-            <p className='text-[17px]'>
+            <p className=''>
               Компания Альфа бест —оператор комплексного обслуживания вахтовых
               поселков на территории Республики Узбекистан.
             </p>
-            <p className='text-[17px]'>
+            <p className=''>
               Глубокие знания, разносторонний опыт и профессионализм наших
               сотрудников — это гарантия успехов во всех сферах деятельности,
               которыми занимается компания.. Наши задачи — обеспечить сервис
