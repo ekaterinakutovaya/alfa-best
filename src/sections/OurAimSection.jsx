@@ -1,9 +1,9 @@
 import React from "react";
 
-import { images } from "../constants";
-import styles from "../styles/styles";
-import Logo from "../assets/icons/Logo";
-import { Button } from ".";
+import { images } from "constants";
+import styles from "styles/styles";
+import Logo from "assets/icons/Logo";
+import { Button } from "components";
 
 const OurAimSection = () => {
   return (

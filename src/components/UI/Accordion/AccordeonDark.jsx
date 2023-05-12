@@ -6,6 +6,8 @@ import {
   AccordionBody
 } from "@material-tailwind/react";
 
+import { subNavigation } from "constants/constants";
+
 function Icon({ id, open }) {
   return (
     <div className="w-[40px] h-[40px] rounded-full bg-[#002c6340] opacity-70 backdrop-blur-[102.579px] flex justify-center items-center absolute top-[50%] translate-y-[-50%] right-0">
@@ -23,11 +25,6 @@ function Icon({ id, open }) {
               } h-7 w-7 transition-transform`}
           />
     )}
-      {/* <FiPlus
-        className={`${
-          id === open ? "rotate-90" : ""
-        } h-7 w-7 transition-transform`}
-      /> */}
     </div>
   );
 }
@@ -50,18 +47,12 @@ const AccordeonDark = ({ label, items }) => {
 
       <AccordionBody>
         <ul className="text-grey text-[17px] font-bold flex flex-col gap-y-3.5 py-3.5">
-          <li>
-            <a href="#">Инженерно-техническая эксплуатация</a>
-          </li>
-          <li>
-            <a href="#">Сервисное и бытовое обслуживание</a>
-          </li>
-          <li>
-            <a href="#">Корпоративное питание</a>
-          </li>
-          <li>
-            <a href="#">Транспортные и пассажирские перевозки</a>
-          </li>
+          {subNavigation && subNavigation.map((item, index) => (
+            <li key={index}>
+              <a href={item.path}>{item.title}</a>
+            </li>
+          ))}
+          
         </ul>
       </AccordionBody>
     </Accordion>

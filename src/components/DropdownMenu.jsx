@@ -14,7 +14,7 @@ const DropdownMenu = () => {
   ];
 
   return (
-    <nav className="w-full h-[calc(100vh_-_78px)] bg-white absolute top-[78px] z-50 border-solid border-t-[#ECECEC]">
+    <nav className="w-full h-[calc(100vh_-_78px)] bg-white absolute top-[78px] z-50 border-solid border-t border-t-[#ECECEC]">
       <ul className="w-full p-7 flex flex-col gap-y-8 ">
         <li>
           <Accordeon label={"Услуги"} items={nestedList} />
@@ -32,17 +32,11 @@ const DropdownMenu = () => {
             Следите в телеграмме
           </div>
 
-          <SocialBar color="#1B2330" size='40'/>
+          <SocialBar color="#1B2330" size="40" />
         </li>
       </ul>
 
-      {/* <div className="follow">
-        <div className="font-arimo font-bold text-[18px] text-white pb-[20px]">
-          Следите в телеграмме
-            </div>
-
-        <SocialBar color="white" />
-      </div> */}
+      <Figure className="absolute bottom-[20%] right-[-8%]" />
     </nav>
   );
 };

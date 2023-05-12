@@ -12,20 +12,18 @@ const AboutPreview = () => {
 
   return (
     <section className="container">
-      <div className="my-[50px] lg:flex lg:item-center lg:gap-[80px]">
-        <div className="w-full max-w-[445px] h-auto px-[17px] py-[20px] lg:p-0">
+      <div className="sm:w-full my-[50px] lg:flex justify-center lg:item-center lg:gap-[80px]">
+        <div className="w-full sm:flex justify-center items-center lg:max-w-[445px] h-auto px-[17px] py-[20px] sm:px-0 sm:py-0 lg:p-0">
           <img src={images.aboutCompany.src} alt="about company picture" />
         </div>
 
-        <div className="lg:flex lg:items-center">
+        <div className="lg:flex lg:items-center sm:my-[30px]">
           <div className="">
-            <div className=''>
+            <div className="">
               <Logo type="dark" />
             </div>
 
-            <h2 className={`${styles.heading2} pb-[20px]`}>
-              О нашей компании
-            </h2>
+            <h2 className={`${styles.heading2} pb-[20px]`}>О нашей компании</h2>
 
             <div className="content flex flex-col gap-[15px] lg:max-w-[689px] pb-[30px]">
               {[...Array(4).keys()].map((p, i) => (
@@ -37,7 +35,7 @@ const AboutPreview = () => {
               ))}
             </div>
 
-            <Button type='round'>Узнать больше</Button>
+            <Button type="round">Узнать больше</Button>
           </div>
         </div>
       </div>

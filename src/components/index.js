@@ -4,7 +4,6 @@ import Header from './Header/Header';
 import HeaderMobile from "./Header/HeaderMobile";
 import Hero from 'sections/Hero';
 import DropdownMenu from "./DropdownMenu";
-import OurAimSection from "./OurAimSection.jsx";
 import ServicesOverviewCard from "./ServicesOverviewCard.jsx";
 import SocialBar from "./SocialBar.jsx";
 import Statistics from "./Statistics.jsx";
@@ -28,6 +27,7 @@ import SliderMobile from "./UI/SliderMobile";
 import HistorySlider from "./UI/HistorySlider";
 import DropdownSelect from "./UI/DropdownSelect";
 import Popup from "./UI/Popup";
+import HeroSlider from "./UI/HeroSlider";
 
 
 export {
@@ -39,7 +39,6 @@ export {
   HeaderMobile,
   Hero,
   DropdownMenu,
-  OurAimSection,
   SocialBar,
   Statistics,
   Button,
@@ -57,7 +56,8 @@ export {
   ContactsForm,
   Popup,
   QueryConfirmation,
-  ServicesPageWrapper
+  ServicesPageWrapper,
+  HeroSlider
 };
 
 

@@ -19,9 +19,11 @@ const Slider = () => {
     autoPlayInterval: 10000
   };
 
+  const handleDragStart = e => e.preventDefault();
+
   return (
     <AliceCarousel {...settings}>
-      <div className="w-full">
+      <div className="w-full" onDragStart={handleDragStart}>
         <div className="w-full h-[250px] sm:h-[350px] lg:h-[780px] relative bg-black">
           <img
             className="w-full h-full object-cover opacity-60"

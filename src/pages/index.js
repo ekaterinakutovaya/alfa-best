@@ -3,8 +3,14 @@ import { Inter } from 'next/font/google'
 
 
 import { Layout } from '../layout/Layout';
-import { Statistics, OurAimSection } from 'components';
-import { AboutPreview, HappyPartners, History, Hero } from "sections";
+import { Statistics } from 'components';
+import {
+  AboutPreview,
+  HappyPartners,
+  History,
+  Hero,
+  OurAimSection
+} from "sections";
 
 
 // const inter = Inter({ subsets: ['latin'] })

@@ -3,8 +3,8 @@ import React from "react";
 import { images } from "constants";
 import styles from "styles/styles";
 import Logo from "assets/icons/Logo";
-import ServicesOverviewCard from "components/ServicesOverviewCard";
-import { SectionHeading } from "components";
+import Figure from "assets/icons/Figure";
+import { SectionHeading, ServicesOverviewCard } from "components";
 
 const OurMission = () => {
   return (
@@ -37,13 +37,15 @@ const OurMission = () => {
             </div>
           </div>
 
-          <div className="lg:w-[40%]">
+          <div className="lg:w-[40%] relative">
             <div className="mission__moto w-[216px] lg:w-[273px] my-[50px] lg:pl-[60px]">
               <h2 className="text-[24px] font-bold uppercase">
                 <span className="text-green">ALFABEST</span> ЕДИНЫЙ СЕРВИС
                 НАЦИОНАЛЬНОГО МАСШТАБА
               </h2>
             </div>
+
+            <Figure className="w-[141px] lg:w-[196px] absolute bottom-[-50%] lg:bottom-0 right-[-20%]" />
           </div>
         </div>
 

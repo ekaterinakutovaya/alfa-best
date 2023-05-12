@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useForm } from "react-hook-form";
+import InputMask from "react-input-mask";
 
 import { DropdownSelect } from "components";
 import { images } from "constants";
@@ -12,17 +14,19 @@ const types = [
 ];
 
 const ApplicationForm = () => {
-    const [dropdownOpen, setDropdownOpen] = useState(false);
-    const [dropdownLabel, setDropdownLabel] = useState(0);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [dropdownLabel, setDropdownLabel] = useState(0);
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors }
+  } = useForm();
+  const onSubmit = data => console.log(data);
 
-    
 
   const selectType = e => {
-    let idx = Number(e.currentTarget.dataset.index);
-    setDropdownLabel(
-      prevState => types.filter(type => type.index === idx)[0].label
-    );
-    dispatch(setSelectedType(idx));
+    setDropdownLabel(e.currentTarget.dataset.index);
     setDropdownOpen(false);
   };
 
@@ -31,7 +35,10 @@ const ApplicationForm = () => {
       <div className="container w-full">
         <div className="w-full bg-[#F2FCF9] rounded-[20px] py-[20px] lg:py-[40px] px-[15px] lg:px-[60px] flex flex-col lg:flex-row gap-y-[30px] items-center">
           {/* Form */}
-          <form className="w-full flex flex-col gap-y-[15px]">
+          <form
+            className="w-full flex flex-col gap-y-[15px]"
+            onSubmit={handleSubmit(onSubmit)}
+          >
             <div className="w-full lg:w-[396px]">
               <label
                 htmlFor="serviceType"
@@ -60,9 +67,18 @@ const ApplicationForm = () => {
               <div className="mt-[10px]">
                 <input
                   type="text"
-                  className="w-full flex items-center justify-between min-h-[48px] py-[13.5px] px-[15px] bg-transparent border-solid border border-black rounded-[15px]"
+                  className={`w-full flex items-center justify-between min-h-[48px] py-[13.5px] px-[15px] bg-transparent border-solid border border-black rounded-[15px] ${errors.username &&
+                    "border-red-600"}`}
                   placeholder="Имя, фамилия"
+                  defaultValue="test"
+                  {...register("username", { required: true })}
                 />
+
+                {errors.username && (
+                  <span className="text-[14px] text-red-500">
+                    * Поле обязательно для заполнения
+                  </span>
+                )}
               </div>
             </div>
 
@@ -74,16 +90,28 @@ const ApplicationForm = () => {
                 Введите свой номер телефона
               </label>
               <div className="mt-[10px]">
-                <input
-                  type="text"
-                  className="w-full flex items-center justify-between min-h-[48px] py-[13.5px] px-[15px] bg-transparent border-solid border border-black rounded-[15px]"
-                  placeholder="+998"
+
+                <InputMask
+                  className={`w-full flex items-center justify-between min-h-[48px] py-[13.5px] px-[15px] bg-transparent border-solid border border-black rounded-[15px] ${errors.userphone &&
+                    "border-red-600"}`}
+                  mask="+ (\9\9\8\) 99 999 99 99"
+                  name="phoneNumber"
+                  placeholder="+(998) __ ___ __ __"
+                  {...register("userphone", { required: true })}
                 />
+
+                {errors.userphone && (
+                  <span className="text-[14px] text-red-500">
+                    * Поле обязательно для заполнения
+                  </span>
+                )}
               </div>
             </div>
 
             <div>
-              <Button type="square">Отправить</Button>
+              <Button type="square" onClick={onSubmit}>
+                Отправить
+              </Button>
             </div>
           </form>
 

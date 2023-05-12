@@ -30,14 +30,14 @@ const HeaderMobile = () => {
     <header className="lg:hidden w-full h-[79px] bg-white fixed top-0 z-40 drop-shadow-md">
       {/* **** Nav main */}
       <div className="flex items-center">
-        <div className="w-full flex items-center justify-between h-[79px] lg:px-[90px] p-4 lg:py-[20px] ">
+        <div className="w-full flex items-center justify-between h-[79px] lg:px-[90px] p-[25px] sm:px-[40px] lg:py-[20px] ">
           <div className="grow">
             <div className="max-w-[110px]">
               <Logo type="color-dark-full" className="w-full" />
             </div>
           </div>
 
-          <div className="flex items-center lg:none">
+          <div className="flex items-center sm:gap-x-[10px] lg:none">
             <div className="w-10 h-10 border border-solid border-lightGrey rounded-full flex justify-center items-center">
               <BiGlobe className="fill-grey" />
             </div>

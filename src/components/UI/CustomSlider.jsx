@@ -123,7 +123,7 @@ const CustomSlider = ({ items }) => {
                 {year}
               </span>
 
-              <div className="h-[450px] lg:h-[275px] flex flex-col gap-y-[20px] text-[16px] lg:text-[17px]">
+              <div className="h-[450px] sm:h-[250px] lg:h-[275px] flex flex-col gap-y-[20px] text-[16px] lg:text-[17px]">
                 {text.map((p, i) => (
                   <p key={i}>{p}</p>
                 ))}
