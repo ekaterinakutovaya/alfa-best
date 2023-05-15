@@ -116,3 +116,26 @@ export const vacancy = [
     desc: "Опыт работы не менее года и должен уметь готовить восемь видов еды"
   }
 ];
+
+export const heroItems = [
+  {
+    index: 0,
+    title: "Корпоративное питание",
+    image: "../assets/images/image001.jpg"
+  },
+  {
+    index: 1,
+    title: "Инженерно-техническая эксплуатация",
+    image: "../assets/images/image002.jpg"
+  },
+  {
+    index: 2,
+    title: "Сервисное и бытовое обслуживание",
+    image: "../assets/images/image003.jpg"
+  },
+  {
+    index: 3,
+    title: "Транспортные перевозки",
+    image: "../assets/images/image004.jpg"
+  }
+];

@@ -8,7 +8,7 @@ import { SectionHeading, ServicesOverviewCard } from "components";
 
 const OurMission = () => {
   return (
-    <section className="w-full my-[50px] lg:my-[80px]">
+    <section className="w-full my-[50px] lg:my-[80px] overflow-hidden lg:overflow-visible">
       <div className="mission__inner container">
         <div className="lg:w-full lg:flex">
           <div className="lg:w-[60%]">

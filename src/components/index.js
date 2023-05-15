@@ -28,6 +28,7 @@ import HistorySlider from "./UI/HistorySlider";
 import DropdownSelect from "./UI/DropdownSelect";
 import Popup from "./UI/Popup";
 import HeroSlider from "./UI/HeroSlider";
+import HeroSliderMobile from "./UI/HeroSliderMobile";
 
 
 export {
@@ -57,7 +58,8 @@ export {
   Popup,
   QueryConfirmation,
   ServicesPageWrapper,
-  HeroSlider
+  HeroSlider,
+  HeroSliderMobile
 };
 
 

@@ -4,6 +4,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Arimo:wght@400;500;600;700&display=swap");
 
 
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -366,9 +367,18 @@ body {
 .border-red {
     border: 1px dotted red;
 }
+
 .border-green {
     border: 1px dotted green;
 }
+
 .border-blue {
     border: 1px dotted blue;
+}
+
+.slick-dots ul .slick-active div {
+    
+        background-color: #fff !important;
+
+
 }
