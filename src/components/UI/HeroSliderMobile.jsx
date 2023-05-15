@@ -16,7 +16,7 @@ const HeroSliderMobile = ({ items }) => {
     slidesToScroll: 1,
     swipe: true,
     touchMove: true,
-    touchThreshold: 10,
+    touchThreshold: 100,
     appendDots: dots => (
       <div>
         <ul className="flex items-center gap-x-[15px] absolute right-[50%] translate-x-[50%] bottom-[200px] z-50">
@@ -33,10 +33,10 @@ const HeroSliderMobile = ({ items }) => {
     <Slider {...settings}>
       {items &&
         items.map((item, index) => (
-          <div className="w-full text-left relative">
+          <div key={index} className="w-full text-left relative">
             <div className="w-full h-[250px] sm:h-[350px] lg:h-[780px] relative bg-black">
               <img
-                className="w-full h-full object-cover opacity-60"
+                className="w-full h-full object-cover opacity-70"
                 src={item.image}
                 alt="header photo"
               />
