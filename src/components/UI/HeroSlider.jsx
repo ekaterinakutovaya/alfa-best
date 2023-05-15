@@ -14,6 +14,9 @@ const HeroSlider = ({ items }) => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    autoplay: true,
+    pauseOnDotsHover,
+    pauseOnFocus,
     appendDots: dots => (
       <div>
         <ul className="flex items-center gap-x-[15px] absolute right-[90px] bottom-[90px] z-50">
@@ -36,7 +39,7 @@ const HeroSlider = ({ items }) => {
         settings: {
           fade: false
         }
-      },
+      }
     ]
   };
 
@@ -44,7 +47,7 @@ const HeroSlider = ({ items }) => {
     <Slider {...settings}>
       {items &&
         items.map((item, index) => (
-          <div className="w-full text-left relative">
+          <div key={index} className="w-full text-left relative">
             <div className="w-full h-[250px] sm:h-[350px] lg:h-[780px] relative bg-black">
               <img
                 className="w-full h-full object-cover opacity-60"

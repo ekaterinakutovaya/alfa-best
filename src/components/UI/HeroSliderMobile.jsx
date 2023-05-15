@@ -8,11 +8,15 @@ import { Button } from "components";
 
 const HeroSliderMobile = ({ items }) => {
   const settings = {
+    arrows: false,
     dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    swipe: true,
+    touchMove: true,
+    touchThreshold: 10,
     appendDots: dots => (
       <div>
         <ul className="flex items-center gap-x-[15px] absolute right-[50%] translate-x-[50%] bottom-[200px] z-50">
