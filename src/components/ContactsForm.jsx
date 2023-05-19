@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import { useForm } from "react-hook-form";
 import InputMask from "react-input-mask";
+import { useTranslation } from "next-i18next";
 
 import Button from "./UI/Button";
 import { Popup, QueryConfirmation } from "components";
@@ -8,6 +9,7 @@ import { Popup, QueryConfirmation } from "components";
 
 const ContactsForm = () => {
   const [popupOpen, setPopupOpen] = useState(false);
+  const { t } = useTranslation("");
   
   const {
     register,
@@ -41,32 +43,31 @@ const ContactsForm = () => {
               htmlFor="serviceType"
               className="block text-[15px] leading-[140%]"
             >
-              Введите свое полное имя
+              {t("enter_your_name")}
             </label>
             <div className="mt-[10px]">
               <input
                 type="text"
                 className={`w-full flex items-center justify-between min-h-[48px] py-[13.5px] px-[15px] bg-transparent border-solid border border-black rounded-[15px] ${errors.username &&
                   "border-red-600"}`}
-                placeholder="Имя, фамилия"
-                defaultValue="test"
+                placeholder={t("full_name_placeholder")}
                 {...register("username", { required: true })}
               />
 
               {errors.username && (
                 <span className="text-[14px] text-red-500">
-                  * Поле обязательно для заполнения
-                  </span>
+                  {t("require_field")}
+                </span>
               )}
             </div>
           </div>
 
-          <div className="w-full lg:w-[396px]">
+          <div className="w-full lg:w-[396px] mb-[10px]">
             <label
               htmlFor="serviceType"
               className="block text-[15px] leading-[140%]"
             >
-              Введите свой номер телефона
+              {t("enter_your_phone")}
             </label>
             <div className="mt-[10px]">
               <InputMask
@@ -80,14 +81,16 @@ const ContactsForm = () => {
 
               {errors.userphone && (
                 <span className="text-[14px] text-red-500">
-                  * Поле обязательно для заполнения
-                  </span>
+                  {t("require_field")}
+                </span>
               )}
             </div>
           </div>
 
           <div>
-            <Button type="square">Отправить</Button>
+            <Button type="square">
+              {t("send")}
+            </Button>
           </div>
         </form>
       </div>

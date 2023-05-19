@@ -1,5 +1,7 @@
 import React from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { useTranslation } from "next-i18next";
 
 import { images } from "constants";
 import styles from "styles/styles";
@@ -8,7 +10,10 @@ import { navigation } from "constants/constants";
 import { AccordeonDark, SocialBar } from "components";
 import SvgSelector from "assets/icons/SvgSelector";
 
-const FooterMobile = () => {
+const FooterMobile = ({ navigation, subNavigation }) => {
+  const { t } = useTranslation("");
+  const { locale } = useRouter();
+
   const nestedList = [
     { index: 0, label: "Инженерно-техническая эксплуатация" },
     { index: 1, label: "Сервисное и бытовое обслуживание" },
@@ -28,21 +33,26 @@ const FooterMobile = () => {
           </div>
 
           <div className="flex lg:hidden flex-col gap-y-[20px] py-[30px]">
-            <AccordeonDark label={"Услуги"} items={nestedList} />
+            <AccordeonDark label={t("services")} items={subNavigation} />
             {navigation &&
               navigation.map((item, index) => (
-                <div className="font-arimo font-bold text-[18px] text-white" key={index}>
-                  <Link href={item.path}>{item.title}</Link>
+                <div
+                  className="font-arimo font-bold text-[18px] text-white"
+                  key={index}
+                >
+                  <Link href={`/${locale}/${item.link}`} locale={locale}>
+                    {item[`title_${locale}`]}
+                  </Link>
                 </div>
               ))}
           </div>
 
           <div className="follow mt-[30px]">
             <div className="font-arimo font-bold text-[18px] text-white pb-[20px]">
-              Следите в телеграмме
+              {t("follow")}
             </div>
 
-            <SocialBar color="white" size='32'/>
+            <SocialBar color="white" size="32" />
           </div>
         </div>
 
@@ -50,10 +60,10 @@ const FooterMobile = () => {
         <div className="w-full py-[30px]">
           <ul className="flex gap-x-[16px] pb-[20px]">
             <li className="font-arimo font-bold text-[16px] text-white">
-              <Link href="/">Помощь</Link>
+              <Link href="/">{t("help")}</Link>
             </li>
             <li className="font-arimo font-bold text-[16px] text-white">
-              <Link href="/">Стань частью команды</Link>
+              <Link href="/">{t("be_part_of_the_team")}</Link>
             </li>
           </ul>
 

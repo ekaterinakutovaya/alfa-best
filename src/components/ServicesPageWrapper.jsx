@@ -1,19 +1,31 @@
 import React from "react";
+import { useRouter } from "next/router";
 
-import { images } from "constants";
 import Logo from "assets/icons/Logo";
 import { ServicesDescription, WithOurPartners } from "sections";
 import Advantages from "sections/Advantages";
 import Gallery from "sections/Gallery";
 
-const ServicesPageWrapper = ({title, text}) => {
+const ServicesPageWrapper = ({
+  title,
+  text,
+  image,
+  servicesDescription,
+  advantages,
+  gallery
+}) => {
+  const { locale } = useRouter();
+  console.log(text);
+  
+  
+
   return (
     <section className="w-full mt-[79px] lg:mt-[158px] pt-[25px] lg:py-[50px]">
       <div className="container relative">
         <div className="w-full h-[220px] lg:h-[500px] overflow-hidden rounded-[15px] relative">
           <img
             className="w-full h-full object-cover"
-            src={images.cooperation001.src}
+            src={process.env.NEXT_APP_STORAGE_URL + image}
             alt="company profile photo"
           />
 
@@ -28,24 +40,48 @@ const ServicesPageWrapper = ({title, text}) => {
           </div>
         </div>
 
-        <div className="pt-[20px]">
-          <p className="text-[17px]">
-            {text}
-          </p>
+        {/* {locale == "ru" ? (
+          <div
+            className="pt-[20px] text-[17px]"
+            dangerouslySetInnerHTML={{
+              __html: text
+            }}
+          ></div>
+        ) : (
+          <div className="pt-[20px] text-[17px]">
+            Biz Buyurtmachining turar-joy va ma'muriy binolarida
+            foydalaniladigan binolar, inshootlar, muhandislik tizimlari, maishiy
+            texnika, oshxona, kir yuvish va boshqa jihozlarga texnik xizmat
+            ko'rsatish va ta'mirlash bo'yicha ishlarni bajaramiz va xizmatlar
+            ko'rsatamiz
+          </div>
+        )} */}
+
+        <div className="w-[1440px]">
+          <div
+            className="pt-[20px] text-[17px] break-words"
+            dangerouslySetInnerHTML={{
+              __html: text
+            }}
+          ></div>
         </div>
 
-        <div className='lg:mt-[60px]'>
-          <ServicesDescription/>
-        </div>
+        {servicesDescription.length ? (
+          <div className="lg:mt-[60px]">
+            <ServicesDescription data={servicesDescription} />
+          </div>
+        ) : (
+          ""
+        )}
       </div>
 
       <WithOurPartners />
 
-      <div className='lg:my-[30px]'>
-        <Advantages/>
+      <div className="lg:my-[30px]">
+        <Advantages data={advantages} />
       </div>
 
-      <Gallery/>
+      <Gallery data={gallery} />
     </section>
   );
 };

@@ -1,52 +1,58 @@
 import React from "react";
+import { useRouter } from "next/router";
+import Image from "next/image";
 
 import { images } from "constants";
-import styles from "styles/styles";
 import Logo from "assets/icons/Logo";
-import { Button } from "components";
 
-const OurAimSection = () => {
+const OurAimSection = ({ data, aimCategory }) => {
+  const { locale } = useRouter();
+
   return (
-    <section className="container my-[30px]">
-      <div className="">
-        <Logo type="dark" />
-      </div>
-
-      <h2 className={`${styles.heading2} py-[10px]`}>Наша цель</h2>
-
-      <div className="w-full  lg:flex lg:items-center lg:gap-[80px]">
+    <section className="container my-[30px] lg:my-[100px]">
+      <div className="w-full  lg:flex lg:gap-[80px]">
         <div className="lg:w-[40%]">
           <div className="left">
+            <div className="">
+              <Logo type="dark" />
+            </div>
+
+            <h2 className="text-[34px] font-bold py-[10px]">
+              {/* Наша <span className="text-green">цель</span> */}
+              {data[`title_${locale}`]}
+            </h2>
             <div className="content flex flex-col gap-[15px] lg:max-w-[689px] pb-[30px]">
-              {[...Array(4).keys()].map((p, i) => (
-                <p key={i} className="">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi
-                  quisquam saepe corporis est iste, eos id magni similique
-                  aperiam ex!
-                </p>
-              ))}
+              {data[`text_${locale}`]}
             </div>
           </div>
         </div>
 
         <div className="lg:w-[60%]">
-          {[...Array(4).keys()].map((item, i) => (
-            <div key={i} className="w-full grid grid-cols-[0.3fr,2fr,1fr] py-[15px] border-solid border-b border-[#D9D9D9] last:border-b-0">
-              <div className="lg:font-semibold">01</div>
-              <div className="w-[184px] lg:w-auto font-semibold lg:font-normal">
-                Сокращение издержек за счет оптимизации процессов
-              </div>
-              <div className="lg:justify-self-end">
-                <div className="image w-full min-w-[100px] max-w-[100px] h-[70px] lg:w-[110px] lg:h-[60px] rounded-[5px] overflow-hidden">
-                  <img
-                    className="w-full h-full object-cover"
-                    src={images.image002.src}
-                    alt="aim images"
-                  />
+          {aimCategory &&
+            aimCategory.map((item, i) => (
+              <div
+                key={i}
+                className="w-full grid grid-cols-[0.3fr,2fr,1fr] py-[15px] border-solid border-b border-[#D9D9D9] last:border-b-0
+                flex items-center"
+              >
+                <div className="lg:font-semibold">{`0${item.id}`}</div>
+                <div className="w-[184px] lg:w-auto font-semibold lg:font-normal">
+                  {item[`text_${locale}`]}
+                </div>
+                <div className="lg:justify-self-end">
+                  <div className="image w-[100px] h-[70px] lg:w-[110px] lg:h-[60px] rounded-[5px] overflow-hidden">
+                    <Image
+                      className="w-full h-full object-cover relative"
+                      src={images?.image002.src}
+                      // src={`/${item.image}`}
+                      alt="aim images"
+                      width={100}
+                      height={70}
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
         </div>
       </div>
     </section>

@@ -3,12 +3,20 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation, Autoplay } from "swiper";
+import Image from "next/image";
+import { useRouter } from "next/router";
+import { useTranslation } from "next-i18next";
 
 import { images } from "constants";
 import Logo from "assets/icons/Logo";
 import { ControlButton } from "components";
 
-const Gallery = () => {
+const Gallery = ({ data }) => {
+  const { locale } = useRouter();
+  const { t } = useTranslation("");
+  console.log(data);
+    
+
   const breakpoints = {
     375: {
       slidesPerView: 2,
@@ -38,7 +46,7 @@ const Gallery = () => {
             </div>
 
             <h2 className="text-[18px] lg:text-[34px] font-bold pt-[10px]">
-              Фотогалерея
+              {t("photo_gallery")}
             </h2>
           </div>
 
@@ -66,13 +74,19 @@ const Gallery = () => {
             loop={true}
             modules={[Navigation, Autoplay]}
           >
-            {[...Array(10).keys()].map((item, index) => (
-              <SwiperSlide key={index}>
-                <div className="w-[280px] lg:w-[500px] h-[172px] lg:h-[320px] overflow-hidden rounded-[10px]">
-                  <img src={images.image004.src} alt="gallery photo" />
-                </div>
-              </SwiperSlide>
-            ))}
+            {data &&
+              data.map((item, index) => (
+                <SwiperSlide key={index}>
+                  <div className="w-[280px] lg:w-[500px] h-[172px] lg:h-[320px] overflow-hidden rounded-[10px]">
+                    <img
+                    
+                      src={process.env.NEXT_APP_STORAGE_URL + item.image}
+                      alt="gallery photo"
+                    />
+                    {/* <img src={`/${item.image}`} alt="gallery photo" /> */}
+                  </div>
+                </SwiperSlide>
+              ))}
           </Swiper>
         </div>
       </div>

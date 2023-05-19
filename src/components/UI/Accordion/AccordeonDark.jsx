@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { useRouter } from "next/router";
+import Link from "next/link";
+import { useTranslation } from "next-i18next";
 import { FiPlus, FiMinus } from "react-icons/fi";
 import {
   Accordion,
@@ -6,9 +9,11 @@ import {
   AccordionBody
 } from "@material-tailwind/react";
 
+
 import { subNavigation } from "constants/constants";
 
 function Icon({ id, open }) {
+  
   return (
     <div className="w-[40px] h-[40px] rounded-full bg-[#002c6340] opacity-70 backdrop-blur-[102.579px] flex justify-center items-center absolute top-[50%] translate-y-[-50%] right-0">
 
@@ -30,6 +35,8 @@ function Icon({ id, open }) {
 }
 
 const AccordeonDark = ({ label, items }) => {
+  const { locale } = useRouter();
+  const { t } = useTranslation("");
   const [open, setOpen] = useState(0);
 
   const handleOpen = value => {
@@ -47,9 +54,11 @@ const AccordeonDark = ({ label, items }) => {
 
       <AccordionBody>
         <ul className="text-grey text-[17px] font-bold flex flex-col gap-y-3.5 py-3.5">
-          {subNavigation && subNavigation.map((item, index) => (
+          {items && items.map((item, index) => (
             <li key={index}>
-              <a href={item.path}>{item.title}</a>
+              <Link href={`/${locale}/${item.link}`} locale={locale}>
+                {item[`title_${locale}`]}
+              </Link>
             </li>
           ))}
           

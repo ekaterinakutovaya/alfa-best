@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
-import Link from "next/link";
+import { useRouter } from "next/router";
 import Image from "next/image";
 import { BiGlobe } from "react-icons/bi";
 import { motion } from "framer-motion";
 
-import { navigation, subNavigation } from "constants/constants";
 import Logo from "assets/icons/Logo";
-import {DropdownMenu} from "components";
+import {DropdownMenu, LanguageToggler} from "components";
 
-const HeaderMobile = () => {
+const HeaderMobile = ({ navigation, subNavigation }) => {
   const [openMenu, setOpenMenu] = useState(false);
+  const { locale } = useRouter();
+  
 
   useEffect(() => {
     if (openMenu) {
@@ -27,7 +28,7 @@ const HeaderMobile = () => {
   };
 
   return (
-    <header className="lg:hidden w-full h-[79px] bg-white fixed top-0 z-40 drop-shadow-md">
+    <div className="block lg:hidden w-full h-[79px] bg-white fixed top-0 z-40 drop-shadow-md">
       {/* **** Nav main */}
       <div className="flex items-center">
         <div className="w-full flex items-center justify-between h-[79px] lg:px-[90px] p-[25px] sm:px-[40px] lg:py-[20px] ">
@@ -38,48 +39,29 @@ const HeaderMobile = () => {
           </div>
 
           <div className="flex items-center sm:gap-x-[10px] lg:none">
-            <div className="w-[45px] h-[45px] border border-solid border-lightGrey rounded-full flex justify-center items-center">
+            {/* <div className="w-[45px] h-[45px] border border-solid border-lightGrey rounded-full flex justify-center items-center">
               <BiGlobe className="fill-grey" />
-            </div>
+            </div> */}
 
-            <div className="px-1"></div>
+            <LanguageToggler divider={"bg-black"} />
 
-            <button className="flex justify-center items-center">
-              <div
-                onClick={openMenuHandler}
-                className={openMenu ? "toggle active" : "toggle"}
-              >
+            <div className="px-3"></div>
+
+            <button
+              className="flex justify-center items-center"
+              onClick={openMenuHandler}
+            >
+              <div className={openMenu ? "toggle active" : "toggle"}>
                 <span></span>
                 <span></span>
                 <span></span>
               </div>
             </button>
           </div>
-
-          
-            <ul className="hidden lg:flex item-center gap-x-[30px]">
-              {navigation &&
-                navigation.map((item, index) => (
-                  <li
-                    key={index}
-                    className="flex items-center ease-in-out duration-300 hover:text-[#28C79E]"
-                  >
-                    <Link href={item.path}>{item.title}</Link>
-                  </li>
-                ))}
-
-              <li className="language-toggler flex justify-between items-center">
-                <span className="ru cursor-pointer">Ru</span>
-                <span className="mx-[8px] w-[1px] h-[16px] bg-white"></span>
-                <span className="uz text-[#DBDBDB] cursor-pointer">Uz</span>
-              </li>
-            </ul>
-          
         </div>
-
-        {openMenu && <DropdownMenu />}
       </div>
-    </header>
+      {openMenu && <DropdownMenu items={{ navigation, subNavigation }} />}
+    </div>
   );
 };
 

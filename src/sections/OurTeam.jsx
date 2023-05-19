@@ -3,13 +3,18 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper";
+import { useRouter } from "next/router";
+import { useTranslation } from "next-i18next";
 
 import { images } from "constants";
 import styles from "styles/styles";
 import Logo from "assets/icons/Logo";
 import { TeamCard, ControlButton } from "components";
 
-const OurTeam = () => {
+const OurTeam = ({data}) => {
+  const { locale } = useRouter();
+  const { t } = useTranslation("");
+  
   const breakpoints = {
     375: {
       slidesPerView: 2,
@@ -40,7 +45,7 @@ const OurTeam = () => {
             </div>
 
             <h2 className="text-[18px] lg:text-[34px] font-bold">
-              Наша команда
+              {t("our_team")}
             </h2>
           </div>
 
@@ -63,39 +68,13 @@ const OurTeam = () => {
             }}
             modules={[Navigation]}
           >
-            <SwiperSlide>
-              <TeamCard />
-            </SwiperSlide>
-            <SwiperSlide>
-              <TeamCard />
-            </SwiperSlide>
-            <SwiperSlide>
-              <TeamCard />
-            </SwiperSlide>
-            <SwiperSlide>
-              <TeamCard />
-            </SwiperSlide>
-            <SwiperSlide>
-              <TeamCard />
-            </SwiperSlide>
-            <SwiperSlide>
-              <TeamCard />
-            </SwiperSlide>
-            <SwiperSlide>
-              <TeamCard />
-            </SwiperSlide>
-            <SwiperSlide>
-              <TeamCard />
-            </SwiperSlide>
-            <SwiperSlide>
-              <TeamCard />
-            </SwiperSlide>
-            <SwiperSlide>
-              <TeamCard />
-            </SwiperSlide>
-            <SwiperSlide>
-              <TeamCard />
-            </SwiperSlide>
+          {data && data.map((item, index) => (
+              <SwiperSlide key={index}>
+                <TeamCard item={item}/>
+              </SwiperSlide>
+          ))}
+            
+            
           </Swiper>
         </div>
       </div>

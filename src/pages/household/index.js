@@ -1,16 +1,66 @@
-import React from 'react';
+import React from "react";
+import { useRouter } from "next/router";
+import { useTranslation } from "next-i18next";
 
 import { Layout } from "../../layout/Layout";
-import { CooperationSection, Advantages } from "sections";
-import { ApplicationForm, ServicesPageWrapper } from "components";
+import { ServicesPageWrapper } from "components";
+import { getData } from "../api/data";
 
+const Household = ({
+  homeMenu,
+  homeService,
+  servicesCategory,
+  servicesSubCategory,
+  advantage,
+  gallery
+}) => {
+  const { locale } = useRouter();
+  const { t } = useTranslation("");
+  const servicesCat = servicesCategory.datas.filter(
+    item => item.home_service_id === 2
+  )[0];
+  const servicesDescription = servicesSubCategory.datas.filter(
+    item => item.services_category_id === 2
+  );
+  const advantages = advantage.datas.filter(
+    item => item.services_category_id === 2
+  );
+  const images = gallery.datas.filter(item => item.services_category_id === 1);
 
-const Household = () => {
-    return (
-      <Layout>
-        <ServicesPageWrapper title="Сервисное и бытовое обслуживание" text='Мы предоставляем услуги по сервисному и бытовому обслуживанию административных и производственных зданий, сооружений и прилегающей территории объектов Заказчика.'/>
-      </Layout>
-    );
+  
+
+  return (
+    <Layout homeMenu={homeMenu.datas} homeService={homeService.datas}>
+      <ServicesPageWrapper
+        title={servicesCat[`title_${locale}`]}
+        text={servicesCat[`text_${locale}`]}
+        image={servicesCat.image}
+        servicesDescription={servicesDescription}
+        advantages={advantages}
+        gallery={images}
+      />
+    </Layout>
+  );
 };
 
 export default Household;
+
+export const getServerSideProps = async ({ locale }) => {
+  const homeMenu = await getData("home_menu", locale);
+  const homeService = await getData("home_service", locale);
+  const servicesCategory = await getData("services_category", locale);
+  const servicesSubCategory = await getData("services_subcategory", locale);
+  const advantage = await getData("advantage", locale);
+  const gallery = await getData("gallery", locale);
+
+  return {
+    props: {
+      homeMenu,
+      homeService,
+      servicesCategory,
+      servicesSubCategory,
+      advantage,
+      gallery
+    }
+  };
+};

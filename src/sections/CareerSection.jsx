@@ -1,17 +1,26 @@
 import React from "react";
+import Image from "next/image";
+import { useRouter } from "next/router";
+import { useTranslation } from "next-i18next";
 
 import { images } from "../constants";
-import { SectionHeading } from "components";
 import Logo from "assets/icons/Logo";
 
-const CareerSection = () => {
+const CareerSection = ({ career, vacancy, vacancyCategory }) => {
+  
+  const { locale } = useRouter();
+  const { t } = useTranslation("");
+  const { image } = career;
+
   return (
     <section className="w-full mt-[79px] lg:mt-[158px] py-[25px] lg:py-[50px]">
       <div className="container relative">
         <div className="w-full h-[220px] lg:h-[500px] overflow-hidden rounded-[15px] relative">
-          <img
+          <Image
             className="w-full h-full object-cover"
-            src={images.career001.src}
+            src={process.env.NEXT_APP_STORAGE_URL + image}
+            layout="fill"
+            objectFit="cover"
             alt="career photo"
           />
 
@@ -21,7 +30,7 @@ const CareerSection = () => {
             </div>
 
             <h2 className="text-[18px] lg:text-[36px] text-white font-bold">
-              Карьера
+              {career[`image_title_${locale}`]}
             </h2>
           </div>
         </div>
@@ -33,59 +42,60 @@ const CareerSection = () => {
           <div className="lg:w-[40%]">
             <div>
               <h2 className="text-[18px] lg:text-[34px] font-bold pb-[20px]">
-                Продвигайте свою карьеру вместе с нами!
+                {career[`title_${locale}`]}
               </h2>
             </div>
           </div>
 
           <div className="content__text lg:w-[60%]">
             <p className="text-[17px] pt-[10px]">
-              Альфа-бест приглашает на работу специалистов в различных сферах
-              профессиональной деятельности. Открыты вакансии в области
-              общественного питания, кейтеринга, клининга, технической
-              эксплуатации, сервиса и пассажирских перевозок.
+              {career[`content_${locale}`]}
             </p>
 
             <div className="my-[30px]">
               <div className="text-[16px] font-bold leading-[140%]">
-                Наши вакансии (ссылка на страницу в HH)
+                {t("our_vacancy")}
               </div>
-              <a
-                target="_blank"
-                rel="noreferrer"
-                href="https://tashkent.hh.uz/employer/9252213"
-                className="text-[#3D62E3] visited:text-purple-700"
-              >
-                https://tashkent.hh.uz/employer/9252213
-              </a>
+              {vacancy &&
+                vacancy.map((item, index) => (
+                  <a
+                    key={index}
+                    target="_blank"
+                    rel="noreferrer"
+                    href={item.link}
+                    className="text-[#3D62E3] visited:text-purple-700"
+                  >
+                    {item.link}
+                  </a>
+                ))}
             </div>
 
             <div className="pb-[5px]">
               <div className="text-[16px] font-bold leading-[140%]">
-                Постоянные вакансии:
-              </div>
-              <div className="text-[16px] font-bold leading-[140%]">
-                Обязательное требование: работа по вахтовому методу- Бухара,
-                Гиссар
+                {vacancy[0][`title_${locale}`]}
               </div>
             </div>
 
             <ul className="w-full">
-              {[...Array(4).keys()].map((item, index) => (
-                <li key={index} className="flex py-[15px] gap-x-[20px] border-solid border-b border-b-[#D9D9D9] last:border-b-0">
-                  <div className="text-[18px] font-semibold text-green leading-[140%]">
-                    01
-                  </div>
-                  <div>
-                    <div className="text-[16px] font-bold leading-[140%] pb-[5px]">
-                      Технолог пищевого производства
+              {vacancyCategory &&
+                vacancyCategory.map((item, index) => (
+                  <li
+                    key={index}
+                    className="flex py-[15px] gap-x-[20px] border-solid border-b border-b-[#D9D9D9] last:border-b-0"
+                  >
+                    <div className="text-[18px] font-semibold text-green leading-[140%]">
+                      {`0${item.vacancy_id}`}
                     </div>
-                    <div className="text-[16px] text-[#8B8B8B] leading-[140%]">
-                      Опыт работы не менее года и ответственность за свою работу
+                    <div>
+                      <div className="text-[16px] font-bold leading-[140%] pb-[5px]">
+                        {item[`title_${locale}`]}
+                      </div>
+                      <div className="text-[16px] text-[#8B8B8B] leading-[140%]">
+                        {item[`text_${locale}`]}
+                      </div>
                     </div>
-                  </div>
-                </li>
-              ))}
+                  </li>
+                ))}
             </ul>
           </div>
         </div>

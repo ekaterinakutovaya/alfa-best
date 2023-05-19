@@ -1,5 +1,7 @@
-import React from 'react';
+import React from "react";
 import { Layout } from "../../layout/Layout";
+import { useRouter } from "next/router";
+
 import {
   CompanyProfile,
   OurMission,
@@ -7,22 +9,51 @@ import {
   OurTeam,
   WithOurPartners,
   Gallery,
-    AboutHistory
+  AboutHistory
 } from "sections";
+import { getData } from "../api/data";
 
+const About = ({
+  homeMenu,
+  homeService,
+  aboutCompany,
+  mission,
+  team,
+  photoGallery
+}) => {
+  console.log(useRouter());
 
-const About = () => {
-    return (
-        <Layout>
-            <CompanyProfile/>
-            <OurMission/>
-            <OurTeam/>
-            <WithOurPartners/>
-            <Partners/>
-            <Gallery/>
-            <AboutHistory/>
-        </Layout>
-    );
+  return (
+    <Layout homeMenu={homeMenu.datas} homeService={homeService.datas}>
+      <CompanyProfile data={aboutCompany.datas[0]} />
+      <OurMission data={mission.datas[0]} homeService={homeService.datas} />
+      <OurTeam data={team.datas} />
+      <WithOurPartners />
+      <Partners />
+      <Gallery data={photoGallery.datas} />
+      <AboutHistory />
+    </Layout>
+  );
 };
 
 export default About;
+
+export const getServerSideProps = async ({ locale }) => {
+  const homeMenu = await getData("home_menu", locale);
+  const homeService = await getData("home_service", locale);
+  const mission = await getData("mission", locale);
+  const aboutCompany = await getData("about_company", locale);
+  const team = await getData("team", locale);
+  const photoGallery = await getData("photo_gallery", locale);
+
+  return {
+    props: {
+      homeMenu,
+      homeService,
+      mission,
+      aboutCompany,
+      team,
+      photoGallery
+    }
+  };
+};

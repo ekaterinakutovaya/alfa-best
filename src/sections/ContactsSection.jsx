@@ -1,22 +1,30 @@
 import React from "react";
+import { useRouter } from "next/router";
+import { useTranslation } from "next-i18next";
 
 import { images } from "../constants";
-import { SectionHeading, ContactsForm } from "components";
-import Logo from "assets/icons/Logo";
+import { ContactsForm } from "components";
 
-const ContactsSection = () => {
+const ContactsSection = ({ contactPage, contactInfo }) => {
+  const { locale } = useRouter();
+  const { t } = useTranslation("");
+  console.log(contactInfo);
+
   return (
     <section className="w-full mt-[79px] lg:mt-[158px] py-[30px] lg:py-[60px]">
       <div className="container lg:flex justify-between items-end">
         <div>
           {/* Head */}
-          <div className='max-w-[651px]'>
-            <h2 className="text-[18px] lg:text-[36px] font-bold mb-[20px]">Контакты</h2>
-            <p className="leading-[140%]">
-              Вы можете написать нам через форму обратной связи. Мы адресуем ваш
-              вопрос специалисту, который при необходимости свяжется с вами
-              напрямую или направит ответ по электронной почте.
-            </p>
+          <div className="max-w-[651px]">
+            <h2 className="text-[18px] lg:text-[36px] font-bold mb-[20px]">
+              {contactPage[`title_${locale}`]}
+            </h2>
+            <p
+              className="leading-[140%]"
+              dangerouslySetInnerHTML={{
+                __html: contactPage[`text_${locale}`]
+              }}
+            ></p>
           </div>
 
           {/* Form */}
@@ -29,11 +37,23 @@ const ContactsSection = () => {
                 className="text-[14px] leading-[140%] text-grey"
                 htmlFor=""
               >
-                Телефон
+                {t("telephone")}
               </label>
               <div className="flex gap-x-[30px]">
-                <a href="tel:+998990022223">+998 99 002 22 23</a>
-                <a href="tel:+998932221232">+998 93 222 12 32</a>
+                <a
+                  href={`tel:${contactInfo.phone
+                    .slice(-17)
+                    .replace(/\s/g, "")}`}
+                >
+                  {contactInfo.phone.slice(-17)}
+                </a>
+                <a
+                  href={`tel:${contactInfo.phone
+                    .slice(0, 17)
+                    .replace(/\s/g, "")}`}
+                >
+                  {contactInfo.phone.slice(0, 17)}
+                </a>
               </div>
             </div>
 
@@ -42,12 +62,10 @@ const ContactsSection = () => {
                 className="text-[14px] leading-[140%] text-grey"
                 htmlFor=""
               >
-                Адрес
+                {t("address")}
               </label>
               <div className="flex gap-x-[30px]">
-                <span href="tel:+998990022223">
-                  г. Ташкент, ул. Шота Руставели 156
-                </span>
+                <span>{contactInfo[`address_${locale}`]}</span>
               </div>
             </div>
           </div>
@@ -59,6 +77,7 @@ const ContactsSection = () => {
             <img
               className="w-full h-full object-cover"
               src={images.contacts.src}
+              // src={`/${contactInfo.image}`}
               alt="contacts photo"
             />
           </div>

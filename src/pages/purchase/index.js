@@ -1,15 +1,31 @@
-import React from 'react';
+import React from "react";
+import { getData } from "../api/data";
 
 import { Layout } from "../../layout/Layout";
-import { ContactsSection, Advantages, PurchaseSection } from "sections";
-import { ApplicationForm } from "components";
+import { PurchaseSection } from "sections";
 
-const Purchase = () => {
-    return (
-      <Layout>
-        <PurchaseSection/>
-      </Layout>
-    );
+const Purchase = ({ homeMenu, homeService, purchase, purchasePost }) => {
+  return (
+    <Layout homeMenu={homeMenu.datas} homeService={homeService.datas}>
+      <PurchaseSection purchase={purchase.datas[0]} purchasePost={purchasePost.datas}/>
+    </Layout>
+  );
 };
 
 export default Purchase;
+
+export const getServerSideProps = async ({ locale }) => {
+  const homeMenu = await getData("home_menu", locale);
+  const homeService = await getData("home_service", locale);
+  const purchase = await getData("purchase", locale);
+  const purchasePost = await getData("purchase_post", locale);
+
+  return {
+    props: {
+      homeMenu,
+      homeService,
+      purchase,
+      purchasePost
+    }
+  };
+};

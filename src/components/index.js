@@ -21,14 +21,13 @@ import AccordeonDark from "./UI/Accordion/AccordeonDark";
 import Button from './UI/Button.jsx';
 import ControlButton from "./UI/ControlButton.jsx";
 import CustomSlider from "./UI/CustomSlider";
-import Slider from "./UI/Slider";
 import LanguageToggler from "./UI/LanguageToggler";
-import SliderMobile from "./UI/SliderMobile";
 import HistorySlider from "./UI/HistorySlider";
 import DropdownSelect from "./UI/DropdownSelect";
 import Popup from "./UI/Popup";
 import HeroSlider from "./UI/HeroSlider";
 import HeroSliderMobile from "./UI/HeroSliderMobile";
+import PagePreloader from "./UI/PagePreloader";
 
 
 export {
@@ -43,8 +42,6 @@ export {
   SocialBar,
   Statistics,
   Button,
-  Slider,
-  SliderMobile,
   HistorySlider,
   LanguageToggler,
   ControlButton,
@@ -59,7 +56,8 @@ export {
   QueryConfirmation,
   ServicesPageWrapper,
   HeroSlider,
-  HeroSliderMobile
+  HeroSliderMobile,
+  PagePreloader
 };
 
 

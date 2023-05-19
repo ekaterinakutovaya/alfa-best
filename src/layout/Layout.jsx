@@ -1,16 +1,31 @@
 import Head from "next/head";
-import { Header, Footer, FooterMobile } from "../components";
 import NoSSR from "utils/NoSSR";
 import { useMediaQuery } from "react-responsive";
-import HeaderMobile from "components/Header/HeaderMobile";
+import { useRouter } from "next/router";
 
-export const Layout = ({ children }) => {
+import {
+  Header,
+  HeaderMobile,
+  Footer,
+  FooterMobile,
+  PagePreloader
+} from "../components";
+import { useState, useEffect } from "react";
+
+export const Layout = ({ children, homeMenu, homeService }) => {
+  const router = useRouter();
   const isMobileorTablet = useMediaQuery({ query: "(max-width: 1279px)" });
+  const [loading, setLoading] = useState(false);
 
-  // const headerComponent = router.pathname == '/' ? <Header type='transparent'/> : <Header type='white' />;
-  // console.log(headerComponent);
-  
-  
+  useEffect(() => {
+    router.events.on("routeChangeStart", () => {
+      setLoading(true);
+    });
+
+    router.events.on("routeChangeComplete", () => {
+      setLoading(false);
+    });
+  }, [])
 
   return (
     <>
@@ -21,11 +36,10 @@ export const Layout = ({ children }) => {
         <title>Alfa Best</title>
       </Head>
 
-      <NoSSR>
-        <div className="header">
-          {isMobileorTablet ? <HeaderMobile /> : <Header/>}
-        </div>
-      </NoSSR>
+      <div className="header">
+        <Header navigation={homeMenu} subNavigation={homeService} />
+        <HeaderMobile navigation={homeMenu} subNavigation={homeService} />
+      </div>
 
       <NoSSR>
         <div className="main">
@@ -35,9 +49,16 @@ export const Layout = ({ children }) => {
 
       <NoSSR>
         <div className="footer">
-          {isMobileorTablet ? <FooterMobile /> : <Footer />}
+          {isMobileorTablet ? (
+            <FooterMobile navigation={homeMenu} subNavigation={homeService} />
+          ) : (
+            <Footer navigation={homeMenu} subNavigation={homeService} />
+          )}
         </div>
       </NoSSR>
+
+      {loading && <PagePreloader />}
+      
     </>
   );
 };

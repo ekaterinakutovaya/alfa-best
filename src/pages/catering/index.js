@@ -1,16 +1,64 @@
 import React from 'react';
+import { useRouter } from "next/router";
+import { useTranslation } from "next-i18next";
 
 import { Layout } from "../../layout/Layout";
-import { CooperationSection, Advantages } from "sections";
-import { ApplicationForm, ServicesPageWrapper } from "components";
+import { ServicesPageWrapper } from "components";
+import { getData } from "../api/data";
 
+const Catering = ({
+  homeMenu,
+  homeService,
+  servicesCategory,
+  servicesSubCategory,
+  advantage,
+  gallery
+}) => {
+  const { locale } = useRouter();
+  const { t } = useTranslation("");
+  const servicesCat = servicesCategory.datas.filter(
+    item => item.home_service_id === 3
+  )[0];
+  const servicesDescription = servicesSubCategory.datas.filter(
+    item => item.services_category_id === 3
+  );
+  const advantages = advantage.datas.filter(
+    item => item.services_category_id === 3
+  );
+  const images = gallery.datas.filter(item => item.services_category_id === 1);
 
-const Catering = () => {
-    return (
-      <Layout>
-        <ServicesPageWrapper title="Корпоративное питание" text='Мы предоставляем услуги по организации корпоративного питания, включая организацию праздничного питания, и организации кофе-брейков на объектах Заказчика. Также мы предлагаем услуги по организации выездного (полевого) питания для персонала Заказчика. Наша компания специализируется на создании высококачественной системы питания для персонала любых производственных и офисных комплексов от крупных предприятий до небольших цехов и офисов.'/>
-      </Layout>
-    );
+  return (
+    <Layout homeMenu={homeMenu.datas} homeService={homeService.datas}>
+      <ServicesPageWrapper
+        title={servicesCat[`title_${locale}`]}
+        text={servicesCat[`text_${locale}`]}
+        image={servicesCat.image}
+        servicesDescription={servicesDescription}
+        advantages={advantages}
+        gallery={images}
+      />
+    </Layout>
+  );
 };
 
 export default Catering;
+
+export const getServerSideProps = async ({ locale }) => {
+  const homeMenu = await getData("home_menu", locale);
+  const homeService = await getData("home_service", locale);
+  const servicesCategory = await getData("services_category", locale);
+  const servicesSubCategory = await getData("services_subcategory", locale);
+  const advantage = await getData("advantage", locale);
+  const gallery = await getData("gallery", locale);
+
+  return {
+    props: {
+      homeMenu,
+      homeService,
+      servicesCategory,
+      servicesSubCategory,
+      advantage,
+      gallery
+    }
+  };
+};

@@ -355,14 +355,6 @@ body {
     position: relative !important;
 }
 
-.slick-dots {
-    // ul {
-    //     position: absolute !important;
-    //     left: 0 !important;
-    //     bottom: 0 !important;
-    // }
-
-}
 
 .border-red {
     border: 1px dotted red;
@@ -377,8 +369,14 @@ body {
 }
 
 .slick-dots ul .slick-active div {
-    
-        background-color: #fff !important;
+
+    background-color: #fff !important;
 
 
+}
+
+.Y2IQFc {
+    max-width: 1440px !important;
+    overflow-wrap: break-word !important;
+    word-wrap: break-word !important;
 }

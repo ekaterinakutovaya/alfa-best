@@ -1,5 +1,7 @@
 import React from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { useTranslation } from "next-i18next";
 
 import { images } from "constants";
 import styles from "styles/styles";
@@ -8,7 +10,9 @@ import { navigation, subNavigation } from "constants/constants";
 import { AccordeonDark, SocialBar } from "components";
 import SvgSelector from "assets/icons/SvgSelector";
 
-const Footer = () => {
+const Footer = ({ navigation, subNavigation }) => {
+  const { t } = useTranslation("");
+  const { locale } = useRouter();
   const nestedList = [
     { index: 0, label: "Инженерно-техническая эксплуатация" },
     { index: 1, label: "Сервисное и бытовое обслуживание" },
@@ -29,8 +33,13 @@ const Footer = () => {
             <div>
               {navigation &&
                 navigation.map((item, index) => (
-                  <div className="font-semibold text-[15px] text-white pb-[16px] last:pb-0 ease-in-out duration-300 hover:text-green" key={index}>
-                    <Link href={item.path}>{item.title}</Link>
+                  <div
+                    className="font-semibold text-[15px] text-white pb-[16px] last:pb-0 ease-in-out duration-300 hover:text-green"
+                    key={index}
+                  >
+                    <Link href={`/${locale}/${item.link}`} locale={locale}>
+                      {item[`title_${locale}`]}
+                    </Link>
                   </div>
                 ))}
             </div>
@@ -38,8 +47,13 @@ const Footer = () => {
             <div>
               {subNavigation &&
                 subNavigation.map((item, index) => (
-                  <div className="font-semibold text-[15px] text-white pb-[16px] last:pb-0 ease-in-out duration-300 hover:text-green" key={index}>
-                    <Link href={item.path}>{item.title}</Link>
+                  <div
+                    className="font-semibold text-[15px] text-white pb-[16px] last:pb-0 ease-in-out duration-300 hover:text-green"
+                    key={index}
+                  >
+                    <Link href={`/${locale}/${item.link}`} locale={locale}>
+                      {item[`title_${locale}`]}
+                    </Link>
                   </div>
                 ))}
             </div>
@@ -47,10 +61,10 @@ const Footer = () => {
 
           <div className="follow w-[20%]">
             <div className="font-semibold text-[15px] text-white pb-[20px]">
-              Подписывайтесь на нас
+              {t("follow")}
             </div>
 
-            <SocialBar color="white" size='30'/>
+            <SocialBar color="white" size="30" />
           </div>
         </div>
 
@@ -59,10 +73,10 @@ const Footer = () => {
           <SvgSelector id="napa" />
           <ul className="flex gap-x-[16px] pb-[20px]">
             <li className="font-semibold text-[15px] text-white ease-in-out duration-300 hover:text-green cursor-pointer">
-              <Link href="/">Помощь</Link>
+              <Link href="/">{t("help")}</Link>
             </li>
             <li className="font-semibold text-[15px] text-white ease-in-out duration-300 hover:text-green cursor-pointer">
-              <Link href="/">Стань частью команды</Link>
+              <Link href="/">{t("be_part_of_the_team")}</Link>
             </li>
           </ul>
         </div>

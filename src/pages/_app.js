@@ -1,5 +1,10 @@
-import '../styles/globals.scss'
+import { appWithTranslation } from "next-i18next";
+import nextI18nConfig from "../../next-i18next.config";
 
-export default function App({ Component, pageProps }) {
+import '../styles/globals.scss';
+
+const App = ({ Component, pageProps }) => {
   return <Component {...pageProps} />
 }
+
+export default appWithTranslation(App, nextI18nConfig);

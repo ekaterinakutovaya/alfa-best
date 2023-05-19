@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useRouter } from "next/router";
 import { BsCaretDownFill, BsCaretUpFill } from "react-icons/bs";
 
 const DropdownSelect = ({ items, onClick, visible, setVisible, label }) => {
+  const { locale } = useRouter();
   const ref = useRef(null);
 
-  const toggleList = (e) => {
-    console.log(e);
-    
+  const toggleList = e => {
     setVisible(prevVisible => !prevVisible);
   };
 
@@ -33,13 +33,9 @@ const DropdownSelect = ({ items, onClick, visible, setVisible, label }) => {
       >
         {label}
         {visible ? (
-          
-            <BsCaretUpFill pointerEvents="none" />
-          
+          <BsCaretUpFill pointerEvents="none" />
         ) : (
-          
-            <BsCaretDownFill pointerEvents="none" className="mt-[4px]" />
-          
+          <BsCaretDownFill pointerEvents="none" className="mt-[4px]" />
         )}
       </div>
 
@@ -53,7 +49,7 @@ const DropdownSelect = ({ items, onClick, visible, setVisible, label }) => {
                 data-index={index}
                 onClick={onClick}
               >
-                {item.label}
+                {item[`title_${locale}`]}
               </li>
             ))}
         </ul>

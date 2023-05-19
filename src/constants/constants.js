@@ -139,3 +139,6 @@ export const heroItems = [
     image: "../assets/images/image004.jpg"
   }
 ];
+
+
+export const STORAGE_URL = "https://alfabest.napaautomotive.uz/storage/";

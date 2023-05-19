@@ -2,16 +2,18 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import Image from "next/image";
-import { BiGlobe } from "react-icons/bi";
-import { motion } from "framer-motion";
 
-// import {images} from "./constants";
-import { navigation, subNavigation } from "constants/constants";
+
+
 import Logo from "assets/icons/Logo";
+import { LanguageToggler } from "..";
 
-const Header = () => {
+const Header = ({navigation, subNavigation}) => {  
   const router = useRouter();
+  const { locale } = useRouter();
   const [clientWindowHeight, setClientWindowHeight] = useState("");
+  // console.log(navigation[0].title_ru);
+  
 
   const [navbarStyles, setNavbarStyles] = useState({
     textColor: "text-white",
@@ -58,29 +60,31 @@ const Header = () => {
     });
   }, []);
 
-  useEffect(() => {
-    if (clientWindowHeight > 0) {
+  useEffect(() => { 
+    if (router.pathname === "/") {
+      if (clientWindowHeight > 0) {
+        setNavbarStyles({
+          textColor: "",
+          bgColor: "bg-white",
+          borderBottomColor: "border-b-[#ECECEC]",
+          shadow: "drop-shadow-md",
+          divider: "bg-black",
+          logoType: "color-dark-full"
+        });
+
+        return;
+      }
+
       setNavbarStyles({
-        textColor: "",
-        bgColor: "bg-white",
-        borderBottomColor: "border-b-[#ECECEC]",
-        shadow: "drop-shadow-md",
-        divider: "bg-black",
-        logoType: "color-dark-full"
-      });
-
-      return;
+      textColor: "text-white",
+      bgColor: "bg-transparent",
+      borderBottomColor: "",
+      shadow: "",
+      divider: "bg-white",
+      logoType: "color-light-full"
+    });
     }
-
-    /* Need to fix!!!!! */
-    // setNavbarStyles({
-    //   textColor: "text-white",
-    //   bgColor: "bg-transparent",
-    //   borderBottomColor: "",
-    //   shadow: "",
-    //   divider: "bg-white",
-    //   logoType: "light-full"
-    // });
+    
   }, [clientWindowHeight]);
 
   useEffect(() => {
@@ -91,9 +95,23 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleLocaleChange = event => {
+    const value = event.currentTarget.dataset.locale;
+
+    router.push(
+      {
+        route: router.pathname,
+        query: router.query
+      },
+      router.asPath,
+      { locale: value }
+    );
+  };
+
+
   return (
     <header
-      className={`w-full h-[141px] fixed top-0 z-50 ${navbarStyles.textColor} ${navbarStyles.bgColor}`}
+      className={`hidden lg:block sm:w-full h-[141px] lg:fixed top-0 z-50 ${navbarStyles.textColor} ${navbarStyles.bgColor}`}
       // className={`w-full h-[141px] ${navbarStyles.textColor} ${navbarStyles.bgColor}`} /* For my Laptop view dev */
     >
       {/***** Nav main *****/}
@@ -107,31 +125,49 @@ const Header = () => {
             </div>
           </div>
 
-          <ul className="hidden lg:flex item-center gap-x-[30px]">
+          <div className="hidden lg:flex item-center gap-x-[30px]">
             {navigation &&
               navigation.map((item, index) => (
-                <li
+                <div
                   key={index}
                   className={
-                    router.pathname == item.path ? activeLink : idleLink
+                    router.pathname == `/${item.link}` ? activeLink : idleLink
                   }
                 >
-                  <Link href={item.path}>{item.title}</Link>
-                </li>
+                  <Link href={`/${locale}/${item.link}`} locale={locale}>
+                    {item[`title_${locale}`]}
+                  </Link>
+                </div>
               ))}
 
-            <li className="language-toggler flex justify-between items-center">
-              <span className="ru cursor-pointer ease-in-out duration-300">
+            <LanguageToggler divider={navbarStyles.divider}/>
+
+            {/* <div className="language-toggler flex justify-between items-center">
+              <span
+                className={`uz ${
+                  locale == "ru" ? "" : "text-[#DBDBDB]"
+                } cursor-pointer ease-in-out duration-300`}
+                onClick={handleLocaleChange}
+                data-locale="ru"
+              >
                 Ru
               </span>
+
               <span
                 className={`mx-[8px] w-[1px] h-[16px] ${navbarStyles.divider} ease-in-out duration-300`}
               ></span>
-              <span className="uz text-[#DBDBDB] cursor-pointer ease-in-out duration-300">
+
+              <span
+                className={`uz ${
+                  locale == "uz" ? "" : "text-[#DBDBDB]"
+                } cursor-pointer ease-in-out duration-300`}
+                onClick={handleLocaleChange}
+                data-locale="uz"
+              >
                 Uz
               </span>
-            </li>
-          </ul>
+            </div> */}
+          </div>
         </div>
       </div>
 
@@ -139,22 +175,30 @@ const Header = () => {
       <div
         className={`lg:w-full flex justify-between items-center h-[79px] px-[90px] py-[20px] border-solid border-b ${navbarStyles.textColor} ${navbarStyles.bgColor} ${navbarStyles.borderBottomColor} ${navbarStyles.shadow}`}
       >
-        <ul className="w-full flex justify-between">
+        <div className="w-full flex justify-between">
           {subNavigation &&
             subNavigation.map((item, index) => (
-              <li
+              <div
                 key={index}
                 className={
-                  router.pathname == item.path ? subNavLinkActive : subNavLinkIdle
+                  router.pathname == `/${item.link}`
+                    ? subNavLinkActive
+                    : subNavLinkIdle
                 }
               >
-                <Link href={item.path}>{item.title}</Link>
-              </li>
+                <Link
+                  href={`/${locale}/${item.link}`}
+                  locale={locale}
+                >
+                  {item[`title_${locale}`]}
+                </Link>
+              </div>
             ))}
-        </ul>
+        </div>
       </div>
     </header>
   );
 };
 
 export default Header;
+

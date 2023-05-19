@@ -1,19 +1,23 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 import InputMask from "react-input-mask";
+import { useTranslation } from "next-i18next";
+import { useRouter } from "next/router";
 
 import { DropdownSelect } from "components";
 import { images } from "constants";
 import Button from "./UI/Button";
 
-const types = [
-  { index: 0, label: "Корпоративное питание" },
-  { index: 1, label: "Инженерно-техническая эксплуатация" },
-  { index: 2, label: "Сервисное и бытовое обслуживание" },
-  { index: 3, label: "Транспортные и пассажирские перевозки" }
-];
+// const types = [
+//   { index: 0, label: "Корпоративное питание" },
+//   { index: 1, label: "Инженерно-техническая эксплуатация" },
+//   { index: 2, label: "Сервисное и бытовое обслуживание" },
+//   { index: 3, label: "Транспортные и пассажирские перевозки" }
+// ];
 
-const ApplicationForm = () => {
+const ApplicationForm = ({ types }) => {
+  const { locale } = useRouter();
+  const { t } = useTranslation("");
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [dropdownLabel, setDropdownLabel] = useState(0);
   const {
@@ -22,8 +26,8 @@ const ApplicationForm = () => {
     watch,
     formState: { errors }
   } = useForm();
-  const onSubmit = data => console.log(data);
 
+  const onSubmit = data => console.log(data);
 
   const selectType = e => {
     setDropdownLabel(e.currentTarget.dataset.index);
@@ -44,7 +48,7 @@ const ApplicationForm = () => {
                 htmlFor="serviceType"
                 className="block text-[15px] leading-[140%]"
               >
-                Выберите тип услуги
+                {t("choose_type")}
               </label>
               <div className="mt-[10px]">
                 <DropdownSelect
@@ -52,7 +56,7 @@ const ApplicationForm = () => {
                   onClick={selectType}
                   visible={dropdownOpen}
                   setVisible={setDropdownOpen}
-                  label={types[dropdownLabel].label}
+                  label={types[dropdownLabel][`title_${locale}`]}
                 />
               </div>
             </div>
@@ -62,21 +66,20 @@ const ApplicationForm = () => {
                 htmlFor="serviceType"
                 className="block text-[15px] leading-[140%]"
               >
-                Введите свое полное имя
+                {t("enter_your_name")}
               </label>
               <div className="mt-[10px]">
                 <input
                   type="text"
                   className={`w-full flex items-center justify-between min-h-[48px] py-[13.5px] px-[15px] bg-transparent border-solid border border-black rounded-[15px] ${errors.username &&
                     "border-red-600"}`}
-                  placeholder="Имя, фамилия"
-                  defaultValue="test"
+                  placeholder={t("full_name_placeholder")}
                   {...register("username", { required: true })}
                 />
 
                 {errors.username && (
                   <span className="text-[14px] text-red-500">
-                    * Поле обязательно для заполнения
+                    {t("require_field")}
                   </span>
                 )}
               </div>
@@ -87,10 +90,9 @@ const ApplicationForm = () => {
                 htmlFor="serviceType"
                 className="block text-[15px] leading-[140%]"
               >
-                Введите свой номер телефона
+                {t("enter_your_phone")}
               </label>
               <div className="mt-[10px]">
-
                 <InputMask
                   className={`w-full flex items-center justify-between min-h-[48px] py-[13.5px] px-[15px] bg-transparent border-solid border border-black rounded-[15px] ${errors.userphone &&
                     "border-red-600"}`}
@@ -102,15 +104,15 @@ const ApplicationForm = () => {
 
                 {errors.userphone && (
                   <span className="text-[14px] text-red-500">
-                    * Поле обязательно для заполнения
+                    {t("require_field")}
                   </span>
                 )}
               </div>
             </div>
 
-            <div>
+            <div className='mt-[10px]'>
               <Button type="square" onClick={onSubmit}>
-                Отправить
+                {t("send")}
               </Button>
             </div>
           </form>
@@ -120,7 +122,7 @@ const ApplicationForm = () => {
             <div className="w-[285px] lg:w-[400px] text-center">
               <img
                 className="w-full h-full object-cover"
-                src={images.application.src}
+                src={images?.application?.src}
                 alt="application photo"
               />
             </div>
