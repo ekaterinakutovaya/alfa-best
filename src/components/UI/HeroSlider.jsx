@@ -55,14 +55,12 @@ const HeroSlider = ({ items }) => {
                   </h1>
                 </div>
 
-                <Button type="round">
-                  <Link
-                    href={`/${locale}/${item.home_service_link}`}
-                    locale={locale}
-                  >
-                    {t("main_button")}
-                  </Link>
-                </Button>
+                <Link
+                  href={`/${locale}/${item.home_service_link}`}
+                  locale={locale}
+                >
+                  <Button type="round">{t("main_button")}</Button>
+                </Link>
               </div>
             </div>
           </div>

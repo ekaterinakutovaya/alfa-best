@@ -17,14 +17,11 @@ const PurchaseSection = ({ purchase, purchasePost }) => {
     let str = purchase.images.slice(1, -1);
     let arr = str.split(",");
     let newArr = arr.map((el, i) => {
-      return {image: el.trim().slice(1, -1)}
+      return { image: el.trim().slice(1, -1) };
     });
 
     setImages(newArr);
-  }, [purchase])
-
-  
-  
+  }, [purchase]);
 
   return (
     <section className="w-full mt-[79px] lg:mt-[158px] py-[30px] lg:py-[60px]">
@@ -43,13 +40,11 @@ const PurchaseSection = ({ purchase, purchasePost }) => {
       <Gallery data={images} />
 
       <div className="flex justify-center mt-[-20px] lg:mt-[-50px]">
-        <Link href="/cooperation">
-          <Button type="round">
-            <Link href={`/${locale}/cooperation`} locale={locale}>
-              {t("cooperation")}
-            </Link>
-          </Button>
-        </Link>
+        
+          <Link href={`/${locale}/cooperation`} locale={locale}>
+            <Button type="round">{t("cooperation")}</Button>
+          </Link>
+        
       </div>
     </section>
   );

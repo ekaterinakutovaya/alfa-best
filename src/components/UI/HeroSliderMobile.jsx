@@ -52,18 +52,16 @@ const HeroSliderMobile = ({ items }) => {
             <div className="w-full p-4">
               <div className="w-[239px] h-[66px] pb-5 flex items-center">
                 <h1 className="w-full text-[18px] font-bold break-words">
-                {item[`text_${locale}`]}
+                  {item[`text_${locale}`]}
                 </h1>
               </div>
 
-            <Button type="round">
               <Link
                 href={`/${locale}/${item.home_service_link}`}
                 locale={locale}
               >
-                {t("main_button")}
-                  </Link>
-            </Button>
+                <Button type="round">{t("main_button")}</Button>
+              </Link>
             </div>
           </div>
         ))}

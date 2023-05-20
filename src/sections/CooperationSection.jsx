@@ -32,12 +32,12 @@ const CooperationSection = ({ data }) => {
           </div>
         </div>
 
-        <div
+        {/* <div
           className="content pt-[20px]"
           dangerouslySetInnerHTML={{
             __html: data[`text_${locale}`]
           }}
-        ></div>
+        ></div> */}
       </div>
     </section>
   );

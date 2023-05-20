@@ -9,7 +9,6 @@ import contactsImage from "../assets/images/contacts.jpg";
 const ContactsSection = ({ contactPage, contactInfo }) => {
   const { locale } = useRouter();
   const { t } = useTranslation("");
-  console.log(contactInfo);
 
   return (
     <section className="w-full mt-[79px] lg:mt-[158px] py-[30px] lg:py-[60px]">
@@ -20,12 +19,12 @@ const ContactsSection = ({ contactPage, contactInfo }) => {
             <h2 className="text-[18px] lg:text-[36px] font-bold mb-[20px]">
               {contactPage[`title_${locale}`]}
             </h2>
-            <p
+            <div
               className="leading-[140%]"
               dangerouslySetInnerHTML={{
                 __html: contactPage[`text_${locale}`]
               }}
-            ></p>
+            ></div>
           </div>
 
           {/* Form */}

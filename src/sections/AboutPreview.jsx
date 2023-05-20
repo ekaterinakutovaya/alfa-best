@@ -38,17 +38,17 @@ const AboutPreview = ({ data }) => {
               visible: { opacity: 1, x: 0 }
             }}
           > */}
-        
-          <div className="sm:flex justify-center items-center w-full lg:w-[445px] h-auto px-[17px] py-[20px] sm:px-0 sm:py-0 lg:p-0">
-            <Image
-              className="w-full h-full object-contain"
-              src={aboutCompany}
-              width={445}
-              height={600}
-              alt="about company picture"
-            />
-          </div>
-        
+
+        <div className="sm:flex justify-center items-center w-full lg:w-[445px] h-auto px-[17px] py-[20px] sm:px-0 sm:py-0 lg:p-0">
+          <Image
+            className="w-full h-full object-contain"
+            src={aboutCompany}
+            width={445}
+            height={600}
+            alt="about company picture"
+          />
+        </div>
+
         {/* </motion.div>
         </MotionConfig> */}
 
@@ -79,11 +79,9 @@ const AboutPreview = ({ data }) => {
               }}
             ></div>
 
-            <Button type="round">
-              <Link href={`/${locale}/about`} locale={locale}>
-                {t("main_button")}
-              </Link>
-            </Button>
+            <Link href={`/${locale}/about`} locale={locale}>
+              <Button type="round">{t("main_button")}</Button>
+            </Link>
           </div>
         </div>
         {/* </motion.div>
