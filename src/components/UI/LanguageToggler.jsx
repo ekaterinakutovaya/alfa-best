@@ -20,31 +20,33 @@ const LanguageToggler = ({divider}) => {
 
 
     return (
-        <div className="language-toggler flex justify-between items-center">
-            <span
-                className={`uz ${
-                    locale == "ru" ? "font-bold" : "text-[#DBDBDB] font-normal"
-                    } cursor-pointer ease-in-out duration-300`}
-                onClick={handleLocaleChange}
-                data-locale="ru"
-            >
-                Ru
-              </span>
+      <div className="language-toggler flex justify-between items-center">
+        <span
+          className={`uz ${
+            locale == "ru"
+              ? "font-bold"
+              : "text-[#DBDBDB] font-normal hover:text-green"
+          } cursor-pointer ease-in-out duration-300`}
+          onClick={handleLocaleChange}
+          data-locale="ru"
+        >
+          Ru
+        </span>
 
-            <span
-                className={`mx-[8px] w-[1px] h-[16px] ${divider} ease-in-out duration-300`}
-            ></span>
+        <span
+          className={`mx-[8px] w-[1px] h-[16px] ${divider} ease-in-out duration-300`}
+        ></span>
 
-            <span
-                className={`uz ${
-                    locale == "uz" ? "font-bold" : "text-[#DBDBDB] font-normal"
-                    } cursor-pointer ease-in-out duration-300`}
-                onClick={handleLocaleChange}
-                data-locale="uz"
-            >
-                Uz
-              </span>
-        </div>
+        <span
+          className={`uz ${
+            locale == "uz" ? "font-bold" : "text-[#DBDBDB] font-normal"
+          } cursor-pointer ease-in-out duration-300`}
+          onClick={handleLocaleChange}
+          data-locale="uz"
+        >
+          Uz
+        </span>
+      </div>
     );
 };
 

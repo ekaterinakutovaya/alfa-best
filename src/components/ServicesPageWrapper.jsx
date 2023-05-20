@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 import Logo from "assets/icons/Logo";
 import { ServicesDescription, WithOurPartners } from "sections";
@@ -15,18 +16,21 @@ const ServicesPageWrapper = ({
   gallery
 }) => {
   const { locale } = useRouter();
-  console.log(text);
-  
-  
+
+   useEffect(() => {
+    console.log(text);
+    
+   }, [])
 
   return (
     <section className="w-full mt-[79px] lg:mt-[158px] pt-[25px] lg:py-[50px]">
       <div className="container relative">
         <div className="w-full h-[220px] lg:h-[500px] overflow-hidden rounded-[15px] relative">
-          <img
+          <Image
             className="w-full h-full object-cover"
             src={process.env.NEXT_APP_STORAGE_URL + image}
-            alt="company profile photo"
+            alt="services photo"
+            fill
           />
 
           <div className="w-full h-full top-0 bottom-0 left-0 right-0 absolute flex flex-col justify-end p-[20px] lg:p-[40px] gradient">
@@ -40,7 +44,7 @@ const ServicesPageWrapper = ({
           </div>
         </div>
 
-        {/* {locale == "ru" ? (
+        {locale == "ru" ? (
           <div
             className="pt-[20px] text-[17px]"
             dangerouslySetInnerHTML={{
@@ -53,18 +57,19 @@ const ServicesPageWrapper = ({
             foydalaniladigan binolar, inshootlar, muhandislik tizimlari, maishiy
             texnika, oshxona, kir yuvish va boshqa jihozlarga texnik xizmat
             ko'rsatish va ta'mirlash bo'yicha ishlarni bajaramiz va xizmatlar
-            ko'rsatamiz
+            ko'rsatamiz.
           </div>
-        )} */}
+        )}
 
-        <div className="w-[1440px]">
+        {/* <div className="w-[1440px]">
           <div
-            className="pt-[20px] text-[17px] break-words"
+            className="pt-[20px] text-[17px] break-words whitespace-pre"
             dangerouslySetInnerHTML={{
               __html: text
             }}
           ></div>
-        </div>
+
+        </div> */}
 
         {servicesDescription.length ? (
           <div className="lg:mt-[60px]">

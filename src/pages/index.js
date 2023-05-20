@@ -49,6 +49,7 @@ export const getServerSideProps = async ({ locale }) => {
   const aim = await getData("aim", locale);
   const aimCategory = await getData("aim_category", locale);
   const history = await getData("history", locale);
+  
 
   return {
     props: {
