@@ -5,11 +5,13 @@ import Link from "next/link";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { useTranslation } from "next-i18next";
 
 import { Button } from "components";
 
 const HeroSliderMobile = ({ items }) => {
   const { locale } = useRouter();
+  const { t } = useTranslation("");
 
   const settings = {
     arrows: false,
@@ -59,7 +61,7 @@ const HeroSliderMobile = ({ items }) => {
                 href={`/${locale}/${item.home_service_link}`}
                 locale={locale}
               >
-                Узнать больше
+                {t("main_button")}
                   </Link>
             </Button>
             </div>

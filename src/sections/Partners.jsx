@@ -6,7 +6,7 @@ import "swiper/css/navigation";
 import { Autoplay } from "swiper";
 
 import { images } from "constants";
-import SvgSelector from '../assets/icons/SvgSelector';
+import SvgSelector from "../assets/icons/SvgSelector";
 
 const partnersIcons = [
   { index: 0, iconId: "hyundai" },
@@ -37,7 +37,6 @@ const Partners = () => {
 
   return (
     <section className="w-full my-[50px] select-none">
-    
       <div className="container w-full flex items-center">
         <Swiper
           slidesPerView={4}
@@ -46,39 +45,23 @@ const Partners = () => {
           breakpoints={breakpoints}
           modules={[Autoplay]}
           autoplay={{
-            delay: 3000
+            delay: 7000
           }}
           loop={true}
         >
-
-        {partnersIcons && partnersIcons.map((item, index) => (
-          <SwiperSlide key={index}>
-              <div className="w-[250px] h-[86px] flex justify-center items-center">
-                <div className="w-full px-[10px] flex justify-center items-center">
-                <SvgSelector id={item.iconId} className="w-full h-full object-contain"/>
-                  {/* <img
-                    className="w-full h-full object-contain"
-                    src={images?.partner001.src}
-                    alt="partner logo"
-                  /> */}
+          {partnersIcons &&
+            partnersIcons.map((item, index) => (
+              <SwiperSlide key={index}>
+                <div className="w-[150px] h-[60px] lg:w-[250px] lg:h-[86px] flex justify-center items-center">
+                  <div className="w-full px-[10px] flex justify-center items-center">
+                    <SvgSelector
+                      id={item.iconId}
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
                 </div>
-              </div>
-            </SwiperSlide>
-        ))}
-          {/* {[...Array(5).keys()].map((item, index) => (
-            <SwiperSlide key={index}>
-              <div className="w-[250px] flex justify-center items-center border-green">
-                <div className="w-full px-[10px] py-[20px] flex justify-center items-center">
-                <SvgSelector id="hyundai" className="w-full h-full object-contain"/>
-                  <img
-                    className="w-full h-full object-contain"
-                    src={images?.partner001.src}
-                    alt="partner logo"
-                  />
-                </div>
-              </div>
-            </SwiperSlide>
-          ))} */}
+              </SwiperSlide>
+            ))}
         </Swiper>
       </div>
     </section>

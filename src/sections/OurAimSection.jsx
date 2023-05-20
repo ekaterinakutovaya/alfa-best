@@ -11,7 +11,7 @@ const OurAimSection = ({ data, aimCategory }) => {
 
   useEffect(() => {
     setHeading(data[`title_${locale}`].split(" "));
-  }, []);
+  }, [locale]);
 
   return (
     <section className="container my-[30px] lg:my-[100px]">
