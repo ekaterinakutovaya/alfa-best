@@ -14,7 +14,6 @@ import { ControlButton } from "components";
 const Gallery = ({ data }) => {
   const { locale } = useRouter();
   const { t } = useTranslation("");
-  console.log(data);
     
 
   const breakpoints = {
@@ -83,7 +82,7 @@ const Gallery = ({ data }) => {
                       src={process.env.NEXT_APP_STORAGE_URL + item.image}
                       alt="gallery photo"
                     />
-                    {/* <img src={`/${item.image}`} alt="gallery photo" /> */}
+                 
                   </div>
                 </SwiperSlide>
               ))}

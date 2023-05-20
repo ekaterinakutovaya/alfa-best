@@ -14,6 +14,7 @@ import { TeamCard, ControlButton } from "components";
 const OurTeam = ({data}) => {
   const { locale } = useRouter();
   const { t } = useTranslation("");
+
   
   const breakpoints = {
     375: {
@@ -58,7 +59,7 @@ const OurTeam = ({data}) => {
         {/* Slider */}
         <div>
           <Swiper
-            slidesPerView={2}
+            slidesPerView={5}
             spaceBetween={120}
             grabCursor={true}
             breakpoints={breakpoints}
@@ -66,15 +67,16 @@ const OurTeam = ({data}) => {
               prevEl: ".prev-button",
               nextEl: ".next-button"
             }}
+            loop={true}
+            rewind={true}
             modules={[Navigation]}
           >
-          {data && data.map((item, index) => (
-              <SwiperSlide key={index}>
-                <TeamCard item={item}/>
-              </SwiperSlide>
-          ))}
-            
-            
+            {data &&
+              data.map((item, index) => (
+                <SwiperSlide key={index}>
+                  <TeamCard item={item} />
+                </SwiperSlide>
+              ))}
           </Swiper>
         </div>
       </div>

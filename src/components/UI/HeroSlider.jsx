@@ -50,7 +50,7 @@ const HeroSlider = ({ items }) => {
                 fill
               />
 
-              <div className="w-full p-4 sm:px-20 absolute bottom-[60px] lg:bottom-[90px]">
+              <div className="w-full p-4 sm:px-20 absolute bottom-[60px] lg:bottom-[90px] z-40">
                 <div className="w-[50%] h-[162px] pb-5 flex items-center">
                   <h1 className="w-full text-[36px] lg:text-[45px] text-white font-bold break-words">
                     {item[`text_${locale}`]}

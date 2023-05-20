@@ -8,7 +8,9 @@ import { useTranslation } from "next-i18next";
 
 import Logo from "assets/icons/Logo";
 import { Button } from "components";
-import aboutCompany from "../assets/images/about_company.png";
+import { images } from "constants";
+import { fadeIn } from "../utils/motions";
+import aboutCompany from "assets/images/about_company.png";
 
 const AboutPreview = ({ data }) => {
   const animation = useAnimation();
@@ -28,7 +30,7 @@ const AboutPreview = ({ data }) => {
   return (
     <section className="container">
       <div className="sm:w-full my-[50px] lg:flex justify-center lg:item-center lg:gap-[80px]">
-        {/* <MotionConfig transition={{ duration: 1.2 }}>
+        <MotionConfig transition={{ duration: 1.2 }}>
           <motion.div
             ref={ref}
             animate={animation}
@@ -36,59 +38,61 @@ const AboutPreview = ({ data }) => {
               hidden: { opacity: 0, x: "-200px" },
               visible: { opacity: 1, x: 0 }
             }}
-          > */}
-            <div className="sm:flex justify-center items-center w-full lg:w-[445px] h-auto px-[17px] py-[20px] sm:px-0 sm:py-0 lg:p-0">
-              <Image
-                className="w-full h-full object-contain"
-                src={aboutCompany}
-                // src={`/${data.home_image}`}
-                layout="responsive"
-                objectFit="cover"
-                alt="about company picture"
-              />
-            </div>
-          {/* </motion.div>
-        </MotionConfig> */}
+          >
+        
+          <div className="sm:flex justify-center items-center w-full lg:w-[445px] h-auto px-[17px] py-[20px] sm:px-0 sm:py-0 lg:p-0">
+            <Image
+              className="w-full h-full object-contain"
+              src={aboutCompany}
+              // src={`/${data.home_image}`}
+              width={445}
+              height={600}
+              // src={process.env.NEXT_APP_STORAGE_URL + data.image}
+              layout="responsive"
+              objectFit="cover"
+              alt="about company picture"
+            />
+          </div>
+        
+        </motion.div>
+        </MotionConfig>
 
-        {/* <MotionConfig transition={{ duration: 1 }}>
-          <motion.div */}
+        <MotionConfig transition={{ duration: 1 }}>
+          <motion.div
 
-            {/* variants={{
+        variants={{
               visible: { opacity: 1, x: 0 },
               hidden: { opacity: 0, x: "200px" }
             }}
             ref={ref}
             animate={animation}
-          > */}
-            <div className="lg:flex lg:items-center sm:my-[30px]">
-              <div className="">
-                <div className="">
-                  <Logo type="dark" />
-                </div>
-
-                <h2 className="text-lg font-bold text-[#1B2330] pb-[20px]">
-                  {data[`home_title_${locale}`]}
-                </h2>
-
-                <div
-                  className="content flex flex-col gap-[15px] lg:max-w-[689px] pb-[30px]"
-                  dangerouslySetInnerHTML={{
-                    __html: data[`home_text_${locale}`]
-                  }}
-                ></div>
-
-                <Button type="round">
-                  <Link
-                    href={`/${locale}/about`}
-                    locale={locale}
-                  >
-                {t("main_button")}
-                  </Link>
-                </Button>
-              </div>
+          >
+        <div className="lg:flex lg:items-center sm:my-[30px]">
+          <div className="">
+            <div className="">
+              <Logo type="dark" />
             </div>
-          {/* </motion.div>
-        </MotionConfig> */}
+
+            <h2 className="text-lg font-bold text-[#1B2330] pb-[20px]">
+              {data[`home_title_${locale}`]}
+            </h2>
+
+            <div
+              className="content flex flex-col gap-[15px] lg:max-w-[689px] pb-[30px]"
+              dangerouslySetInnerHTML={{
+                __html: data[`home_text_${locale}`]
+              }}
+            ></div>
+
+            <Button type="round">
+              <Link href={`/${locale}/about`} locale={locale}>
+                {t("main_button")}
+              </Link>
+            </Button>
+          </div>
+        </div>
+        </motion.div>
+        </MotionConfig>
       </div>
     </section>
   );

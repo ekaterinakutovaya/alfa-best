@@ -145,7 +145,7 @@ const CustomSlider = ({ items }) => {
                 }
               ></div>
 
-              <div className="pagination pt-[20px] flex justify-around">
+              <div className="pagination pt-[20px] flex justify-start gap-x-[24px]">
                 {yearRange &&
                   yearRange.map((item, index) => {
                     if (item.year == currentPage) {

@@ -1,5 +1,4 @@
 import Head from "next/head";
-import NoSSR from "utils/NoSSR";
 import { useMediaQuery } from "react-responsive";
 import { useRouter } from "next/router";
 
@@ -25,7 +24,7 @@ export const Layout = ({ children, homeMenu, homeService }) => {
     router.events.on("routeChangeComplete", () => {
       setLoading(false);
     });
-  }, [])
+  }, []);
 
   return (
     <>
@@ -41,24 +40,19 @@ export const Layout = ({ children, homeMenu, homeService }) => {
         <HeaderMobile navigation={homeMenu} subNavigation={homeService} />
       </div>
 
-      <NoSSR>
-        <div className="main">
-          <main>{children}</main>
-        </div>
-      </NoSSR>
+      <div className="main">
+        <main>{children}</main>
+      </div>
 
-      <NoSSR>
-        <div className="footer">
-          {isMobileorTablet ? (
-            <FooterMobile navigation={homeMenu} subNavigation={homeService} />
-          ) : (
-            <Footer navigation={homeMenu} subNavigation={homeService} />
-          )}
-        </div>
-      </NoSSR>
+      <div className="footer">
+        {isMobileorTablet ? (
+          <FooterMobile navigation={homeMenu} subNavigation={homeService} />
+        ) : (
+          <Footer navigation={homeMenu} subNavigation={homeService} />
+        )}
+      </div>
 
       {loading && <PagePreloader />}
-      
     </>
   );
 };

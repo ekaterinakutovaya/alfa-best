@@ -100,62 +100,6 @@ body {
     }
 }
 
-.alice-carousel__dots {
-    position: absolute !important;
-    // bottom: 15px !important;
-    bottom: 165px !important;
-    right: 0 !important;
-    left: 0 !important;
-    //   display: flex !important;
-    //   align-items: center !important;
-
-    //   margin: 30px 3px 20px !important;
-
-    @media screen and (min-width: 768px) {
-        bottom: 15px !important;
-    }
-
-    @media screen and (min-width: 1280px) {
-        right: 90px !important;
-        left: auto !important;
-        bottom: 60px !important;
-    }
-}
-
-.alice-carousel__dots-item {
-    width: 20px !important;
-    height: 20px !important;
-    background-color: transparent !important;
-    border: 1px solid #fff !important;
-    //   background-color: rgba(0, 0, 0, 0.3) !important;
-
-    //   transition: all 0.3s ease !important;
-
-    //   &:hover {
-    //     background-color: darken(#fff, 50%) !important;
-    //     transition: all 0.3s ease !important;
-    //   }
-
-    @media screen and (min-width: 1280px) {
-        width: 30px !important;
-        height: 30px !important;
-    }
-}
-
-.alice-carousel__dots-item.__active {
-    width: 20px !important;
-    height: 20px !important;
-    background-color: #fff !important;
-
-    @media screen and (min-width: 1280px) {
-        width: 30px !important;
-        height: 30px !important;
-    }
-}
-
-.alice-carousel__dots-item:not(.__custom):not(:last-child) {
-    margin-right: 15px !important;
-}
 
 .toggle {
     position: relative;
@@ -208,22 +152,6 @@ body {
     transform: translate(60px);
 }
 
-// .swiper-pagination-bullet {
-//     width: 20px;
-//     height: 20px;
-//     text-align: center;
-//     line-height: 20px;
-//     font-size: 12px;
-//     color: #000;
-//     opacity: 1;
-//     background: red;
-// }
-
-// .swiper-pagination-bullet-active {
-//     color: #fff;
-//     background: #007aff;
-// }
-
 .image-filter {
     filter: brightness(60%);
 }
@@ -254,77 +182,6 @@ body {
 
 
 /* **************************************************************************************************************** */
-
-.pagination-container {
-    display: flex;
-    list-style-type: none;
-
-    .pagination-item {
-        padding: 0 12px;
-        height: 32px;
-        text-align: center;
-        margin: auto 4px;
-        color: rgba(0, 0, 0, 0.87);
-        display: flex;
-        box-sizing: border-box;
-        align-items: center;
-        letter-spacing: 0.01071em;
-        border-radius: 16px;
-        line-height: 1.43;
-        font-size: 13px;
-        min-width: 32px;
-
-        &.dots:hover {
-            background-color: transparent;
-            cursor: default;
-        }
-
-        &:hover {
-            background-color: rgba(0, 0, 0, 0.04);
-            cursor: pointer;
-        }
-
-        &.selected {
-            background-color: rgba(0, 0, 0, 0.08);
-        }
-
-        .arrow {
-            &::before {
-                position: relative;
-                /* top: 3pt; Uncomment this to lower the icons as requested in comments*/
-                content: "";
-                /* By using an em scale, the arrows will size with the font */
-                display: inline-block;
-                width: 0.4em;
-                height: 0.4em;
-                border-right: 0.12em solid rgba(0, 0, 0, 0.87);
-                border-top: 0.12em solid rgba(0, 0, 0, 0.87);
-            }
-
-            &.left {
-                transform: rotate(-135deg) translate(-50%);
-            }
-
-            &.right {
-                transform: rotate(45deg);
-            }
-        }
-
-        &.disabled {
-            pointer-events: none;
-
-            .arrow::before {
-                border-right: 0.12em solid rgba(0, 0, 0, 0.43);
-                border-top: 0.12em solid rgba(0, 0, 0, 0.43);
-            }
-
-            &:hover {
-                background-color: transparent;
-                cursor: default;
-            }
-        }
-    }
-}
 
 .hero-slider-dots {
     display: flex !important;
@@ -380,3 +237,25 @@ body {
     overflow-wrap: break-word !important;
     word-wrap: break-word !important;
 }
+
+.animated {
+    transition: all 0.3s ease-in-out;
+}
+
+.animated:hover .arrow-more {
+    fill: #28C79E;
+    animation: slide 1s ease-in-out infinite;
+}
+
+@keyframes slide {
+
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(10px, 0);
+    }
+}
+

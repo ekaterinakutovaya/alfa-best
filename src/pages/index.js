@@ -22,8 +22,6 @@ export default function Home({
   aimCategory,
   history
 }) {
-  const { locale, router } = useRouter();
-  console.log(useRouter());
   
 
   return (

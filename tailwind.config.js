@@ -17,7 +17,8 @@ module.exports = {
         'grey': '#8D9197'
       },
       boxShadow: {
-        'boxShadowDefault': '0px 4px 34px rgba(0, 0, 0, 0.08)'
+        'boxShadowDefault': '0px 4px 34px rgba(0, 0, 0, 0.08)',
+        'boxShadowGreen': '0px 4px 34px rgba(40, 199, 158, 0.5)',
       },
       borderColor: {
         'lightGrey': '#F3F3F3'

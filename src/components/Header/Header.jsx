@@ -1,18 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import Image from "next/image";
-
-
 
 import Logo from "assets/icons/Logo";
-import { LanguageToggler } from "..";
+import { LanguageToggler } from "components";
 
 const Header = ({navigation, subNavigation}) => {  
   const router = useRouter();
   const { locale } = useRouter();
   const [clientWindowHeight, setClientWindowHeight] = useState("");
-  // console.log(navigation[0].title_ru);
   
 
   const [navbarStyles, setNavbarStyles] = useState({
@@ -95,19 +91,6 @@ const Header = ({navigation, subNavigation}) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleLocaleChange = event => {
-    const value = event.currentTarget.dataset.locale;
-
-    router.push(
-      {
-        route: router.pathname,
-        query: router.query
-      },
-      router.asPath,
-      { locale: value }
-    );
-  };
-
 
   return (
     <header
@@ -120,8 +103,11 @@ const Header = ({navigation, subNavigation}) => {
       >
         <div className="w-full flex items-center justify-between h-[79px] lg:px-[90px] p-4 lg:py-[20px] border-solid border-red-500">
           <div className="grow">
-            <div className="max-w-[153px]">
-              <Logo type={navbarStyles.logoType} className="w-full" />
+            <div className="max-w-[153px] ">
+              <Logo
+                type={navbarStyles.logoType}
+                className="w-full ease-in-out duration-300 hover:drop-shadow-xl"
+              />
             </div>
           </div>
 
@@ -140,7 +126,7 @@ const Header = ({navigation, subNavigation}) => {
                 </div>
               ))}
 
-            <LanguageToggler divider={navbarStyles.divider}/>
+            <LanguageToggler divider={navbarStyles.divider} />
 
             {/* <div className="language-toggler flex justify-between items-center">
               <span
@@ -186,10 +172,7 @@ const Header = ({navigation, subNavigation}) => {
                     : subNavLinkIdle
                 }
               >
-                <Link
-                  href={`/${locale}/${item.link}`}
-                  locale={locale}
-                >
+                <Link href={`/${locale}/${item.link}`} locale={locale}>
                   {item[`title_${locale}`]}
                 </Link>
               </div>

@@ -1,16 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useRouter } from "next/router";
-import Image from "next/image";
-import { BiGlobe } from "react-icons/bi";
 import { motion } from "framer-motion";
 
 import Logo from "assets/icons/Logo";
-import {DropdownMenu, LanguageToggler} from "components";
+import { DropdownMenu, LanguageToggler } from "components";
 
 const HeaderMobile = ({ navigation, subNavigation }) => {
   const [openMenu, setOpenMenu] = useState(false);
-  const { locale } = useRouter();
-  
 
   useEffect(() => {
     if (openMenu) {
@@ -39,10 +34,6 @@ const HeaderMobile = ({ navigation, subNavigation }) => {
           </div>
 
           <div className="flex items-center sm:gap-x-[10px] lg:none">
-            {/* <div className="w-[45px] h-[45px] border border-solid border-lightGrey rounded-full flex justify-center items-center">
-              <BiGlobe className="fill-grey" />
-            </div> */}
-
             <LanguageToggler divider={"bg-black"} />
 
             <div className="px-3"></div>

@@ -23,7 +23,7 @@ const LanguageToggler = ({divider}) => {
         <div className="language-toggler flex justify-between items-center">
             <span
                 className={`uz ${
-                    locale == "ru" ? "" : "text-[#DBDBDB]"
+                    locale == "ru" ? "font-bold" : "text-[#DBDBDB] font-normal"
                     } cursor-pointer ease-in-out duration-300`}
                 onClick={handleLocaleChange}
                 data-locale="ru"
@@ -37,7 +37,7 @@ const LanguageToggler = ({divider}) => {
 
             <span
                 className={`uz ${
-                    locale == "uz" ? "" : "text-[#DBDBDB]"
+                    locale == "uz" ? "font-bold" : "text-[#DBDBDB] font-normal"
                     } cursor-pointer ease-in-out duration-300`}
                 onClick={handleLocaleChange}
                 data-locale="uz"

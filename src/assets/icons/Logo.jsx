@@ -7,7 +7,7 @@ const Logo = ({ type, className }) => {
     switch (type) {
         case 'color-dark-full':
         return (
-          <Link href={`/${locale}`} locale={locale}>
+          <Link href={`/${locale}`} locale={locale} >
             <svg
               className={className}
               width="154"

@@ -1,10 +1,34 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useTranslation } from "next-i18next";
+import {animate, motion, AnimatePresence } from "framer-motion";
+import useCountdown from "@bradgarropy/use-countdown";
+import { useInView } from "react-intersection-observer";
 
 import SvgSelector from "../assets/icons/SvgSelector";
 
+
 const Statistics = () => {
   const { t } = useTranslation("");
+  const [counter1, setCounter1] = useState(290);
+
+  // useEffect(() => {
+  //   let interval = 2000;
+  //   let startValue = 200;
+  //   let endValue = 320;
+  //   let duration = Math.floor(interval / endValue);
+  //   let counter = setInterval(function() {
+  //     startValue += 1;
+  //     setCounter1(prevState => prevState = prevState + 1);
+  //     console.log(startValue);
+      
+  //     if (startValue == endValue) {
+  //       clearInterval(counter);
+  //       setCounter1(endValue);
+  //     }
+  //   }, duration)
+
+  // }, [])
+
 
   return (
     <section className="container">
@@ -16,7 +40,7 @@ const Statistics = () => {
             </div>
 
             <div>
-              <span className="text-2xl font-medium">+320.000 </span>
+              <span className="text-2xl font-medium">320 </span>
               {t("square_meters")}
             </div>
           </div>

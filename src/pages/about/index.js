@@ -19,14 +19,18 @@ const About = ({
   aboutCompany,
   mission,
   team,
+  iconGallery,
   photoGallery
 }) => {
-  console.log(useRouter());
 
   return (
     <Layout homeMenu={homeMenu.datas} homeService={homeService.datas}>
       <CompanyProfile data={aboutCompany.datas[0]} />
-      <OurMission data={mission.datas[0]} homeService={homeService.datas} />
+      <OurMission
+        data={mission.datas[0]}
+        homeService={homeService.datas}
+        icons={iconGallery.datas}
+      />
       <OurTeam data={team.datas} />
       <WithOurPartners />
       <Partners />
@@ -44,6 +48,7 @@ export const getServerSideProps = async ({ locale }) => {
   const mission = await getData("mission", locale);
   const aboutCompany = await getData("about_company", locale);
   const team = await getData("team", locale);
+  const iconGallery = await getData("gallery", locale);
   const photoGallery = await getData("photo_gallery", locale);
 
   return {
@@ -53,6 +58,7 @@ export const getServerSideProps = async ({ locale }) => {
       mission,
       aboutCompany,
       team,
+      iconGallery,
       photoGallery
     }
   };

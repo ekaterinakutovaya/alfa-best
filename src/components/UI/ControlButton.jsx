@@ -16,7 +16,7 @@ const ControlButton = (props) => {
     >
       <SvgSelector
         id={type}
-        className={`${disabled == true ? "fill-[#E7E5EA]" : "fill-black"}`}
+        className={`${disabled == true ? "fill-[#E7E5EA] w-[15px]" : "fill-black w-[15px]"}`}
       />
     </button>
   );
