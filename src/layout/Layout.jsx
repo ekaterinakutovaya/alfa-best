@@ -1,5 +1,4 @@
 import Head from "next/head";
-import { useMediaQuery } from "react-responsive";
 import { useRouter } from "next/router";
 
 import {
@@ -13,7 +12,6 @@ import { useState, useEffect } from "react";
 
 export const Layout = ({ children, homeMenu, homeService }) => {
   const router = useRouter();
-  const isMobileorTablet = useMediaQuery({ query: "(max-width: 1279px)" });
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -45,11 +43,8 @@ export const Layout = ({ children, homeMenu, homeService }) => {
       </div>
 
       <div className="footer">
-        {isMobileorTablet ? (
-          <FooterMobile navigation={homeMenu} subNavigation={homeService} />
-        ) : (
-          <Footer navigation={homeMenu} subNavigation={homeService} />
-        )}
+        <FooterMobile navigation={homeMenu} subNavigation={homeService} />
+        <Footer navigation={homeMenu} subNavigation={homeService} />
       </div>
 
       {loading && <PagePreloader />}

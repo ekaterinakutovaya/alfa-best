@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import InputMask from "react-input-mask";
 import { useTranslation } from "next-i18next";
@@ -7,13 +7,8 @@ import { useRouter } from "next/router";
 import { DropdownSelect } from "components";
 import { images } from "constants";
 import Button from "./UI/Button";
+import applicationImage from "../assets/images/application.png";
 
-// const types = [
-//   { index: 0, label: "Корпоративное питание" },
-//   { index: 1, label: "Инженерно-техническая эксплуатация" },
-//   { index: 2, label: "Сервисное и бытовое обслуживание" },
-//   { index: 3, label: "Транспортные и пассажирские перевозки" }
-// ];
 
 const ApplicationForm = ({ types }) => {
   const { locale } = useRouter();
@@ -26,6 +21,9 @@ const ApplicationForm = ({ types }) => {
     watch,
     formState: { errors }
   } = useForm();
+
+  console.log(applicationImage);
+  
 
   const onSubmit = data => console.log(data);
 
@@ -110,7 +108,7 @@ const ApplicationForm = ({ types }) => {
               </div>
             </div>
 
-            <div className='mt-[10px]'>
+            <div className="mt-[10px]">
               <Button type="square" onClick={onSubmit}>
                 {t("send")}
               </Button>
@@ -122,7 +120,7 @@ const ApplicationForm = ({ types }) => {
             <div className="w-[285px] lg:w-[400px] text-center">
               <img
                 className="w-full h-full object-cover"
-                src={images?.application?.src}
+                src={applicationImage.src}
                 alt="application photo"
               />
             </div>

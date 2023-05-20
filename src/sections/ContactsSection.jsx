@@ -1,9 +1,10 @@
 import React from "react";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 
-import { images } from "../constants";
 import { ContactsForm } from "components";
+import contactsImage from "../assets/images/contacts.jpg";
 
 const ContactsSection = ({ contactPage, contactInfo }) => {
   const { locale } = useRouter();
@@ -73,12 +74,13 @@ const ContactsSection = ({ contactPage, contactInfo }) => {
 
         {/* Image */}
         <div>
-          <div className="w-full h-[380px] lg:w-[450px] lg:h-[511px] lg:rounded-[15px] overflow-hidden mt-[30px]">
-            <img
+          <div className="w-full h-[380px] lg:w-[450px] lg:h-[511px] lg:rounded-[15px] overflow-hidden mt-[30px] relative">
+
+            <Image
               className="w-full h-full object-cover"
-              src={images.contacts.src}
-              // src={`/${contactInfo.image}`}
+              src={contactsImage.src}
               alt="contacts photo"
+              fill
             />
           </div>
         </div>

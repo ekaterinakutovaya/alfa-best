@@ -1,5 +1,6 @@
 import React from 'react';
 import { useRouter } from "next/router";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 import { Layout } from "../../layout/Layout";
 import { CooperationSection, Advantages } from "sections";
@@ -7,11 +8,6 @@ import { ApplicationForm } from "components";
 import { getData } from "../api/data";
 
 const Cooperation = ({ homeMenu, homeService, cooperation, advantage }) => {
-  // const advantages = advantage.datas.filter(
-  //   item => item.services_category_id === 1
-  // );
- 
-
 
   return (
     <Layout homeMenu={homeMenu.datas} homeService={homeService.datas}>
@@ -37,7 +33,8 @@ export const getServerSideProps = async ({ locale }) => {
       homeMenu,
       homeService,
       cooperation,
-      advantage
+      advantage,
+      ...(await serverSideTranslations(locale, ["common"]))
     }
   };
 };

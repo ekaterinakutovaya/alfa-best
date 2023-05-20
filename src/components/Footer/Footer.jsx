@@ -3,25 +3,16 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 
-import { images } from "constants";
-import styles from "styles/styles";
 import Logo from "assets/icons/Logo";
-import { navigation, subNavigation } from "constants/constants";
-import { AccordeonDark, SocialBar } from "components";
+import { SocialBar } from "components";
 import SvgSelector from "assets/icons/SvgSelector";
 
 const Footer = ({ navigation, subNavigation }) => {
   const { t } = useTranslation("");
   const { locale } = useRouter();
-  const nestedList = [
-    { index: 0, label: "Инженерно-техническая эксплуатация" },
-    { index: 1, label: "Сервисное и бытовое обслуживание" },
-    { index: 2, label: "Корпоративное питание" },
-    { index: 3, label: "Транспортные и пассажирские перевозки" }
-  ];
 
   return (
-    <footer className="bg-[#1B2330]">
+    <footer className="bg-[#1B2330] hidden lg:block">
       {/* Main */}
       <div className="container">
         <div className="py-[60px] w-full flex gap-x-[40px] border-solid border-b border-[rgba(255,255,255,0.1)]">

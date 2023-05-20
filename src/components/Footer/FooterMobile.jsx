@@ -22,7 +22,7 @@ const FooterMobile = ({ navigation, subNavigation }) => {
   ];
 
   return (
-    <footer className="bg-[#001836]">
+    <footer className="bg-[#001836] block lg:hidden">
       {/* Main */}
       <div className="container">
         <div className="w-full flex-col gap-y-[30px] py-[20px] border-solid border-b border-[rgba(255,255,255,0.1)]">

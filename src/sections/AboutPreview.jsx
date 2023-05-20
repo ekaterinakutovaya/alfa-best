@@ -8,7 +8,6 @@ import { useTranslation } from "next-i18next";
 
 import Logo from "assets/icons/Logo";
 import { Button } from "components";
-import { images } from "constants";
 import { fadeIn } from "../utils/motions";
 import aboutCompany from "assets/images/about_company.png";
 
@@ -44,12 +43,8 @@ const AboutPreview = ({ data }) => {
             <Image
               className="w-full h-full object-contain"
               src={aboutCompany}
-              // src={`/${data.home_image}`}
               width={445}
               height={600}
-              // src={process.env.NEXT_APP_STORAGE_URL + data.image}
-             
-              objectFit="cover"
               alt="about company picture"
             />
           </div>

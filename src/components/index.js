@@ -1,5 +1,5 @@
-import Footer from "./Footer";
-import FooterMobile from "./FooterMobile";
+import Footer from "./Footer/Footer";
+import FooterMobile from "./Footer/FooterMobile";
 import Header from './Header/Header';
 import HeaderMobile from "./Header/HeaderMobile";
 import Hero from 'sections/Hero';

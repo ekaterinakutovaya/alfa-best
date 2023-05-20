@@ -1,6 +1,7 @@
 import React from 'react';
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 import { Layout } from "../../layout/Layout";
 import { ServicesPageWrapper } from "components";
@@ -61,7 +62,8 @@ export const getServerSideProps = async ({ locale }) => {
       servicesCategory,
       servicesSubCategory,
       advantage,
-      gallery
+      gallery,
+      ...(await serverSideTranslations(locale, ["common"]))
     }
   };
 };

@@ -1,5 +1,6 @@
 import React from "react";
 import { getData } from "../api/data";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 import { Layout } from "../../layout/Layout";
 import { PurchaseSection } from "sections";
@@ -25,7 +26,8 @@ export const getServerSideProps = async ({ locale }) => {
       homeMenu,
       homeService,
       purchase,
-      purchasePost
+      purchasePost,
+      ...(await serverSideTranslations(locale, ["common"]))
     }
   };
 };

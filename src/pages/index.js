@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 import { Layout } from "../layout/Layout";
 import { Statistics, PagePreloader } from "components";
@@ -59,7 +60,8 @@ export const getServerSideProps = async ({ locale }) => {
       aboutCompany,
       aim,
       aimCategory,
-      history
+      history,
+      ...await serverSideTranslations(locale, ['common'])
     }
   };
 };

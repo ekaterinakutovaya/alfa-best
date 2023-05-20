@@ -1,6 +1,7 @@
 import React from "react";
 import { Layout } from "../../layout/Layout";
 import { useRouter } from "next/router";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 import {
   CompanyProfile,
@@ -59,7 +60,8 @@ export const getServerSideProps = async ({ locale }) => {
       aboutCompany,
       team,
       iconGallery,
-      photoGallery
+      photoGallery,
+      ...(await serverSideTranslations(locale, ["common"]))
     }
   };
 };

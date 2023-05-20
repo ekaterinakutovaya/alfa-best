@@ -1,4 +1,5 @@
 import React from "react";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 import { Layout } from "../../layout/Layout";
 import { CareerSection } from "sections";
@@ -39,7 +40,8 @@ export const getServerSideProps = async ({ locale }) => {
       homeService,
       career,
       vacancy,
-      vacancyCategory
+      vacancyCategory,
+      ...(await serverSideTranslations(locale, ["common"]))
     }
   };
 };

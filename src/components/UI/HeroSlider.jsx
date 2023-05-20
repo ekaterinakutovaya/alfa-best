@@ -39,8 +39,6 @@ const HeroSlider = ({ items }) => {
     <Slider {...settings}>
       {items &&
         items.map((item, index) => (
-          // <div key={index} className="w-full text-left relative">
-          //   <div className="w-full h-[250px] sm:h-[350px] lg:h-[780px] relative bg-black">
           <div key={index} className="w-full lg:h-screen text-left relative">
             <div className="w-full h-[250px] sm:h-[350px] lg:h-full relative bg-black">
               <Image

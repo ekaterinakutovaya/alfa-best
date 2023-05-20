@@ -1,5 +1,6 @@
 import React from "react";
 import { useRouter } from "next/router";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 import { Layout } from "../../layout/Layout";
 import { ContactsSection, Advantages } from "sections";
@@ -27,7 +28,8 @@ export const getServerSideProps = async ({ locale }) => {
       homeMenu,
       homeService,
       contactPage,
-      contactInfo
+      contactInfo,
+      ...(await serverSideTranslations(locale, ["common"]))
     }
   };
 };
