@@ -6,13 +6,12 @@ import { useTranslation } from "next-i18next";
 
 import Figure from "assets/icons/Figure";
 import { Accordeon, SocialBar } from "components";
-import { fadeIn, staggerContainer } from "utils/motions";
+import { slideIn, staggerContainer } from "utils/motions";
 
 const DropdownMenu = ({ items, open }) => {
   const { t } = useTranslation("");
   const { locale } = useRouter();
   const { navigation, subNavigation } = items;
-  console.log(open);
 
   return (
     <motion.nav

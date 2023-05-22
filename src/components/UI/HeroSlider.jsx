@@ -48,7 +48,7 @@ const HeroSlider = ({ items }) => {
     <Slider {...settings}>
       {items &&
         items.map((item, index) => (
-          <div key={index} className="w-full lg:h-screen text-left relative">
+        <div key={index} className="w-full lg:h-screen text-left relative">
             <div className="w-full h-[250px] sm:h-[350px] lg:h-full relative bg-black">
               <Image
                 className="w-full h-full object-cover opacity-60"

@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -15,7 +15,14 @@ import aboutCompany from "assets/images/about_company.png";
 const AboutPreview = ({ data }) => {
   const { locale } = useRouter();
   const { t } = useTranslation("");
-  const isDesktop = useMediaQuery({query: `(min-width: 1280px`});
+  const mediaQuery = useMediaQuery({query: `(min-width: 1280px`});
+  const [isDesktop, setIsDesktop] = useState(false);
+  
+  useEffect(() => {
+   if (typeof window !== "undefined") {
+     setIsDesktop(mediaQuery);
+   }
+  }, [])
 
   return (
     <section className="container">

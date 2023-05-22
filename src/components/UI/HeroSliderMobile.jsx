@@ -12,6 +12,7 @@ import { Button } from "components";
 const HeroSliderMobile = ({ items }) => {
   const { locale } = useRouter();
   const { t } = useTranslation("");
+  console.log(items);
 
   const settings = {
     arrows: false,
@@ -42,8 +43,8 @@ const HeroSliderMobile = ({ items }) => {
           <div key={index} className="w-full text-left relative">
             <div className="w-full h-[250px] sm:h-[350px] lg:h-[780px] relative bg-black">
               <Image
-                className="w-full h-full object-cover opacity-70"
-                src={`/${item.img}`}
+                className="w-full h-full object-cover opacity-60"
+                src={process.env.NEXT_APP_STORAGE_URL + item.img}
                 alt="services photo"
                 fill
               />
