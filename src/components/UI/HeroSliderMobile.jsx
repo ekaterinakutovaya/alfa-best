@@ -12,7 +12,6 @@ import { Button } from "components";
 const HeroSliderMobile = ({ items }) => {
   const { locale } = useRouter();
   const { t } = useTranslation("");
-  console.log(items);
 
   const settings = {
     arrows: false,

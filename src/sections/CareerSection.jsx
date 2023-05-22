@@ -12,6 +12,9 @@ const CareerSection = ({ career, vacancy, vacancyCategory }) => {
   const { t } = useTranslation("");
   const { image } = career;
 
+  console.log(image);
+  
+
   return (
     <section className="w-full mt-[79px] lg:mt-[158px] py-[25px] lg:py-[50px]">
       <div className="container relative">
