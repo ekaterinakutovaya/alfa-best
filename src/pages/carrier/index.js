@@ -12,6 +12,8 @@ const Carrier = ({
   vacancy,
   vacancyCategory
 }) => {
+
+  
   return (
     <Layout homeMenu={homeMenu.datas} homeService={homeService.datas}>
       <CareerSection

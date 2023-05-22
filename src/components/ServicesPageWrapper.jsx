@@ -44,7 +44,7 @@ const ServicesPageWrapper = ({
           </div>
         </div>
 
-        {locale == "ru" ? (
+        {/* {locale == "ru" ? (
           <div
             className="pt-[20px] text-[17px]"
             dangerouslySetInnerHTML={{
@@ -59,9 +59,9 @@ const ServicesPageWrapper = ({
             ko'rsatish va ta'mirlash bo'yicha ishlarni bajaramiz va xizmatlar
             ko'rsatamiz.
           </div>
-        )}
+        )} */}
 
-        {/* <div className="w-[1440px]">
+        <div className="w-[1440px]">
           <div
             className="pt-[20px] text-[17px] break-words whitespace-pre"
             dangerouslySetInnerHTML={{
@@ -69,7 +69,7 @@ const ServicesPageWrapper = ({
             }}
           ></div>
 
-        </div> */}
+        </div>
 
         {servicesDescription.length ? (
           <div className="lg:mt-[60px]">

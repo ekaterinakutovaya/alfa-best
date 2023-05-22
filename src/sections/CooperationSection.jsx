@@ -9,6 +9,8 @@ const CooperationSection = ({ data }) => {
   const { locale } = useRouter();
   const { t } = useTranslation("");
   const { image } = data;
+  console.log(data.text);
+  
 
   return (
     <section className="w-full mt-[79px] lg:mt-[158px] pt-[25px] lg:pt-[50px] lg:my-[80px]">
@@ -32,12 +34,12 @@ const CooperationSection = ({ data }) => {
           </div>
         </div>
 
-        {/* <div
+        <div
           className="content pt-[20px]"
           dangerouslySetInnerHTML={{
             __html: data[`text_${locale}`]
           }}
-        ></div> */}
+        ></div>
       </div>
     </section>
   );
