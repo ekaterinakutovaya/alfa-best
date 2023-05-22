@@ -22,8 +22,7 @@ const CareerSection = ({ career, vacancy, vacancyCategory }) => {
           <Image
             className="w-full h-full object-cover"
             src={process.env.NEXT_APP_STORAGE_URL + image}
-            layout="fill"
-            objectFit="cover"
+            fill
             alt="career photo"
           />
 
