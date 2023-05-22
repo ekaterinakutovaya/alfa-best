@@ -6,15 +6,20 @@ import { useTranslation } from "next-i18next";
 
 import Figure from "assets/icons/Figure";
 import { Accordeon, SocialBar } from "components";
+import { fadeIn, staggerContainer } from "utils/motions";
 
-const DropdownMenu = ({ items }) => {
+const DropdownMenu = ({ items, open }) => {
   const { t } = useTranslation("");
   const { locale } = useRouter();
   const { navigation, subNavigation } = items;
+  console.log(open);
 
   return (
-    // <motion.div initial={{ height: 0 }} animate={{ height: 300 }}>
-    <nav className="w-full h-[calc(100vh_-_78px)] bg-white absolute top-[78px] z-50 border-solid border-t border-t-[#ECECEC]">
+    <motion.nav
+      variants={slideIn("down", "spring", 0.2, 1)}
+      initial="hidden"
+      className="w-full h-[calc(100vh_-_78px)] bg-white absolute top-[78px] z-50 border-solid border-t border-t-[#ECECEC]"
+    >
       <ul className="w-full p-7 flex flex-col gap-y-8 ">
         <li>
           <Accordeon label={t("services")} items={subNavigation} />
@@ -39,8 +44,7 @@ const DropdownMenu = ({ items }) => {
       </ul>
 
       <Figure className="absolute bottom-[20%] right-[-8%]" />
-    </nav>
-    // </motion.div>
+    </motion.nav>
   );
 };
 

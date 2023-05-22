@@ -5,9 +5,18 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useTranslation } from "next-i18next";
+import { motion } from "framer-motion";
 
+import { fadeIn, staggerContainer } from "../../utils/motions";
 import { Button } from "components";
-import { STORAGE_URL } from "constants/constants";
+
+export const SlickDots = ({ children }) => {
+  <div>
+    <ul className="flex items-center gap-x-[15px] absolute right-[90px] bottom-[90px] z-40">
+      {children}
+    </ul>
+  </div>;
+};
 
 const HeroSlider = ({ items }) => {
   const { locale } = useRouter();
@@ -25,7 +34,7 @@ const HeroSlider = ({ items }) => {
     autoplaySpeed: 7000,
     appendDots: dots => (
       <div>
-        <ul className="flex items-center gap-x-[15px] absolute right-[90px] bottom-[90px] z-40">
+        <ul className="flex items-center gap-x-[15px] absolute right-[90px] bottom-[90px] z-40 delay-1000">
           {dots}
         </ul>
       </div>
@@ -48,7 +57,13 @@ const HeroSlider = ({ items }) => {
                 fill
               />
 
-              <div className="w-full p-4 sm:px-20 absolute bottom-[60px] lg:bottom-[90px] z-40">
+              <motion.div
+                className="w-full p-4 sm:px-20 absolute bottom-[60px] lg:bottom-[90px] z-40"
+                variants={fadeIn("right", "tween", 0.2, 1)}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: false, amount: 0.25 }}
+              >
                 <div className="w-[50%] h-[162px] pb-5 flex items-center">
                   <h1 className="w-full text-[36px] lg:text-[45px] text-white font-bold break-words">
                     {item[`text_${locale}`]}
@@ -61,7 +76,7 @@ const HeroSlider = ({ items }) => {
                 >
                   <Button type="round">{t("main_button")}</Button>
                 </Link>
-              </div>
+              </motion.div>
             </div>
           </div>
         ))}

@@ -6,13 +6,13 @@ import Hero from 'sections/Hero';
 import DropdownMenu from "./DropdownMenu";
 import ServicesOverviewCard from "./ServicesOverviewCard.jsx";
 import SocialBar from "./SocialBar.jsx";
-import Statistics from "./Statistics.jsx";
 import TeamCard from "./TeamCard.jsx";
 import SectionHeading from "./SectionHeading.jsx";
 import ApplicationForm from "./ApplicationForm.jsx";
 import ContactsForm from "./ContactsForm.jsx";
 import QueryConfirmation from "./QueryConfirmation.jsx";
 import ServicesPageWrapper from "./ServicesPageWrapper.jsx";
+import TypingText from "./TypingText.jsx";
 
 
 /* ********  UI  ***************** */
@@ -40,7 +40,6 @@ export {
   Hero,
   DropdownMenu,
   SocialBar,
-  Statistics,
   Button,
   HistorySlider,
   LanguageToggler,
@@ -57,7 +56,8 @@ export {
   ServicesPageWrapper,
   HeroSlider,
   HeroSliderMobile,
-  PagePreloader
+  PagePreloader,
+  TypingText
 };
 
 

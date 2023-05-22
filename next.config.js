@@ -12,6 +12,10 @@ const nextConfig = {
   env: {
     NEXT_APP_API_URL: process.env.NEXT_APP_API_URL,
     NEXT_APP_STORAGE_URL: process.env.NEXT_APP_STORAGE_URL
+  },
+  basePath: "",
+  async rewrites() {
+    return [{ source: "/", destination: "http://localhost:3000/ru", basePath: false }];
   }
 };
 

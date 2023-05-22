@@ -2,6 +2,7 @@ import React from "react";
 import { Layout } from "../../layout/Layout";
 import { useRouter } from "next/router";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useTranslation } from "next-i18next";
 
 import {
   CompanyProfile,
@@ -10,7 +11,8 @@ import {
   OurTeam,
   WithOurPartners,
   Gallery,
-  AboutHistory
+  AboutHistory,
+  HappyPartners
 } from "sections";
 import { getData } from "../api/data";
 
@@ -23,6 +25,7 @@ const About = ({
   iconGallery,
   photoGallery
 }) => {
+  const { t } = useTranslation("");
 
   return (
     <Layout homeMenu={homeMenu.datas} homeService={homeService.datas}>
@@ -33,7 +36,10 @@ const About = ({
         icons={iconGallery.datas}
       />
       <OurTeam data={team.datas} />
-      <WithOurPartners />
+      <HappyPartners
+        title={t("with_our_partners_title")}
+        text={t("with_our_partners_text")}
+      />
       <Partners />
       <Gallery data={photoGallery.datas} />
       <AboutHistory />

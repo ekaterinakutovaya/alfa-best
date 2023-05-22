@@ -1,15 +1,17 @@
 import { useEffect } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 import { Layout } from "../layout/Layout";
-import { Statistics, PagePreloader } from "components";
+import { PagePreloader } from "components";
 import {
   AboutPreview,
   HappyPartners,
   History,
   Hero,
+  Statistics,
   OurAimSection
 } from "sections";
 import { getData } from "./api/data";
@@ -23,7 +25,7 @@ export default function Home({
   aimCategory,
   history
 }) {
-  
+  const { t } = useTranslation("");
 
   return (
     <Layout homeMenu={homeMenu.datas} homeService={homeService.datas}>
@@ -35,7 +37,7 @@ export default function Home({
 
       <OurAimSection data={aim.datas[0]} aimCategory={aimCategory.datas} />
 
-      <HappyPartners />
+      <HappyPartners title={t("happy_partners_title")} text={t("happy_partners_text")}/>
 
       <History data={history.datas} />
     </Layout>

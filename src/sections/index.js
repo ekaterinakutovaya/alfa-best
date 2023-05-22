@@ -15,6 +15,7 @@ import Advantages from "./Advantages";
 import ContactsSection from "./ContactsSection";
 import PurchaseSection from "./PurchaseSection";
 import ServicesDescription from "./ServicesDescription";
+import Statistics from "./Statistics";
 import OurAimSection from "./OurAimSection";
 
 
@@ -37,5 +38,6 @@ export {
   ContactsSection,
   PurchaseSection,
   ServicesDescription,
+  Statistics,
   OurAimSection
 };

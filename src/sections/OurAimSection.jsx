@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
+import { useMediaQuery } from "react-responsive";
+import { motion } from "framer-motion";
 
-import { images } from "constants";
 import Logo from "assets/icons/Logo";
+import { fadeIn, staggerContainer } from "../utils/motions";
 
 const OurAimSection = ({ data, aimCategory }) => {
   const { locale } = useRouter();
   const [heading, setHeading] = useState([]);
+  const isDesktop = useMediaQuery({ query: `(min-width: 1280px` });
 
   useEffect(() => {
     setHeading(data[`title_${locale}`].split(" "));
@@ -15,8 +18,16 @@ const OurAimSection = ({ data, aimCategory }) => {
 
   return (
     <section className="container my-[30px] lg:my-[100px]">
-      <div className="w-full  lg:flex lg:gap-[80px]">
-        <div className="lg:w-[40%]">
+      <motion.div
+        initial={isDesktop ? "hidden" : "show"}
+        whileInView="show"
+        viewport={{ once: true, amount: 0.25 }}
+        className="w-full  lg:flex lg:gap-[80px]"
+      >
+        <motion.div
+          variants={fadeIn("right", "tween", 0.3, 1)}
+          className="lg:w-[40%]"
+        >
           <div className="left">
             <div className="">
               <Logo type="dark" />
@@ -29,12 +40,13 @@ const OurAimSection = ({ data, aimCategory }) => {
               {data[`text_${locale}`]}
             </div>
           </div>
-        </div>
+        </motion.div>
 
         <div className="lg:w-[60%]">
           {aimCategory &&
             aimCategory.map((item, i) => (
-              <div
+              <motion.div
+                variants={fadeIn("up", "tween", 0.4*i, 1)}
                 key={i}
                 className="w-full grid grid-cols-[0.3fr,2fr,1fr] py-[15px] border-solid border-b border-[#D9D9D9] last:border-b-0
                 flex items-center"
@@ -54,10 +66,10 @@ const OurAimSection = ({ data, aimCategory }) => {
                     />
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };

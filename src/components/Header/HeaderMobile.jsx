@@ -51,7 +51,7 @@ const HeaderMobile = ({ navigation, subNavigation }) => {
           </div>
         </div>
       </div>
-      {openMenu && <DropdownMenu items={{ navigation, subNavigation }} />}
+      {openMenu && <DropdownMenu items={{ navigation, subNavigation }} open={openMenu}/>}
     </div>
   );
 };
