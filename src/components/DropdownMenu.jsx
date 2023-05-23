@@ -1,49 +1,98 @@
 import React from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 
 import Figure from "assets/icons/Figure";
 import { Accordeon, SocialBar } from "components";
-import { slideIn, staggerContainer } from "utils/motions";
+import { fadeIn, slideIn, staggerContainer } from "utils/motions";
 
 const DropdownMenu = ({ items, open }) => {
   const { t } = useTranslation("");
   const { locale } = useRouter();
   const { navigation, subNavigation } = items;
 
+  const variants = {
+    exit: {
+      opacity: 0,
+      height: 0,
+      transition: {
+        ease: "easeInOut",
+        duration: 1,
+        delay: 1.2
+      }
+    }
+  }
+
   return (
-    <motion.nav
-      variants={slideIn("down", "spring", 0.2, 1)}
-      initial="hidden"
-      className="w-full h-[calc(100vh_-_78px)] bg-white absolute top-[78px] z-50 border-solid border-t border-t-[#ECECEC]"
-    >
-      <ul className="w-full p-7 flex flex-col gap-y-8 ">
-        <li>
-          <Accordeon label={t("services")} items={subNavigation} />
-        </li>
+    <AnimatePresence>
+      <motion.nav
+        variants={variants}
+        initial={{ height: 0, opacity: 0 }}
+        animate={{ height: "100vh", opacity: 1 }}
+        transition={{ duration: .5 }}
+        exit="exit"
+        className="w-full h-[calc(100vh_-_78px)] bg-white absolute top-[78px] z-50 border-solid border-t border-t-[#ECECEC]"
+      >
+        <motion.ul
+         className="w-full p-7 flex flex-col gap-y-8 "
+          initial={{ y: 80, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: .8 }}
+          exit={{
+            opacity: 0,
+            y: 90,
+            transition: {
+              ease: "easeInOut",
+              delay: 1
+            }
+          }}
+         >
+          <li
+            
+          >
+            <Accordeon label={t("services")} items={subNavigation} />
+          </li>
 
-        {navigation &&
-          navigation.map((item, index) => (
-            <li className="font-arimo font-bold text-[20px]" key={index}>
-              <Link href={`/${locale}/${item.link}`} locale={locale}>
-                {item[`title_${locale}`]}
-              </Link>
-            </li>
-          ))}
+          {navigation &&
+            navigation.map((item, index) => (
+              <motion.li 
+              
+              className="font-arimo font-bold text-[20px]" 
+              key={index}
+              >
+                <Link href={`/${locale}/${item.link}`} locale={locale}>
+                  {item[`title_${locale}`]}
+                </Link>
+              </motion.li>
+            ))}
 
-        <li className="mt-[40px]">
-          <div className="font-arimo font-bold text-[18px] pb-[20px]">
-            {t("follow")}
-          </div>
+          <motion.li 
+          className="mt-[40px]"
+            initial={{ y: 80, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: .5 }}
+            exit={{
+              opacity: 0,
+              y: 90,
+              transition: {
+                ease: "easeInOut",
+                delay: .4
+              }
+            }}
+          >
+            <div className="font-arimo font-bold text-[18px] pb-[20px]">
+              {t("follow")}
+            </div>
 
-          <SocialBar color="#1B2330" size="40" />
-        </li>
-      </ul>
+            <SocialBar color="#1B2330" size="40" />
+          </motion.li>
+        </motion.ul>
 
-      <Figure className="absolute bottom-[20%] right-[-8%]" />
-    </motion.nav>
+        <Figure className="fixed top-[411%] right-[-8%]" />
+      </motion.nav>
+    </AnimatePresence>
   );
 };
 

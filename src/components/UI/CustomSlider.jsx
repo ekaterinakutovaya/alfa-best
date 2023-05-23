@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
+import { motion } from "framer-motion";
 
+import { fadeIn, staggerContainer } from "utils/motions";
 import Logo from "assets/icons/Logo";
 import { ControlButton } from "components";
 

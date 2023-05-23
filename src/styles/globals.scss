@@ -259,3 +259,9 @@ body {
     }
 }
 
+.text-from-back {
+    p {
+        max-width: 100px !important;
+        word-break: break-all !important;
+    }
+}

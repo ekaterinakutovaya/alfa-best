@@ -15,8 +15,10 @@ const nextConfig = {
   },
   basePath: "",
   async rewrites() {
-    return [{ source: "/", destination: "http://localhost:3000/ru", basePath: false }];
-  }
+    return [{ source: "/", destination: "http://localhost:3000/ru" }];
+  },
+  
+
 };
 
 module.exports = nextConfig

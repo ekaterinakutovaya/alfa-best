@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
@@ -9,19 +9,26 @@ const CooperationSection = ({ data }) => {
   const { locale } = useRouter();
   const { t } = useTranslation("");
   const { image } = data;
-  console.log(data.text);
+  const [imagePath, setImagePath] = useState("");
+
+  useEffect(() => {
+    let str = process.env.NEXT_APP_STORAGE_URL + image;
+    setImagePath(str.replace(/\\/g, "/"));
+  }, []);
   
 
   return (
     <section className="w-full mt-[79px] lg:mt-[158px] pt-[25px] lg:pt-[50px] lg:my-[80px]">
       <div className="container relative">
         <div className="w-full h-[220px] lg:h-[500px] overflow-hidden rounded-[15px] relative">
-          <Image
-            className="w-full h-full object-cover"
-            src={process.env.NEXT_APP_STORAGE_URL + image}
-            alt="services photo"
-            fill
-          />
+          {imagePath && (
+            <Image
+              className="w-full h-full object-cover"
+              src={imagePath}
+              alt="services photo"
+              fill
+            />
+          )}
 
           <div className="w-full h-full top-0 bottom-0 left-0 right-0 absolute flex flex-col justify-end p-[20px] lg:p-[40px] gradient">
             <div className="pb-[10px]">

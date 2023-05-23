@@ -9,7 +9,7 @@ import { navVariants } from "../../utils/motions";
 
 const Header = ({navigation, subNavigation}) => {  
   const router = useRouter();
-  const { locale } = useRouter();
+  const { locale, pathname } = useRouter();
   const [clientWindowHeight, setClientWindowHeight] = useState("");
   
 
@@ -35,7 +35,7 @@ const Header = ({navigation, subNavigation}) => {
   };
 
   useEffect(() => {
-    if (router.pathname == "/") {
+    if (pathname == "/") {
       setNavbarStyles({
         textColor: "text-white",
         bgColor: "bg-transparent",
@@ -59,7 +59,7 @@ const Header = ({navigation, subNavigation}) => {
   }, []);
 
   useEffect(() => { 
-    if (router.pathname === "/") {
+    if (pathname === "/") {
       if (clientWindowHeight > 0) {
         setNavbarStyles({
           textColor: "",
@@ -121,7 +121,7 @@ const Header = ({navigation, subNavigation}) => {
                   <div
                     key={index}
                     className={
-                      router.pathname == `/${item.link}` ? activeLink : idleLink
+                      pathname == `/${item.link}` ? activeLink : idleLink
                     }
                   >
                     <Link href={`/${locale}/${item.link}`} locale={locale}>
@@ -145,7 +145,7 @@ const Header = ({navigation, subNavigation}) => {
                 <div
                   key={index}
                   className={
-                    router.pathname == `/${item.link}`
+                    pathname == `/${item.link}`
                       ? subNavLinkActive
                       : subNavLinkIdle
                   }

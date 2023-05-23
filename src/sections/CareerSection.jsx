@@ -3,11 +3,9 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 
-import { images } from "../constants";
 import Logo from "assets/icons/Logo";
 
 const CareerSection = ({ career, vacancy, vacancyCategory }) => {
-  
   const { locale } = useRouter();
   const { t } = useTranslation("");
   const { image } = career;

@@ -8,19 +8,26 @@ export async function middleware(req) {
         req.nextUrl.pathname.includes('/api/') ||
         PUBLIC_FILE.test(req.nextUrl.pathname)
     ) {
-        return;
+        return NextResponse.next();
     }
 
-    if (req.nextUrl.locale === 'ru') {
+    // if (req.nextUrl.locale === 'default') {
         const locale = req.cookies.get('NEXT_LOCALE').value || 'ru';
 
         return NextResponse.redirect(
           new URL(
-            `${locale}${req.nextUrl.pathname}${req.nextUrl.search}`,
+            `/${locale}${req.nextUrl.pathname}${req.nextUrl.search}`,
             req.url
           )
         );
-    }
+    // }
 
+    // if (req.nextUrl === '/') {
+        
+    //     return NextResponse.rewrite('/ru');
+    // }
+
+
+    // return NextResponse.next();
     
 }
