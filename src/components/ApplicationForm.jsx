@@ -3,16 +3,18 @@ import { useForm } from "react-hook-form";
 import InputMask from "react-input-mask";
 import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
+import { motion } from "framer-motion";
+import { useMediaQuery } from "react-responsive";
 
 import { DropdownSelect } from "components";
-import { images } from "constants";
 import Button from "./UI/Button";
 import applicationImage from "../assets/images/application.png";
-
+import { fade, fadeIn, staggerContainer } from "../utils/motions";
 
 const ApplicationForm = ({ types }) => {
   const { locale } = useRouter();
   const { t } = useTranslation("");
+  const isDesktop = useMediaQuery({ query: `(min-width: 1280px` });
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [dropdownLabel, setDropdownLabel] = useState(0);
   const {
@@ -21,9 +23,6 @@ const ApplicationForm = ({ types }) => {
     watch,
     formState: { errors }
   } = useForm();
-
-  console.log(applicationImage);
-  
 
   const onSubmit = data => console.log(data);
 
@@ -34,10 +33,20 @@ const ApplicationForm = ({ types }) => {
 
   return (
     <section className="w-full my-[40px] lg:my-[80px]">
-      <div className="container w-full">
-        <div className="w-full bg-[#F2FCF9] rounded-[20px] py-[20px] lg:py-[40px] px-[15px] lg:px-[60px] flex flex-col lg:flex-row gap-y-[30px] items-center">
+      <motion.div
+        variants={staggerContainer}
+        initial={isDesktop ? "hidden" : "show"}
+        whileInView="show"
+        viewport={{ once: true, amount: 0.8 }}
+        className="container w-full"
+      >
+        <motion.div
+          variants={fade(0.2, 1)}
+          className="w-full bg-[#F2FCF9] rounded-[20px] py-[20px] lg:py-[40px] px-[15px] lg:px-[60px] flex flex-col lg:flex-row gap-y-[30px] items-center"
+        >
           {/* Form */}
-          <form
+          <motion.form
+            variants={fadeIn("right", "tween", 0.3, 1)}
             className="w-full flex flex-col gap-y-[15px]"
             onSubmit={handleSubmit(onSubmit)}
           >
@@ -113,10 +122,13 @@ const ApplicationForm = ({ types }) => {
                 {t("send")}
               </Button>
             </div>
-          </form>
+          </motion.form>
 
           {/* Picture */}
-          <div className="pb-[10px] lg:pb-[0] lg:pr-[60px]">
+          <motion.div
+            variants={fadeIn("left", "tween", 0.3, 1)}
+            className="pb-[10px] lg:pb-[0] lg:pr-[60px]"
+          >
             <div className="w-[285px] lg:w-[400px] text-center">
               <img
                 className="w-full h-full object-cover"
@@ -124,9 +136,9 @@ const ApplicationForm = ({ types }) => {
                 alt="application photo"
               />
             </div>
-          </div>
-        </div>
-      </div>
+          </motion.div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 };

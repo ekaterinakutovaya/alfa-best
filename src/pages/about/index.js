@@ -12,7 +12,8 @@ import {
   WithOurPartners,
   Gallery,
   AboutHistory,
-  HappyPartners
+  HappyPartners,
+  History
 } from "sections";
 import { getData } from "../api/data";
 
@@ -23,7 +24,8 @@ const About = ({
   mission,
   team,
   iconGallery,
-  photoGallery
+  photoGallery,
+  history
 }) => {
   const { t } = useTranslation("");
 
@@ -42,7 +44,7 @@ const About = ({
       />
       <Partners />
       <Gallery data={photoGallery.datas} />
-      <AboutHistory />
+      <History data={history.datas} />
     </Layout>
   );
 };
@@ -57,6 +59,7 @@ export const getServerSideProps = async ({ locale }) => {
   const team = await getData("team", locale);
   const iconGallery = await getData("gallery", locale);
   const photoGallery = await getData("photo_gallery", locale);
+  const history = await getData("history", locale);
 
   return {
     props: {
@@ -67,6 +70,7 @@ export const getServerSideProps = async ({ locale }) => {
       team,
       iconGallery,
       photoGallery,
+      history,
       ...(await serverSideTranslations(locale, ["common"]))
     }
   };

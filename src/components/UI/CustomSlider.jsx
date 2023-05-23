@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import { useMediaQuery } from "react-responsive";
 import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
 import { motion } from "framer-motion";
@@ -11,6 +12,7 @@ import { ControlButton } from "components";
 const CustomSlider = ({ items }) => {
   const { locale } = useRouter();
   const { t } = useTranslation("");
+  const isDesktop = useMediaQuery({ query: `(min-width: 1280px` });
   const [currentPage, setCurrentPage] = useState(items[items.length - 1].year);
   const [yearRange, setYearRange] = useState(items.slice(-5));
   const [prevButtonDisabled, setPrevButtonDisabled] = useState(false);
@@ -85,9 +87,18 @@ const CustomSlider = ({ items }) => {
   };
 
   return (
-    <div className="w-full my-[50px]">
+    <motion.div
+      variants={staggerContainer}
+      initial={isDesktop ? "hidden" : "show"}
+      whileInView="show"
+      viewport={{ once: true, amount: 0.8 }}
+      className="w-full my-[50px]"
+    >
       {/* Header */}
-      <div className="flex justify-between items-end">
+      <motion.div
+        className="flex justify-between items-end"
+        variants={fadeIn("down", "tween", 0.2, 1)}
+      >
         {/* Title */}
         <div>
           <div className="">
@@ -111,12 +122,15 @@ const CustomSlider = ({ items }) => {
             disabled={nextButtonDisabled}
           />
         </div>
-      </div>
+      </motion.div>
 
       {/* Main */}
       <div className="lg:py-[30px] select-none">
         <div className="lg:flex items-start gap-x-[120px]">
-          <div className="w-full h-[210px] mb-[20px] lg:mb-0 lg:w-[500px] lg:min-w-[500px] lg:h-[320px] overflow-hidden rounded-[20px]">
+          <motion.div
+            variants={fadeIn("left", "tween", 0.2, 1)}
+            className="w-full h-[210px] mb-[20px] lg:mb-0 lg:w-[500px] lg:min-w-[500px] lg:h-[320px] overflow-hidden rounded-[20px]"
+          >
             <Image
               className="w-full h-full object-cover"
               src={process.env.NEXT_APP_STORAGE_URL + image}
@@ -132,9 +146,9 @@ const CustomSlider = ({ items }) => {
               objectFit="cover"
               alt="about company picture"
             /> */}
-          </div>
+          </motion.div>
 
-          <div>
+          <motion.div variants={fadeIn("right", "tween", 0.2, 1)}>
             <div className="flex flex-col gap-y-[20px]">
               <span className="text-[24px] lg:text-[45px] font-bold">
                 {year}
@@ -175,10 +189,10 @@ const CustomSlider = ({ items }) => {
                   })}
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

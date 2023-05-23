@@ -4,7 +4,7 @@ const HappyPartners = ({title, text}) => {
 
 
   return (
-    <section className="w-screen h-[350px] lg:h-[500px] my-[50px] relative bg-[url('../assets/images/image003.jpg')] lg:bg-fixed bg-top bg-no-repeat bg-cover ">
+    <section className="w-screen h-[350px] lg:h-[500px] my-[50px] relative bg-[url('../assets/images/image003.jpg')] lg:bg-fixed bg-top bg-no-repeat bg-cover overflow-hidden">
       <div className="w-screen h-full backdrop-brightness-50 py-[30px] sm:py-[30px]">
         <div className="container lg:py-[30px] ">
           <div className="w-[70%] h-full">

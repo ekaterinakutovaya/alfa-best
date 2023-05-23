@@ -1,14 +1,20 @@
 import React from "react";
 import { useRouter } from "next/router";
+import { motion } from "framer-motion";
+import { useMediaQuery } from "react-responsive";
 
-import { images } from "constants";
+import { fadeIn } from "utils/motions";
 
 const TeamCard = ({ item }) => {
   const { locale } = useRouter();
   const { full_name, photo } = item;
+  
 
   return (
-    <div className="w-[200px] lg:w-[250px] select-none">
+    <motion.div 
+    className="w-[200px] lg:w-[250px] select-none"
+      variants={fadeIn('right', 'spring', item.id * 0.2, 0.75)}
+    >
       <div className="w-full h-[270px] lg:h-[340px] overflow-hidden mb-[15px] rounded-[15px]">
         <img
           className="w-full h-full object-cover"
@@ -24,7 +30,7 @@ const TeamCard = ({ item }) => {
       <div className="text-grey text-[14px] text-left">
         {item[`position_${locale}`]}
       </div>
-    </div>
+    </motion.div>
   );
 };
 

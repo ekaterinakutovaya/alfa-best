@@ -5,17 +5,18 @@ import "swiper/css/navigation";
 import { Navigation } from "swiper";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
+import { motion } from "framer-motion";
+import { useMediaQuery } from "react-responsive";
 
-import { images } from "constants";
-import styles from "styles/styles";
 import Logo from "assets/icons/Logo";
 import { TeamCard, ControlButton } from "components";
+import { fade, fadeIn, staggerContainer } from "../utils/motions";
 
-const OurTeam = ({data}) => {
+const OurTeam = ({ data }) => {
   const { locale } = useRouter();
   const { t } = useTranslation("");
+  const isDesktop = useMediaQuery({ query: `(min-width: 1280px` });
 
-  
   const breakpoints = {
     375: {
       slidesPerView: 2,
@@ -36,10 +37,19 @@ const OurTeam = ({data}) => {
   const nextHandler = () => {};
 
   return (
-    <section className="w-full my-[50px] lg:my-[100px]">
+    <motion.section
+      variants={staggerContainer}
+      initial={isDesktop ? "hidden" : "show"}
+      whileInView="show"
+      viewport={{ once: false, amount: 0.5 }}
+      className="w-full my-[50px] lg:my-[100px]"
+    >
       <div className="mission__inner container">
         {/* Head */}
-        <div className="flex justify-between items-end mb-[30px] ">
+        <motion.div
+          variants={fadeIn("down", "tween", 0.2, 1)}
+          className="flex justify-between items-end mb-[30px] "
+        >
           <div>
             <div className="">
               <Logo type="dark" />
@@ -54,10 +64,15 @@ const OurTeam = ({data}) => {
             <ControlButton type="prev" onClick={prevHandler} disabled={false} />
             <ControlButton type="next" onClick={nextHandler} disabled={false} />
           </div>
-        </div>
+        </motion.div>
 
         {/* Slider */}
-        <div>
+        <motion.div
+          variants={staggerContainer}
+          initial={isDesktop ? "hidden" : "show"}
+          whileInView="show"
+          viewport={{ once: false, amount: 0.25 }}
+        >
           <Swiper
             slidesPerView={5}
             spaceBetween={120}
@@ -78,9 +93,9 @@ const OurTeam = ({data}) => {
                 </SwiperSlide>
               ))}
           </Swiper>
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

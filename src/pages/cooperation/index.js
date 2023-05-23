@@ -9,11 +9,14 @@ import { getData } from "../api/data";
 
 const Cooperation = ({ homeMenu, homeService, cooperation, advantage }) => {
 
+  const advantages = advantage.datas.filter(
+    item => item.services_category_id === 1
+  );
+
   return (
     <Layout homeMenu={homeMenu.datas} homeService={homeService.datas}>
       <CooperationSection data={cooperation.datas[0]} />
-      {/* <Advantages data={advantages} /> */}
-
+      <Advantages data={advantages} />
       <ApplicationForm types={homeService.datas} />
     </Layout>
   );

@@ -1,11 +1,18 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import { useTranslation } from "next-i18next";
 import Image from "next/image";
+import { motion } from "framer-motion";
+import { useMediaQuery } from "react-responsive";
 
 import Logo from "assets/icons/Logo";
-import { ServicesDescription, WithOurPartners } from "sections";
-import Advantages from "sections/Advantages";
-import Gallery from "sections/Gallery";
+import {
+  Gallery,
+  Advantages,
+  ServicesDescription,
+  HappyPartners
+} from "sections";
+import { fade, fadeIn, staggerContainer } from "utils/motions";
 
 const ServicesPageWrapper = ({
   title,
@@ -16,24 +23,26 @@ const ServicesPageWrapper = ({
   gallery
 }) => {
   const { locale, pathname } = useRouter();
+  const { t } = useTranslation("");
   const [imagePath, setImagePath] = useState("");
   const [formattedText, setFormattedText] = useState("");
-
-  // console.log(pathname);
-  
+  const isDesktop = useMediaQuery({ query: `(min-width: 1280px` });
 
   useEffect(() => {
-    if (text && locale === 'uz' && pathname === "/engineering" && typeof window !== "undefined") {
+    if (
+      text &&
+      locale === "uz" &&
+      pathname === "/engineering" &&
+      typeof window !== "undefined"
+    ) {
       const data = document.createElement("div");
       data.innerHTML = text;
-      let x = data.querySelector("#tw-target-text");
-      console.log(typeof x.innerText);
-      setFormattedText(x.innerText);
+      let targetText = data.querySelector("#tw-target-text");
+      setFormattedText(targetText.innerText);
+    } else {
+      setFormattedText(text.slice(3, -4));
     }
-  }, [text])
-
-  
-  
+  }, [text]);
 
   useEffect(() => {
     let str = process.env.NEXT_APP_STORAGE_URL + image;
@@ -41,64 +50,51 @@ const ServicesPageWrapper = ({
   }, []);
 
   return (
-    <section className="w-full mt-[79px] lg:mt-[158px] pt-[25px] lg:py-[50px]">
+    <motion.section
+      variants={staggerContainer}
+      initial={isDesktop ? "hidden" : "show"}
+      whileInView="show"
+      viewport={{ once: true, amount: 0.25 }}
+      className="w-full mt-[79px] lg:mt-[158px] pt-[25px] lg:py-[50px]"
+    >
       <div className="container relative">
-        <div className="w-full h-[220px] lg:h-[500px] overflow-hidden rounded-[15px] relative">
-          {imagePath && (
-            <Image
-              className="w-full h-full object-cover"
-              src={imagePath}
-              alt="services photo"
-              fill
-            />
-          )}
+        <motion.div
+          variants={fade(0.2, 1)}
+          className="w-full h-[220px] lg:h-[500px] overflow-hidden rounded-[15px] relative"
+        >
+          <div className="w-full h-full">
+            {imagePath && (
+              <Image
+                className="w-full h-full object-cover"
+                src={imagePath}
+                alt="services photo"
+                fill
+              />
+            )}
+          </div>
 
           <div className="w-full h-full top-0 bottom-0 left-0 right-0 absolute flex flex-col justify-end p-[20px] lg:p-[40px] gradient">
-            <div className="pb-[10px]">
+            <motion.div
+              variants={fadeIn("right", "tween", 0.3, 1)}
+              className="pb-[10px]"
+            >
               <Logo type="light" />
-            </div>
+            </motion.div>
 
-            <h2 className="text-[18px] lg:text-[36px] text-white font-bold">
+            <motion.h2
+              variants={fadeIn("right", "tween", 0.4, 1)}
+              className="text-[18px] lg:text-[34px] text-white font-bold"
+            >
               {title}
-            </h2>
+            </motion.h2>
           </div>
-        </div>
+        </motion.div>
 
-        {locale == "ru" ? (
-          <div
-            className="pt-[20px] text-[17px]"
-            dangerouslySetInnerHTML={{
-              __html: text
-            }}
-          ></div>
-        ) : (
-          <div className="pt-[20px] text-[17px]">
-            <p>
-              Biz Buyurtmachining turar-joy va ma'muriy binolarida
-              foydalaniladigan binolar, inshootlar, muhandislik tizimlari, maishiy
-              texnika, oshxona, kir yuvish va boshqa jihozlarga texnik xizmat
-              ko'rsatish va ta'mirlash bo'yicha ishlarni bajaramiz va xizmatlar
-              ko'rsatamiz.
-            </p>
-          </div>
-        )}
-
-        {/* <div className="w-[1440px]">
-          <div
-            className="pt-[20px] text-[17px] break-all whitespace-pre max-w-full overflow-hidden text-from-back"
-            // dangerouslySetInnerHTML={{
-            //   __html: text
-            // }}
-          >
-            <p>
-              Biz Buyurtmachining turar-joy va ma'muriy binolarida
-              foydalaniladigan binolar, inshootlar, muhandislik tizimlari,
-              maishiy texnika, oshxona, kir yuvish va boshqa jihozlarga texnik
-              xizmat ko'rsatish va ta'mirlash bo'yicha ishlarni bajaramiz va
-              xizmatlar ko'rsatamiz.
-            </p>
-          </div>
-        </div> */}
+        <motion.div
+          variants={fadeIn("up", "tween", 0.5, 1)}
+        className="pt-[20px] text-[17px]">
+          <p>{formattedText}</p>
+        </motion.div>
 
         {servicesDescription.length ? (
           <div className="lg:mt-[60px]">
@@ -109,14 +105,17 @@ const ServicesPageWrapper = ({
         )}
       </div>
 
-      <WithOurPartners />
+      <HappyPartners
+        title={t("with_our_partners_title")}
+        text={t("with_our_partners_text")}
+      />
 
       <div className="lg:my-[30px]">
         <Advantages data={advantages} />
       </div>
 
       <Gallery data={gallery} />
-    </section>
+    </motion.section>
   );
 };
 

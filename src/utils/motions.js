@@ -106,6 +106,20 @@ export const fadeIn = (direction, type, delay, duration) => ({
     },
 });
 
+export const fade = (delay, duration) => ({
+    hidden: {
+        opacity: 0,
+    },
+    show: {
+        opacity: 1,
+        transition: {
+            delay,
+            duration,
+            ease: 'easeOut',
+        },
+    },
+});
+
 
 export const zoomIn = (delay, duration) => ({
     hidden: {

@@ -62,7 +62,7 @@ const HeroSlider = ({ items }) => {
                 variants={fadeIn("right", "tween", 0.2, 1)}
                 initial="hidden"
                 whileInView="show"
-                viewport={{ once: false, amount: 0.25 }}
+                viewport={{ once: true, amount: 0.25 }}
               >
                 <div className="w-[50%] h-[162px] pb-5 flex items-center">
                   <h1 className="w-full text-[36px] lg:text-[45px] text-white font-bold break-words">

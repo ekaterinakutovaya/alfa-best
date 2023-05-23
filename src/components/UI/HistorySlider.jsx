@@ -3,11 +3,11 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper";
+import { motion } from "framer-motion";
 
-import { images } from "constants";
-import styles from "styles/styles";
 import Logo from "assets/icons/Logo";
 import { ControlButton } from "components";
+import { fadeIn, staggerContainer } from "utils/motions";
 
 const HistorySlider = ({ items }) => {
   const { year, image, text } = items[0];
@@ -22,8 +22,15 @@ const HistorySlider = ({ items }) => {
   };
 
   return (
-    <>
-      <div className="w-full my-[50px]">
+    <motion.div
+      variants={staggerContainer}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.25 }}
+    >
+      <motion.div
+        variants={fadeIn("down", "tween", 0.2, 1)}
+      className="w-full my-[50px]">
         {/* Header */}
         <div className="flex justify-between items-end">
           {/* Title */}
@@ -32,7 +39,9 @@ const HistorySlider = ({ items }) => {
               <Logo type="dark" />
             </div>
 
-            <h2 className={`${styles.heading2} py-[20px] lgpy-[10px]`}>
+            <h2
+              className="text-[20px] lg:text-[34px] font-bold py-[20px] lgpy-[10px]"
+            >
               История
             </h2>
           </div>
@@ -42,13 +51,13 @@ const HistorySlider = ({ items }) => {
             <ControlButton type="next" />
           </div>
         </div>
-      </div>
+      </motion.div>
 
       <Swiper
         modules={[Pagination]}
         pagination={pagination}
         // className="lg:py-[30px] border-dotted border border-red-600"
-        className='swiper'
+        className="swiper"
       >
         {items &&
           items.map((item, index) => (
@@ -79,7 +88,7 @@ const HistorySlider = ({ items }) => {
             </SwiperSlide>
           ))}
       </Swiper>
-    </>
+    </motion.div>
   );
 };
 

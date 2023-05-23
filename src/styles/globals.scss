@@ -38,6 +38,7 @@ body {
     color: var(--black);
     background-color: #fff;
     box-sizing: border-box;
+    overflow-x: hidden;
 
     @media screen and (min-width: 768px) {
         display: flex;
