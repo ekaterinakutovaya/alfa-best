@@ -1,10 +1,3 @@
-export default async function handler(req, res) {
-  // const jsonData = await getData();
-  // res.status(200).json(jsonData);
-
-
-}
-
 export async function getData(endpoint, locale) {
   try {
     const response = await fetch(`${process.env.NEXT_APP_API_URL}${endpoint}`, {
@@ -21,3 +14,41 @@ export async function getData(endpoint, locale) {
     return {}
   }
 }
+
+
+export async function postCustomerService(data) {
+  try {
+    const res = await fetch(`${process.env.NEXT_APP_API_URL}service_consumer`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "Accept-Language": "ru"
+      },
+      body: JSON.stringify(data)
+    })
+      return res;
+  } catch (error) {
+return error
+  }
+}
+
+export async function postCustomerContacts(data) {
+  try {
+    const res = await fetch(`${process.env.NEXT_APP_API_URL}contact`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "Accept-Language": "ru"
+      },
+      body: JSON.stringify(data)
+    })
+     return res;
+
+  } catch (error) {
+    return error
+  }
+}
+
+

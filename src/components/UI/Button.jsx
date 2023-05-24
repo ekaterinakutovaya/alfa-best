@@ -11,7 +11,8 @@ const Button = ({ children, type }) => {
 
     case "square":
       return (
-        <button className="min-w-[164px] px-[1.875rem] py-[0.875rem] bg-green rounded-[15px] text-white font-semibold ease-in-out duration-300 hover:shadow-lg raise active:shadow-lg">
+        <button className="min-w-[164px] px-[1.875rem] py-[0.875rem] bg-green rounded-[15px] text-white font-semibold ease-in-out duration-300 hover:shadow-lg raise active:shadow-lg flex item-center justify-center"
+        >
           {children}
         </button>
       );

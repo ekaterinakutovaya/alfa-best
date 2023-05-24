@@ -17,7 +17,7 @@ const nextConfig = {
   async rewrites() {
     return [{ source: "/", destination: "http://localhost:3000/ru" }];
   },
-  
+ 
 
 };
 

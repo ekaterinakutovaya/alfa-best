@@ -28,6 +28,7 @@ import Popup from "./UI/Popup";
 import HeroSlider from "./UI/HeroSlider";
 import HeroSliderMobile from "./UI/HeroSliderMobile";
 import PagePreloader from "./UI/PagePreloader";
+import Spinner from "./UI/Spinner";
 
 
 export {
@@ -57,7 +58,8 @@ export {
   HeroSlider,
   HeroSliderMobile,
   PagePreloader,
-  TypingText
+  TypingText,
+  Spinner
 };
 
 

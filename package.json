@@ -12,6 +12,7 @@
     "@bradgarropy/use-countdown": "^1.5.2",
     "@material-tailwind/react": "^1.4.2",
     "autoprefixer": "10.4.14",
+    "axios": "^1.4.0",
     "framer-motion": "^10.12.5",
     "i18next": "^22.4.15",
     "i18next-chained-backend": "^4.2.0",

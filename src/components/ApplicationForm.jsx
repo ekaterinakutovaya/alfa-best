@@ -6,10 +6,11 @@ import { useRouter } from "next/router";
 import { motion } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
 
-import { DropdownSelect } from "components";
+import { DropdownSelect, Popup, QueryConfirmation, Spinner } from "components";
 import Button from "./UI/Button";
 import applicationImage from "../assets/images/application.png";
 import { fade, fadeIn, staggerContainer } from "../utils/motions";
+import { postCustomerService } from "../pages/api/data";
 
 const ApplicationForm = ({ types }) => {
   const { locale } = useRouter();
@@ -17,6 +18,8 @@ const ApplicationForm = ({ types }) => {
   const isDesktop = useMediaQuery({ query: `(min-width: 1280px` });
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [dropdownLabel, setDropdownLabel] = useState(0);
+  const [popupOpen, setPopupOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
   const {
     register,
     handleSubmit,
@@ -24,7 +27,22 @@ const ApplicationForm = ({ types }) => {
     formState: { errors }
   } = useForm();
 
-  const onSubmit = data => console.log(data);
+  const onSubmit = data => {
+    setLoading(true);
+    const postData = {
+      service_id: dropdownLabel,
+      full_name: data.username,
+      phone: data.userphone
+    };
+    postCustomerService(postData);
+
+    postCustomerService(postData).then(res => {
+      setLoading(false);
+      if (res.status === 200) {
+        setPopupOpen(true);
+      }
+    });
+  };
 
   const selectType = e => {
     setDropdownLabel(e.currentTarget.dataset.index);
@@ -119,7 +137,14 @@ const ApplicationForm = ({ types }) => {
 
             <div className="mt-[10px]">
               <Button type="square" onClick={onSubmit}>
-                {t("send")}
+                 {loading ? (
+                <>
+                  <Spinner color={"text-white"} />
+                  {t("sending")}
+                </>
+              ) : (
+                <>{t("send")}</>
+              )}
               </Button>
             </div>
           </motion.form>
@@ -139,6 +164,14 @@ const ApplicationForm = ({ types }) => {
           </motion.div>
         </motion.div>
       </motion.div>
+
+      {popupOpen ? (
+        <Popup>
+          <QueryConfirmation setPopupOpen={setPopupOpen} />
+        </Popup>
+      ) : (
+        ""
+      )}
     </section>
   );
 };

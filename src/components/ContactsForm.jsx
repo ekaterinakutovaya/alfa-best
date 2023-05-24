@@ -1,34 +1,48 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import InputMask from "react-input-mask";
 import { useTranslation } from "next-i18next";
 
 import Button from "./UI/Button";
-import { Popup, QueryConfirmation } from "components";
-
+import { Popup, QueryConfirmation, Spinner } from "components";
+import { postCustomerContacts } from "../pages/api/data";
 
 const ContactsForm = () => {
   const [popupOpen, setPopupOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
   const { t } = useTranslation("");
-  
+
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors }
   } = useForm();
-  const onSubmit = data => console.log(data);
+
+  const onSubmit = data => {
+    setLoading(true);
+    const postData = {
+      full_name: data.username,
+      phone: data.userphone
+    };
+
+    postCustomerContacts(postData).then(res => {
+      setLoading(false);
+      if (res.status === 200) {
+        setPopupOpen(true);
+      }
+    });
+  };
 
   useEffect(() => {
     if (popupOpen) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     }
 
     return () => {
       document.body.style.overflow = "unset";
-    }
-  }, [popupOpen])
-
+    };
+  }, [popupOpen]);
 
   return (
     <section className="w-full my-[30px]">
@@ -89,7 +103,14 @@ const ContactsForm = () => {
 
           <div>
             <Button type="square">
-              {t("send")}
+              {loading ? (
+                <>
+                  <Spinner color={"text-white"} />
+                  {t("sending")}
+                </>
+              ) : (
+                <>{t("send")}</>
+              )}
             </Button>
           </div>
         </form>
@@ -97,7 +118,7 @@ const ContactsForm = () => {
 
       {popupOpen ? (
         <Popup>
-          <QueryConfirmation />
+          <QueryConfirmation setPopupOpen={setPopupOpen} />
         </Popup>
       ) : (
         ""
