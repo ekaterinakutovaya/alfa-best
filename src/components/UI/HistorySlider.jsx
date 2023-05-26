@@ -89,9 +89,11 @@ const HistorySlider = ({ items }) => {
   return (
     <motion.div
       variants={staggerContainer}
-      initial={isDesktop ? "hidden" : "show"}
+      initial="hidden"
       whileInView="show"
-      viewport={{ once: true, amount: 0.8 }}
+      viewport={
+        isDesktop ? { once: true, amount: 0.8 } : { once: true, amount: 0.2 }
+      }
       className="w-full my-[50px]"
     >
       {/* Header */}

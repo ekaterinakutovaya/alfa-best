@@ -53,20 +53,20 @@ const HeroSliderMobile = ({ items }) => {
             <motion.div
               className="w-full p-4 sm:px-[60px]"
               variants={staggerContainer}
-              initial="hidden"
+              initial="show"
               whileInView="show"
               viewport={{ once: true, amount: 0.25 }}
             >
               <div className="w-[239px] h-[66px] pb-5 flex items-center">
                 <motion.h1 
-                  variants={fadeIn("down", "tween", 0.3, 0.8)}
+                  variants={fadeIn("right", "tween", 0.3, 0.5)}
                 className="w-full text-[18px] font-bold break-words">
                   {item[`text_${locale}`]}
                 </motion.h1>
               </div>
 
               <motion.div
-                variants={fadeIn("down", "tween", 0.2, 1)}
+                variants={fadeIn("right", "tween", 0.2, 0.5)}
               >
                 <Link
                   href={`/${locale}/${item.home_service_link}`}

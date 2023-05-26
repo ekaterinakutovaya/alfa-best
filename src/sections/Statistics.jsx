@@ -15,7 +15,7 @@ const Statistics = () => {
     <section className="container">
       <motion.div 
         variants={staggerContainer}
-        initial={isDesktop ? 'hidden' : 'show'}
+        initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.25 }}
       className="statistics__inner w-full my-[50px] flex flex-col gap-[30px] lg:flex-row lg:justify-between"

@@ -19,7 +19,7 @@ const OurAimSection = ({ data, aimCategory }) => {
   return (
     <section className="container my-[30px] lg:my-[100px]">
       <motion.div
-        initial={isDesktop ? "hidden" : "show"}
+        initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.25 }}
         className="w-full  lg:flex lg:gap-[80px]"
@@ -46,7 +46,7 @@ const OurAimSection = ({ data, aimCategory }) => {
           {aimCategory &&
             aimCategory.map((item, i) => (
               <motion.div
-                variants={fadeIn("up", "tween", 0.4*i, 1)}
+                variants={fadeIn("up", "tween", 0.7*i, 1)}
                 key={i}
                 className="w-full grid grid-cols-[0.3fr,2fr,1fr] py-[15px] border-solid border-b border-[#D9D9D9] last:border-b-0
                 flex items-center"

@@ -15,7 +15,7 @@ const CompanyProfile = ({ data = {} }) => {
   return (
     <motion.section
       variants={staggerContainer}
-      initial={isDesktop ? "hidden" : "show"}
+      initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.25 }}
       className="w-full mt-[79px] lg:mt-[158px] pt-[25px] lg:pt-[50px] lg:my-[50px]"

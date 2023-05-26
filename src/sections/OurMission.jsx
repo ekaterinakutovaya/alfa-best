@@ -37,25 +37,27 @@ const OurMission = ({ data, homeService, icons }) => {
   }, [locale]);
 
   return (
-    <section
-      className="w-full my-[50px] lg:my-[80px] overflow-hidden lg:overflow-visible"
-    >
+    <section className="w-full my-[50px] lg:my-[80px] overflow-hidden lg:overflow-visible">
       <div className="mission__inner container">
         <motion.div
           variants={staggerContainer}
-          initial={isDesktop ? "hidden" : "show"}
+          initial="hidden"
           whileInView="show"
-          viewport={{ once: true, amount: 0.5 }}
+          viewport={
+            isDesktop
+              ? { once: true, amount: 0.5 }
+              : { once: true, amount: 0.6 }
+          }
         >
           <div className="lg:w-full lg:flex">
             <div className="lg:w-[60%]">
               {/* Title */}
-  
+
               <div>
                 <motion.div variants={fade(0.2, 1)}>
                   <Logo type="dark" />
                 </motion.div>
-  
+
                 <h2>
                   {/* {heading[0]} <span className="text-green">{heading[1]}</span> */}
                   <TypingText
@@ -64,7 +66,7 @@ const OurMission = ({ data, homeService, icons }) => {
                   />
                 </h2>
               </div>
-  
+
               <motion.div
                 variants={fadeIn("up", "tween", 0.3, 1)}
                 className="mission__text"
@@ -73,7 +75,7 @@ const OurMission = ({ data, homeService, icons }) => {
                 }}
               ></motion.div>
             </div>
-  
+
             <div className="lg:w-[40%] relative">
               <motion.div
                 variants={fadeIn("left", "tween", 0.3, 1)}
@@ -84,7 +86,7 @@ const OurMission = ({ data, homeService, icons }) => {
                   {moto.slice(1).join(" ")}
                 </h2>
               </motion.div>
-  
+
               <motion.div variants={fadeIn("left", "tween", 0.4, 1)}>
                 <Figure className="w-[141px] lg:w-[196px] absolute bottom-[-50%] lg:bottom-0 right-[-20%]" />
               </motion.div>
@@ -95,41 +97,39 @@ const OurMission = ({ data, homeService, icons }) => {
         <motion.div
           className="w-full lg:grid lg:grid-cols-2 lg:gap-[60px] lg:my-[80px]"
           variants={staggerContainer}
-          initial={isDesktop ? "hidden" : "show"}
+          initial="hidden"
           whileInView="show"
-          viewport={{ once: true, amount: 0.5 }}
-
+          viewport={
+            isDesktop
+              ? { once: true, amount: 0.5 }
+              : { once: true, amount: 0.3 }
+          }
         >
-            {homeService &&
-              homeService.map((item, i) => {
-                if (i & 1) {
-                  
-                  return (
-                    <motion.div
-                      variants={fadeIn("left", "tween", 0.4*i, 0.6)}
-                      className="w-full mb-[20px] lg:mb-0"
-                      key={i}
-                    >
-                      <ServicesOverviewCard item={item} icon={servicesIcons[i]} />
-                    </motion.div>
-                  );
-                } else {
-                  
-                  return (
-                    <motion.div
-                      variants={fadeIn("right", "tween", 0.4*i, 0.6)}
-                      className="w-full mb-[20px] lg:mb-0"
-                      key={i}
-                    >
-                      <ServicesOverviewCard item={item} icon={servicesIcons[i]} />
-                    </motion.div>
-                  );
-                }
-              })}
-          
+          {homeService &&
+            homeService.map((item, i) => {
+              if (i & 1) {
+                return (
+                  <motion.div
+                    variants={fadeIn("left", "tween", 0.4 * i, 0.6)}
+                    className="w-full mb-[20px] lg:mb-0"
+                    key={i}
+                  >
+                    <ServicesOverviewCard item={item} icon={servicesIcons[i]} />
+                  </motion.div>
+                );
+              } else {
+                return (
+                  <motion.div
+                    variants={fadeIn("right", "tween", 0.4 * i, 0.6)}
+                    className="w-full mb-[20px] lg:mb-0"
+                    key={i}
+                  >
+                    <ServicesOverviewCard item={item} icon={servicesIcons[i]} />
+                  </motion.div>
+                );
+              }
+            })}
         </motion.div>
-
-
       </div>
     </section>
   );
