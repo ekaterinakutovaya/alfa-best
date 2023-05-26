@@ -66,12 +66,12 @@ const ApplicationForm = ({ types }) => {
       >
         <motion.div
           variants={fade(0.2, 1)}
-          className="w-full bg-[#F2FCF9] rounded-[20px] py-[20px] sm:py-[40px] px-[15px] lg:px-[60px] flex flex-col lg:flex-row gap-y-[30px] items-center justify-between"
+          className="w-full bg-[#F2FCF9] rounded-[20px] py-[20px] sm:py-[40px] px-[15px] sm:px-[60px] flex flex-col lg:flex-row gap-y-[30px] items-center justify-between"
         >
           {/* Form */}
           <motion.form
             variants={fadeIn("right", "tween", 0.3, 1)}
-            className=""
+            className="w-full"
             onSubmit={handleSubmit(onSubmit)}
           >
             <div className="w-full h-[400px] my-0 mx-auto flex flex-col gap-y-[15px]">
