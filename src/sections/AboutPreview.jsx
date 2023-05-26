@@ -1,20 +1,17 @@
-import React, { useRef, useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { motion } from "framer-motion";
 import { useTranslation } from "next-i18next";
-import { useMediaQuery } from "react-responsive";
 
 import Logo from "assets/icons/Logo";
 import { Button, TypingText } from "components";
-import { fade, fadeIn, staggerContainer } from "../utils/motions";
+import { fadeIn, staggerContainer } from "utils/motions";
 import aboutCompany from "assets/images/about_company.png";
 
 const AboutPreview = ({ data }) => {
   const { locale } = useRouter();
   const { t } = useTranslation("");
-  // const isDesktop = useMediaQuery({ query: `(min-width: 1280px` });
 
   return (
     <>
@@ -82,17 +79,11 @@ const AboutPreview = ({ data }) => {
             />
           </div>
 
-          <motion.div
-            className="lg:flex lg:items-center sm:my-[30px]"
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.3 }}
-          >
+          <div className="lg:flex lg:items-center sm:my-[30px]">
             <div>
-              <motion.div variants={fade(0.2, 1)}>
+              <div>
                 <Logo type="dark" />
-              </motion.div>
+              </div>
 
               <h2>
                 <TypingText
@@ -101,16 +92,12 @@ const AboutPreview = ({ data }) => {
                 />
               </h2>
 
-              <motion.div
-                variants={fadeIn("up", "tween", 0.4, 1)}
-              >
-                <div
-                  className="content flex flex-col gap-[15px] lg:max-w-[689px] pb-[30px]"
-                  dangerouslySetInnerHTML={{
-                    __html: data[`home_text_${locale}`]
-                  }}
-                ></div>
-              </motion.div>
+              <div
+                className="content flex flex-col gap-[15px] lg:max-w-[689px] pb-[30px]"
+                dangerouslySetInnerHTML={{
+                  __html: data[`home_text_${locale}`]
+                }}
+              ></div>
 
               <div variants={fadeIn("up", "tween", 0.6, 1)}>
                 <Link href={`/${locale}/about`} locale={locale}>
@@ -118,7 +105,7 @@ const AboutPreview = ({ data }) => {
                 </Link>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
     </>

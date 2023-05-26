@@ -5,9 +5,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useTranslation } from "next-i18next";
-import { motion } from "framer-motion";
 
-import { fadeIn, staggerContainer } from "utils/motions";
 import { Button } from "components";
 
 const HeroSliderMobile = ({ items }) => {
@@ -50,32 +48,20 @@ const HeroSliderMobile = ({ items }) => {
               />
             </div>
 
-            <motion.div
-              className="w-full p-4 sm:px-[60px]"
-              variants={staggerContainer}
-              initial="show"
-              whileInView="show"
-              viewport={{ once: true, amount: 0.25 }}
-            >
+            <div className="w-full p-4 sm:px-[60px]">
               <div className="w-[239px] h-[66px] pb-5 flex items-center">
-                <motion.h1 
-                  variants={fadeIn("right", "tween", 0.3, 0.5)}
-                className="w-full text-[18px] font-bold break-words">
+                <h1 className="w-full text-[18px] font-bold break-words">
                   {item[`text_${locale}`]}
-                </motion.h1>
+                </h1>
               </div>
 
-              <motion.div
-                variants={fadeIn("right", "tween", 0.2, 0.5)}
+              <Link
+                href={`/${locale}/${item.home_service_link}`}
+                locale={locale}
               >
-                <Link
-                  href={`/${locale}/${item.home_service_link}`}
-                  locale={locale}
-                >
-                  <Button type="round">{t("main_button")}</Button>
-                </Link>
-              </motion.div>
-            </motion.div>
+                <Button type="round">{t("main_button")}</Button>
+              </Link>
+            </div>
           </div>
         ))
       ) : (

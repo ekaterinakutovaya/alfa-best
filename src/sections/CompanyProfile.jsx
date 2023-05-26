@@ -15,7 +15,7 @@ const CompanyProfile = ({ data = {} }) => {
   return (
     <motion.section
       variants={staggerContainer}
-      initial="hidden"
+      initial={isDesktop ? 'hidden' : 'show'}
       whileInView="show"
       viewport={{ once: true, amount: 0.25 }}
       className="w-full mt-[79px] lg:mt-[158px] pt-[25px] lg:pt-[50px] lg:my-[50px]"
@@ -29,8 +29,7 @@ const CompanyProfile = ({ data = {} }) => {
             <Image
               className="w-full h-full object-cover"
               src={process.env.NEXT_APP_STORAGE_URL + image}
-              layout="fill"
-              objectFit="cover"
+              fill
               alt="about company photo"
             />
           </div>

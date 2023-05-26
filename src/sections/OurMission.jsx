@@ -6,7 +6,7 @@ import { useMediaQuery } from "react-responsive";
 
 import Logo from "assets/icons/Logo";
 import Figure from "assets/icons/Figure";
-import {  ServicesOverviewCard, TypingText } from "components";
+import { ServicesOverviewCard, TypingText } from "components";
 import { fade, fadeIn, staggerContainer } from "../utils/motions";
 
 const servicesIcons = [
@@ -41,13 +41,9 @@ const OurMission = ({ data, homeService, icons }) => {
       <div className="mission__inner container">
         <motion.div
           variants={staggerContainer}
-          initial="hidden"
+          initial={isDesktop ? "hidden" : "show"}
           whileInView="show"
-          viewport={
-            isDesktop
-              ? { once: true, amount: 0.5 }
-              : { once: true, amount: 0.6 }
-          }
+          viewport={{ once: true, amount: 0.5 }}
         >
           <div className="lg:w-full lg:flex">
             <div className="lg:w-[60%]">
@@ -97,13 +93,9 @@ const OurMission = ({ data, homeService, icons }) => {
         <motion.div
           className="w-full lg:grid lg:grid-cols-2 lg:gap-[60px] lg:my-[80px]"
           variants={staggerContainer}
-          initial="hidden"
+          initial={isDesktop ? "hidden" : "show"}
           whileInView="show"
-          viewport={
-            isDesktop
-              ? { once: true, amount: 0.5 }
-              : { once: true, amount: 0.3 }
-          }
+          viewport={{ once: true, amount: 0.5 }}
         >
           {homeService &&
             homeService.map((item, i) => {

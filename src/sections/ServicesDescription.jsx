@@ -64,26 +64,6 @@ const ServicesDescription = ({ data }) => {
               );
             }
           })}
-
-          {/* {data &&
-            data.map((item, index) => (
-              <li
-                className="w-full flex items-start gap-[20px] mb-[30px] last:mb-0 lg:mb-0"
-                key={index}
-              >
-                <div className="w-[40px] min-w-[40px] h-[40px]">
-                  <img
-                    className="w-full h-full object-contain"
-                    src={process.env.NEXT_APP_STORAGE_URL + item.icon}
-                    alt="services icon"
-                  />
-                </div>
-
-                <div className="font-medium text-[15px]">
-                  {item[`text_${locale}`]}
-                </div>
-              </li>
-            ))} */}
         </ul>
       </motion.div>
     </motion.div>
