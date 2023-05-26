@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Image from "next/image";
 import { useMediaQuery } from "react-responsive";
 import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
