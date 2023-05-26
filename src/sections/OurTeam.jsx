@@ -9,11 +9,12 @@ import { useMediaQuery } from "react-responsive";
 
 import Logo from "assets/icons/Logo";
 import { TeamCard, ControlButton } from "components";
-import { fade, fadeIn, staggerContainer } from "../utils/motions";
+import { fadeIn, staggerContainer } from "utils/motions";
 
 const OurTeam = ({ data }) => {
   const { t } = useTranslation("");
   const isDesktop = useMediaQuery({ query: `(min-width: 1280px` });
+  
 
   const breakpoints = {
     375: {
