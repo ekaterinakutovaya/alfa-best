@@ -7,11 +7,11 @@ import { useMediaQuery } from "react-responsive";
 import Logo from "assets/icons/Logo";
 import { fade, fadeIn, staggerContainer } from "utils/motions";
 
-const CompanyProfile = ({ data }) => {
+const CompanyProfile = ({ data = {} }) => {
   const { locale } = useRouter();
   const { image } = data;
   const isDesktop = useMediaQuery({ query: `(min-width: 1280px` });
-
+  
   return (
     <motion.section
       variants={staggerContainer}
@@ -22,7 +22,7 @@ const CompanyProfile = ({ data }) => {
     >
       <div className="profile__inner container relative">
         <motion.div
-          className="w-full h-[220px] lg:h-[500px] overflow-hidden rounded-[15px] relative"
+          className="w-full h-[220px] sm:h-[250px] lg:h-[500px] overflow-hidden rounded-[15px] relative"
           variants={fade(0.2, 1)}
         >
           <div className="w-full h-full">
@@ -31,7 +31,7 @@ const CompanyProfile = ({ data }) => {
               src={process.env.NEXT_APP_STORAGE_URL + image}
               layout="fill"
               objectFit="cover"
-              alt="about company picture"
+              alt="about company photo"
             />
           </div>
 
@@ -45,7 +45,7 @@ const CompanyProfile = ({ data }) => {
 
             <motion.h2
               variants={fadeIn("right", "tween", 0.4, 1)}
-              className="text-[18px] lg:text-[36px] text-white font-bold"
+              className="text-[18px] sm:text-[28px] lg:text-[34px] text-white font-bold"
             >
               {data[`home_title_${locale}`]}
             </motion.h2>
@@ -58,9 +58,7 @@ const CompanyProfile = ({ data }) => {
           dangerouslySetInnerHTML={{
             __html: data[`text_${locale}`]
           }}
-        >
-        </motion.div>
-
+        ></motion.div>
       </div>
     </motion.section>
   );

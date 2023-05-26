@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
 
 import Logo from "assets/icons/Logo";
-import { fade, fadeIn, staggerContainer } from "../utils/motions";
+import { fade, fadeIn, staggerContainer } from "utils/motions";
 
 const CareerSection = ({ career, vacancy, vacancyCategory }) => {
   const { locale } = useRouter();
@@ -31,7 +31,7 @@ const CareerSection = ({ career, vacancy, vacancyCategory }) => {
         >
           <motion.div
             variants={fade(0.2, 1)}
-            className="w-full h-[220px] lg:h-[500px] overflow-hidden rounded-[15px] relative"
+            className="w-full h-[220px] sm:h-[300px] lg:h-[500px] overflow-hidden rounded-[15px] relative"
           >
             <div className="w-full h-full">
               {imagePath && (
@@ -54,7 +54,7 @@ const CareerSection = ({ career, vacancy, vacancyCategory }) => {
 
               <motion.h2
                 variants={fadeIn("right", "tween", 0.4, 1)}
-                className="text-[18px] lg:text-[36px] text-white font-bold"
+                className="text-[18px] sm:text-[36px] text-white font-bold"
               >
                 {career[`image_title_${locale}`]}
               </motion.h2>
@@ -80,7 +80,7 @@ const CareerSection = ({ career, vacancy, vacancyCategory }) => {
             <div className="lg:w-[40%]">
               <motion.div variants={fadeIn("up", "tween", 0.3, 1)}>
                 <div>
-                  <h2 className="text-[18px] lg:text-[34px] font-bold pb-[20px]">
+                  <h2 className="text-[18px] sm:text-[28px] lg:text-[34px] font-bold pb-[20px]">
                     {career[`title_${locale}`]}
                   </h2>
                 </div>

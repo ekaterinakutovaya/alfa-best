@@ -10,7 +10,7 @@ import {
   Statistics,
   OurAimSection
 } from "sections";
-import { getData } from "./api/data";
+import { getData } from "services/data";
 
 
 export default function Home({ homeMenu,
@@ -21,22 +21,27 @@ export default function Home({ homeMenu,
   aimCategory,
   history}) {
   const { t } = useTranslation("");
+  
 
   return (
     <Layout homeMenu={homeMenu.datas} homeService={homeService.datas}>
+
       <Hero data={homeContent.datas} />
 
-      <AboutPreview data={aboutCompany.datas[0]} />
+      {Object.keys(aboutCompany).length ? <AboutPreview data={aboutCompany.datas[0]} /> : ''}
 
       <Statistics />
 
-      <OurAimSection data={aim.datas[0]} aimCategory={aimCategory.datas} />
+      {Object.keys(aim).length ? <OurAimSection data={aim.datas[0]} aimCategory={aimCategory.datas} /> : ''}
 
-      <HappyPartners title={t("happy_partners_title")} text={t("happy_partners_text")}/>
+      <HappyPartners
+        title={t("happy_partners_title")}
+        text={t("happy_partners_text")}
+      />
 
-      <History data={history.datas} />
+      {Object.keys(history).length ? <History data={history.datas} /> : ''}
+
     </Layout>
-   
   );
 }
 

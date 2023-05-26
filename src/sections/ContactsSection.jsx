@@ -28,7 +28,7 @@ const ContactsSection = ({ contactPage, contactInfo }) => {
             <div className="max-w-[651px]">
               <motion.h2
                 variants={fadeIn("up", "tween", 0.2, 1)}
-                className="text-[18px] lg:text-[36px] font-bold mb-[20px]"
+                className="text-[18px] sm:text-[36px] font-bold mb-[20px]"
               >
                 {contactPage[`title_${locale}`]}
               </motion.h2>

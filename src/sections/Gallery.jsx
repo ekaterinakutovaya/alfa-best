@@ -4,18 +4,15 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation, Autoplay } from "swiper";
 import Image from "next/image";
-import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import { motion } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
 
-import { images } from "constants";
 import Logo from "assets/icons/Logo";
 import { ControlButton } from "components";
-import { fade, fadeIn, staggerContainer } from "../utils/motions";
+import { fadeIn, staggerContainer } from "../utils/motions";
 
 const Gallery = ({ data }) => {
-  const { locale } = useRouter();
   const { t } = useTranslation("");
   const isDesktop = useMediaQuery({ query: `(min-width: 1280px` });
 
@@ -56,7 +53,7 @@ const Gallery = ({ data }) => {
               <Logo type="dark" />
             </div>
 
-            <h2 className="text-[18px] lg:text-[34px] font-bold pt-[10px]">
+            <h2 className="text-[18px] sm:text-[34px] font-bold pt-[10px]">
               {t("photo_gallery")}
             </h2>
           </div>
@@ -77,8 +74,8 @@ const Gallery = ({ data }) => {
           className=" mt-[20px]"
         >
           <Swiper
-            slidesPerView={2}
-            spaceBetween={150}
+            // slidesPerView={2}
+            // spaceBetween={150}
             grabCursor={true}
             breakpoints={breakpoints}
             navigation={{
@@ -88,7 +85,7 @@ const Gallery = ({ data }) => {
             autoplay={{
               delay: 7000
             }}
-            loop={true}
+            // loop={true}
             modules={[Navigation, Autoplay]}
           >
             {data &&

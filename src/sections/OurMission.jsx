@@ -56,11 +56,11 @@ const OurMission = ({ data, homeService, icons }) => {
                   <Logo type="dark" />
                 </motion.div>
   
-                <h2 className="text-[18px] lg:text-[34px] font-bold pt-[10px] pb-[20px] lg:py-[10px]">
+                <h2>
                   {/* {heading[0]} <span className="text-green">{heading[1]}</span> */}
                   <TypingText
                     title={data[`title_${locale}`]}
-                    textStyles="text-[18px] lg:text-[34px] font-bold pt-[10px] pb-[20px] lg:py-[10px]"
+                    textStyles="text-[18px] sm:text-[34px] font-bold pt-[10px] pb-[20px]"
                   />
                 </h2>
               </div>

@@ -1,6 +1,4 @@
-import React from "react";
-import { Layout } from "../../layout/Layout";
-import { useRouter } from "next/router";
+import { Layout } from "layout/Layout";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 
@@ -9,13 +7,11 @@ import {
   OurMission,
   Partners,
   OurTeam,
-  WithOurPartners,
   Gallery,
-  AboutHistory,
   HappyPartners,
   History
 } from "sections";
-import { getData } from "../api/data";
+import { getData } from "services/data";
 
 const About = ({
   homeMenu,
@@ -31,20 +27,36 @@ const About = ({
 
   return (
     <Layout homeMenu={homeMenu.datas} homeService={homeService.datas}>
-      <CompanyProfile data={aboutCompany.datas[0]} />
-      <OurMission
-        data={mission.datas[0]}
-        homeService={homeService.datas}
-        icons={iconGallery.datas}
-      />
-      <OurTeam data={team.datas} />
+      {Object.keys(aboutCompany).length ? (
+        <CompanyProfile data={aboutCompany.datas[0]} />
+      ) : (
+        <CompanyProfile data={{}} />
+      )}
+
+      {Object.keys(mission).length &&
+        Object.keys(homeService).length &&
+        Object.keys(iconGallery).length && (
+          <OurMission
+            data={mission.datas[0]}
+            homeService={homeService.datas}
+            icons={iconGallery.datas}
+          />
+        )}
+
+      {Object.keys(team).length && <OurTeam data={team.datas} />}
+
       <HappyPartners
         title={t("with_our_partners_title")}
         text={t("with_our_partners_text")}
       />
+
       <Partners />
-      <Gallery data={photoGallery.datas} />
-      <History data={history.datas} />
+
+      {Object.keys(photoGallery).length && (
+        <Gallery data={photoGallery.datas} />
+      )}
+
+      {Object.keys(photoGallery).length && <History data={history.datas} />}
     </Layout>
   );
 };

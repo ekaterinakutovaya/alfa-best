@@ -51,11 +51,11 @@ const OurAimSection = ({ data, aimCategory }) => {
                 className="w-full grid grid-cols-[0.3fr,2fr,1fr] py-[15px] border-solid border-b border-[#D9D9D9] last:border-b-0
                 flex items-center"
               >
-                <div className="lg:font-semibold">{`0${item.id}`}</div>
-                <div className="w-[184px] lg:w-auto font-semibold lg:font-normal">
+                <div className="text-green font-semibold">{`0${item.id}`}</div>
+                <div className="w-[184px] sm:w-full lg:w-auto">
                   {item[`text_${locale}`]}
                 </div>
-                <div className="lg:justify-self-end">
+                <div className="sm:justify-self-end">
                   <div className="image w-[100px] h-[70px] lg:w-[110px] lg:h-[60px] rounded-[5px] overflow-hidden">
                     <Image
                       className="w-full h-full object-cover relative"

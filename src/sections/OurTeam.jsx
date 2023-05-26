@@ -3,7 +3,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper";
-import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import { motion } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
@@ -13,7 +12,6 @@ import { TeamCard, ControlButton } from "components";
 import { fade, fadeIn, staggerContainer } from "../utils/motions";
 
 const OurTeam = ({ data }) => {
-  const { locale } = useRouter();
   const { t } = useTranslation("");
   const isDesktop = useMediaQuery({ query: `(min-width: 1280px` });
 
@@ -41,7 +39,7 @@ const OurTeam = ({ data }) => {
       variants={staggerContainer}
       initial={isDesktop ? "hidden" : "show"}
       whileInView="show"
-      viewport={{ once: false, amount: 0.5 }}
+      viewport={{ once: true, amount: 0.5 }}
       className="w-full my-[50px] lg:my-[100px]"
     >
       <div className="mission__inner container">
@@ -55,7 +53,7 @@ const OurTeam = ({ data }) => {
               <Logo type="dark" />
             </div>
 
-            <h2 className="text-[18px] lg:text-[34px] font-bold">
+            <h2 className="text-[18px] sm:text-[34px] font-bold">
               {t("our_team")}
             </h2>
           </div>

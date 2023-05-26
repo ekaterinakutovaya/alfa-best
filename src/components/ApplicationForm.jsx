@@ -10,7 +10,7 @@ import { DropdownSelect, Popup, QueryConfirmation, Spinner } from "components";
 import Button from "./UI/Button";
 import applicationImage from "../assets/images/application.png";
 import { fade, fadeIn, staggerContainer } from "../utils/motions";
-import { postCustomerService } from "../pages/api/data";
+import { postCustomerService } from "services/data";
 
 const ApplicationForm = ({ types }) => {
   const { locale } = useRouter();
@@ -23,24 +23,30 @@ const ApplicationForm = ({ types }) => {
   const {
     register,
     handleSubmit,
-    watch,
+    reset,
     formState: { errors }
   } = useForm();
+  
 
   const onSubmit = data => {
     setLoading(true);
+
     const postData = {
       service_id: dropdownLabel,
       full_name: data.username,
       phone: data.userphone
     };
-    postCustomerService(postData);
 
     postCustomerService(postData).then(res => {
-      setLoading(false);
-      if (res.status === 200) {
-        setPopupOpen(true);
-      }
+
+      setTimeout(() => {
+        setLoading(false);
+        if (res.status === 200) {
+          setPopupOpen(true);
+          reset({ username: '', userphone: '' })
+        }
+      }, 1500);
+
     });
   };
 
@@ -60,92 +66,98 @@ const ApplicationForm = ({ types }) => {
       >
         <motion.div
           variants={fade(0.2, 1)}
-          className="w-full bg-[#F2FCF9] rounded-[20px] py-[20px] lg:py-[40px] px-[15px] lg:px-[60px] flex flex-col lg:flex-row gap-y-[30px] items-center"
+          className="w-full bg-[#F2FCF9] rounded-[20px] py-[20px] sm:py-[40px] px-[15px] lg:px-[60px] flex flex-col lg:flex-row gap-y-[30px] items-center justify-between"
         >
           {/* Form */}
           <motion.form
             variants={fadeIn("right", "tween", 0.3, 1)}
-            className="w-full flex flex-col gap-y-[15px]"
+            className=""
             onSubmit={handleSubmit(onSubmit)}
           >
-            <div className="w-full lg:w-[396px]">
-              <label
-                htmlFor="serviceType"
-                className="block text-[15px] leading-[140%]"
-              >
-                {t("choose_type")}
-              </label>
-              <div className="mt-[10px]">
-                <DropdownSelect
-                  items={types}
-                  onClick={selectType}
-                  visible={dropdownOpen}
-                  setVisible={setDropdownOpen}
-                  label={types[dropdownLabel][`title_${locale}`]}
-                />
+            <div className="w-full h-[400px] my-0 mx-auto flex flex-col gap-y-[15px]">
+              <div className="w-full sm:w-[396px] ">
+                <label
+                  htmlFor="serviceType"
+                  className="block text-[15px] leading-[140%]"
+                >
+                  {t("choose_type")}
+                </label>
+                <div className="mt-[10px]">
+                  <DropdownSelect
+                    items={types}
+                    onClick={selectType}
+                    visible={dropdownOpen}
+                    setVisible={setDropdownOpen}
+                    label={types[dropdownLabel][`title_${locale}`]}
+                  />
+                </div>
               </div>
-            </div>
 
-            <div className="w-full lg:w-[396px]">
-              <label
-                htmlFor="serviceType"
-                className="block text-[15px] leading-[140%]"
-              >
-                {t("enter_your_name")}
-              </label>
-              <div className="mt-[10px]">
-                <input
-                  type="text"
-                  className={`w-full flex items-center justify-between min-h-[48px] py-[13.5px] px-[15px] bg-transparent border-solid border border-black rounded-[15px] ${errors.username &&
-                    "border-red-600"}`}
-                  placeholder={t("full_name_placeholder")}
-                  {...register("username", { required: true })}
-                />
+              <div className="w-full sm:w-[396px] ">
+                <label
+                  htmlFor="serviceType"
+                  className="block text-[15px] leading-[140%]"
+                >
+                  {t("enter_your_name")}
+                </label>
+                <div className="mt-[10px]">
+                  <input
+                    type="text"
+                    className={`w-full flex items-center justify-between min-h-[48px] py-[13.5px] px-[15px] bg-transparent border-solid border border-black rounded-[15px] focus:border-green ease-in-out duration-300 ${errors.username &&
+                      "border-red-600"}`}
+                    placeholder={t("full_name_placeholder")}
+                    {...register("username", { required: true })}
+                  />
 
-                {errors.username && (
-                  <span className="text-[14px] text-red-500">
-                    {t("require_field")}
-                  </span>
-                )}
+                  {errors.username && (
+                    <span className="text-[14px] text-red-500">
+                      {t("require_field")}
+                    </span>
+                  )}
+                </div>
               </div>
-            </div>
 
-            <div className="w-full lg:w-[396px]">
-              <label
-                htmlFor="serviceType"
-                className="block text-[15px] leading-[140%]"
-              >
-                {t("enter_your_phone")}
-              </label>
-              <div className="mt-[10px]">
-                <InputMask
-                  className={`w-full flex items-center justify-between min-h-[48px] py-[13.5px] px-[15px] bg-transparent border-solid border border-black rounded-[15px] ${errors.userphone &&
-                    "border-red-600"}`}
-                  mask="+ (\9\9\8\) 99 999 99 99"
-                  name="phoneNumber"
-                  placeholder="+(998) __ ___ __ __"
-                  {...register("userphone", { required: true })}
-                />
+              <div className="w-full sm:w-[396px]">
+                <label
+                  htmlFor="serviceType"
+                  className="block text-[15px] leading-[140%]"
+                >
+                  {t("enter_your_phone")}
+                </label>
+                <div className="mt-[10px]">
+                  <InputMask
+                    className={`w-full flex items-center justify-between min-h-[48px] py-[13.5px] px-[15px] bg-transparent border-solid border border-black rounded-[15px] focus:border-green ease-in-out duration-300 ${errors.userphone &&
+                      "border-red-600"}`}
+                    mask="+ (\9\9\8\) 99 999 99 99"
+                    name="phoneNumber"
+                    placeholder="+(998) __ ___ __ __"
+                    {...register("userphone", { required: true })}
+                  />
 
-                {errors.userphone && (
-                  <span className="text-[14px] text-red-500">
-                    {t("require_field")}
-                  </span>
-                )}
+                  {errors.userphone && (
+                    <span className="text-[14px] text-red-500">
+                      {t("require_field")}
+                    </span>
+                  )}
+                </div>
               </div>
-            </div>
 
-            <div className="mt-[10px]">
-              <Button type="square" onClick={onSubmit}>
-                 {loading ? (
-                <>
-                  <Spinner color={"text-white"} />
-                  {t("sending")}
-                </>
-              ) : (
-                <>{t("send")}</>
-              )}
-              </Button>
+              <div className="mt-[10px]">
+                <Button
+                  type="square"
+                  onClick={onSubmit}
+                  disabled={Object.entries(errors).length ? true: false}
+                >
+                  {loading ? (
+                    <>
+                      <Spinner color={"text-white"} />
+                      {t("sending")}
+                    </>
+                  ) : (
+                    <>{t("send")}</>
+                  )}
+                </Button>
+              </div>
             </div>
           </motion.form>
 

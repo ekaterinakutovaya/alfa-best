@@ -11,15 +11,28 @@ import {
 import { useState, useEffect } from "react";
 
 export const Layout = ({ children, homeMenu, homeService }) => {
-  const router = useRouter();
+  const { locale, pathname, events } = useRouter();
   const [loading, setLoading] = useState(false);
+  const [pageTitle, setPageTitle] = useState("Alfa Best");
+  
 
   useEffect(() => {
-    router.events.on("routeChangeStart", () => {
+    if (pathname !== "/" && homeMenu.length > 0 && homeService.length > 0) {
+      let allRoutes = homeMenu.concat(homeService);
+      let title = allRoutes.find(item => item.link == pathname.substring(1))[`title_${locale}`];
+
+      setPageTitle(`Alfa Best | ${title}`);
+    } else {
+      setPageTitle('Alfa Best')
+    }
+  });
+
+  useEffect(() => {
+    events.on("routeChangeStart", () => {
       setLoading(true);
     });
 
-    router.events.on("routeChangeComplete", () => {
+    events.on("routeChangeComplete", () => {
       setLoading(false);
     });
   }, []);
@@ -30,7 +43,7 @@ export const Layout = ({ children, homeMenu, homeService }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
         <meta name="keywords" content="" />
-        <title>Alfa Best</title>
+        <title>{pageTitle || 'Alfa Best'}</title>
       </Head>
 
       <div className="header">

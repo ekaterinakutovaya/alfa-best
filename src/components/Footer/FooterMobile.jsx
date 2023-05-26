@@ -3,10 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 
-import { images } from "constants";
-import styles from "styles/styles";
 import Logo from "assets/icons/Logo";
-import { navigation } from "constants/constants";
 import { AccordeonDark, SocialBar } from "components";
 import SvgSelector from "assets/icons/SvgSelector";
 
@@ -14,18 +11,11 @@ const FooterMobile = ({ navigation, subNavigation }) => {
   const { t } = useTranslation("");
   const { locale } = useRouter();
 
-  const nestedList = [
-    { index: 0, label: "Инженерно-техническая эксплуатация" },
-    { index: 1, label: "Сервисное и бытовое обслуживание" },
-    { index: 2, label: "Корпоративное питание" },
-    { index: 3, label: "Транспортные и пассажирские перевозки" }
-  ];
-
   return (
     <footer className="bg-[#001836] block lg:hidden">
       {/* Main */}
       <div className="container">
-        <div className="w-full flex-col gap-y-[30px] py-[20px] border-solid border-b border-[rgba(255,255,255,0.1)]">
+        <div className="w-full flex-col gap-y-[30px] py-[30px] border-solid border-b border-[rgba(255,255,255,0.1)]">
           <div className="head">
             <div className="flex justify-center">
               <Logo type="light-full" className="w-full" />

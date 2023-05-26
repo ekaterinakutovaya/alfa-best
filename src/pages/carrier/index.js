@@ -1,9 +1,8 @@
-import React from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
-import { Layout } from "../../layout/Layout";
+import { Layout } from "layout/Layout";
 import { CareerSection } from "sections";
-import { getData } from "../api/data";
+import { getData } from "services/data";
 
 const Carrier = ({
   homeMenu,
@@ -12,15 +11,18 @@ const Carrier = ({
   vacancy,
   vacancyCategory
 }) => {
-
   
   return (
     <Layout homeMenu={homeMenu.datas} homeService={homeService.datas}>
-      <CareerSection
-        career={career.datas[0]}
-        vacancy={vacancy.datas}
-        vacancyCategory={vacancyCategory.datas}
-      />
+      {Object.keys(career).length &&
+        Object.keys(vacancy).length &&
+        Object.keys(vacancyCategory).length && (
+          <CareerSection
+            career={career.datas[0]}
+            vacancy={vacancy.datas}
+            vacancyCategory={vacancyCategory.datas}
+          />
+        )}
     </Layout>
   );
 };

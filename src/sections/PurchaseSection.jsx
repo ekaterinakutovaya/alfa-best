@@ -9,7 +9,7 @@ import { Button } from "components";
 import { Gallery } from "sections";
 import { fade, fadeIn, staggerContainer } from "utils/motions";
 
-const PurchaseSection = ({ purchase, purchasePost }) => {
+const PurchaseSection = ({ purchase }) => {
   const { locale } = useRouter();
   const { t } = useTranslation("");
   const [images, setImages] = useState([]);
@@ -41,7 +41,7 @@ const PurchaseSection = ({ purchase, purchasePost }) => {
           <div className="max-w-[1000px]">
             <motion.h2 
               variants={fadeIn("down", "tween", 0.2, 1)}
-            className="text-[18px] lg:text-[36px] font-bold mb-[20px]"
+              className="text-[18px] sm:text-[36px] font-bold mb-[20px]"
             >
               {purchase[`title_${locale}`]}
             </motion.h2>

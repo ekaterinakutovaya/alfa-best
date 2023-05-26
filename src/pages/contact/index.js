@@ -1,16 +1,20 @@
 import React from "react";
-import { useRouter } from "next/router";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
-import { Layout } from "../../layout/Layout";
-import { ContactsSection, Advantages } from "sections";
-import { ApplicationForm } from "components";
-import { getData } from "../api/data";
+import { Layout } from "layout/Layout";
+import { ContactsSection } from "sections";
+import { getData } from "services/data";
 
 const Contacts = ({ homeMenu, homeService, contactPage, contactInfo }) => {
   return (
     <Layout homeMenu={homeMenu.datas} homeService={homeService.datas}>
-      <ContactsSection contactPage={contactPage.datas[0]} contactInfo={contactInfo.datas[0]} />
+      {Object.keys(contactPage).length && Object.keys(contactInfo).length ? (
+        <ContactsSection
+          contactPage={contactPage.datas[0]}
+          contactInfo={contactInfo.datas[0]}
+        />
+      ) : ''}
+      
     </Layout>
   );
 };

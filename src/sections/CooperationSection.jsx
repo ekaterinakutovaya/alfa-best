@@ -45,7 +45,7 @@ const CooperationSection = ({ data }) => {
       <div className="container relative">
         <motion.div
           variants={fade(0.2, 1)}
-          className="w-full h-[220px] lg:h-[500px] overflow-hidden rounded-[15px] relative"
+          className="w-full h-[220px] sm:h-[300px] lg:h-[500px] overflow-hidden rounded-[15px] relative"
         >
           <div className="w-full h-full">
             {imagePath && (
@@ -68,7 +68,7 @@ const CooperationSection = ({ data }) => {
 
             <motion.h2
               variants={fadeIn("right", "tween", 0.4, 1)}
-              className="text-[18px] lg:text-[36px] text-white font-bold"
+              className="text-[18px] sm:text-[28px] lg:text-[34px] text-white font-bold"
             >
               {data[`title_${locale}`]}
             </motion.h2>
@@ -79,7 +79,7 @@ const CooperationSection = ({ data }) => {
           variants={fadeIn("up", "tween", 0.5, 1)}
           className="content pt-[20px]"
         >
-        {formattedText}
+          {formattedText}
         </motion.div>
       </div>
     </motion.section>

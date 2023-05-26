@@ -5,7 +5,7 @@ import { useTranslation } from "next-i18next";
 
 import Button from "./UI/Button";
 import { Popup, QueryConfirmation, Spinner } from "components";
-import { postCustomerContacts } from "../pages/api/data";
+import { postCustomerContacts } from "services/data";
 
 const ContactsForm = () => {
   const [popupOpen, setPopupOpen] = useState(false);
@@ -15,7 +15,7 @@ const ContactsForm = () => {
   const {
     register,
     handleSubmit,
-    watch,
+    reset,
     formState: { errors }
   } = useForm();
 
@@ -27,10 +27,13 @@ const ContactsForm = () => {
     };
 
     postCustomerContacts(postData).then(res => {
-      setLoading(false);
-      if (res.status === 200) {
-        setPopupOpen(true);
-      }
+      setTimeout(() => {
+        setLoading(false);
+        if (res.status === 200) {
+          setPopupOpen(true);
+          reset({ username: "", userphone: "" });
+        }
+      }, 2000);
     });
   };
 
@@ -49,10 +52,10 @@ const ContactsForm = () => {
       <div className="w-full">
         {/* Form */}
         <form
-          className="w-full flex flex-col gap-y-[15px]"
+          className="w-full h-[300px] flex flex-col gap-y-[15px]"
           onSubmit={handleSubmit(onSubmit)}
         >
-          <div className="w-full lg:w-[396px]">
+          <div className="w-full sm:w-[396px]">
             <label
               htmlFor="serviceType"
               className="block text-[15px] leading-[140%]"
@@ -62,7 +65,7 @@ const ContactsForm = () => {
             <div className="mt-[10px]">
               <input
                 type="text"
-                className={`w-full flex items-center justify-between min-h-[48px] py-[13.5px] px-[15px] bg-transparent border-solid border border-black rounded-[15px] ${errors.username &&
+                className={`w-full flex items-center justify-between min-h-[48px] py-[13.5px] px-[15px] bg-transparent border-solid border border-black rounded-[15px] focus:border-green ease-in-out duration-300 ${errors.username &&
                   "border-red-600"}`}
                 placeholder={t("full_name_placeholder")}
                 {...register("username", { required: true })}
@@ -76,7 +79,7 @@ const ContactsForm = () => {
             </div>
           </div>
 
-          <div className="w-full lg:w-[396px] mb-[10px]">
+          <div className="w-full sm:w-[396px] mb-[10px]">
             <label
               htmlFor="serviceType"
               className="block text-[15px] leading-[140%]"
@@ -85,7 +88,7 @@ const ContactsForm = () => {
             </label>
             <div className="mt-[10px]">
               <InputMask
-                className={`w-full flex items-center justify-between min-h-[48px] py-[13.5px] px-[15px] bg-transparent border-solid border border-black rounded-[15px] ${errors.userphone &&
+                className={`w-full flex items-center justify-between min-h-[48px] py-[13.5px] px-[15px] bg-transparent border-solid border border-black rounded-[15px] focus:border-green ease-in-out duration-300 ${errors.userphone &&
                   "border-red-600"}`}
                 mask="+ (\9\9\8\) 99 999 99 99"
                 name="phoneNumber"
@@ -102,7 +105,9 @@ const ContactsForm = () => {
           </div>
 
           <div>
-            <Button type="square">
+            <Button type="square"
+              disabled={Object.entries(errors).length ? true : false}
+            >
               {loading ? (
                 <>
                   <Spinner color={"text-white"} />

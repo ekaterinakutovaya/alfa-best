@@ -11,7 +11,7 @@ export async function middleware(req) {
         return NextResponse.next();
     }
 
-    // if (req.nextUrl.locale === 'default') {
+    if (req.nextUrl.locale === 'default') {
         const locale = req.cookies.get('NEXT_LOCALE').value || 'ru';
 
         return NextResponse.redirect(
@@ -20,14 +20,6 @@ export async function middleware(req) {
             req.url
           )
         );
-    // }
-
-    // if (req.nextUrl === '/') {
-        
-    //     return NextResponse.rewrite('/ru');
-    // }
-
-
-    // return NextResponse.next();
+    }
     
 }

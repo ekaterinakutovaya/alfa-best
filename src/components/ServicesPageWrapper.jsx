@@ -29,18 +29,19 @@ const ServicesPageWrapper = ({
   const isDesktop = useMediaQuery({ query: `(min-width: 1280px` });
 
   useEffect(() => {
+    const data = document.createElement("div");
+    data.innerHTML = text;
+    
     if (
       text &&
       locale === "uz" &&
       pathname === "/engineering" &&
       typeof window !== "undefined"
     ) {
-      const data = document.createElement("div");
-      data.innerHTML = text;
       let targetText = data.querySelector("#tw-target-text");
-      setFormattedText(targetText.innerText);
+      setFormattedText(targetText.innerText || targetText.textContent);
     } else {
-      setFormattedText(text.slice(3, -4));
+      setFormattedText(data.textContent || data.innerText);
     }
   }, [text]);
 
@@ -54,13 +55,13 @@ const ServicesPageWrapper = ({
       variants={staggerContainer}
       initial={isDesktop ? "hidden" : "show"}
       whileInView="show"
-      viewport={{ once: true, amount: 0.25 }}
+      viewport={{ once: true, amount: 0.15 }}
       className="w-full mt-[79px] lg:mt-[158px] pt-[25px] lg:py-[50px]"
     >
       <div className="container relative">
         <motion.div
           variants={fade(0.2, 1)}
-          className="w-full h-[220px] lg:h-[500px] overflow-hidden rounded-[15px] relative"
+          className="w-full h-[220px] sm:h-[300px] lg:h-[500px] overflow-hidden rounded-[15px] relative"
         >
           <div className="w-full h-full">
             {imagePath && (
@@ -83,7 +84,7 @@ const ServicesPageWrapper = ({
 
             <motion.h2
               variants={fadeIn("right", "tween", 0.4, 1)}
-              className="text-[18px] lg:text-[34px] text-white font-bold"
+              className="text-[18px] sm:text-[34px] text-white font-bold"
             >
               {title}
             </motion.h2>
@@ -92,7 +93,8 @@ const ServicesPageWrapper = ({
 
         <motion.div
           variants={fadeIn("up", "tween", 0.5, 1)}
-        className="pt-[20px] text-[17px]">
+          className="pt-[20px] text-[17px]"
+        >
           <p>{formattedText}</p>
         </motion.div>
 
@@ -110,11 +112,16 @@ const ServicesPageWrapper = ({
         text={t("with_our_partners_text")}
       />
 
-      <div className="lg:my-[30px]">
-        <Advantages data={advantages} />
-      </div>
-
-      <Gallery data={gallery} />
+      {advantages.length ? (
+        <div className="lg:my-[30px]">
+          <Advantages data={advantages} />
+        </div>
+      ) : ''}
+      
+      {gallery.length ? (
+        <Gallery data={gallery} />
+      ) : ''}
+      
     </motion.section>
   );
 };
