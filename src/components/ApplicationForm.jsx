@@ -146,7 +146,7 @@ const ApplicationForm = ({ types }) => {
                 <Button
                   type="square"
                   onClick={onSubmit}
-                  disabled={Object.entries(errors).length ? true: false}
+                  disabled={Object.entries(errors).length || loading ? true: false}
                 >
                   {loading ? (
                     <>

@@ -106,7 +106,7 @@ const ContactsForm = () => {
 
           <div>
             <Button type="square"
-              disabled={Object.entries(errors).length ? true : false}
+              disabled={Object.entries(errors).length || loading ? true : false}
             >
               {loading ? (
                 <>
