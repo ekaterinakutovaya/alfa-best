@@ -33,5 +33,7 @@ app.prepare().then(() => {
     })
 })
 
+app.timeout = 240000;
+
 
 

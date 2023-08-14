@@ -49,7 +49,6 @@ const ApplicationForm = ({ types }) => {
 
     });
   };
-
   const selectType = e => {
     setDropdownLabel(e.currentTarget.dataset.index);
     setDropdownOpen(false);

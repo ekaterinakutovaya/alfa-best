@@ -21,6 +21,7 @@ export const SlickDots = ({ children }) => {
 const HeroSlider = ({ items }) => {
   const { locale } = useRouter();
   const { t } = useTranslation("");
+  console.log(items)
 
   const settings = {
     dots: true,
@@ -52,7 +53,8 @@ const HeroSlider = ({ items }) => {
             <div className="w-full h-[250px] sm:h-[350px] lg:h-full relative bg-black">
               <Image
                 className="w-full h-full object-cover opacity-60"
-                src={process.env.NEXT_APP_STORAGE_URL + item.img}
+                // src={env.NEXT_APP_STORAGE_URL + item.img}
+                  src={`https://alfabest.napaautomotive.uz/storage/${item.img}`}
                 alt="services photo"
                 fill
               />
