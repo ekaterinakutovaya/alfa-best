@@ -18,10 +18,9 @@ export const Layout = ({ children, mainMenu, servicesMenu }) => {
   useEffect(() => {
     if (pathname !== "/" && mainMenu.length > 0 && servicesMenu.length > 0) {
       let allRoutes = mainMenu.concat(servicesMenu);
-      let title = "Title"
-      // let title = allRoutes.find(item => item.path == pathname.substring(1)).title;
+      let foundPath = allRoutes.find(item => item.path === pathname);
 
-      setPageTitle(`Alfa Best | ${title}`);
+      setPageTitle(`Alfa Best | ${foundPath.title}`);
     } else {
       setPageTitle('Alfa Best')
     }
