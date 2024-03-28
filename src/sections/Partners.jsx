@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 
 
 import SvgSelector from "../assets/icons/SvgSelector";
-import { fadeIn, staggerContainer } from "utils/motions";
+import { fadeIn } from "utils/motions";
 
 const partnersIcons = [
   { index: 0, iconId: "hyundai" },

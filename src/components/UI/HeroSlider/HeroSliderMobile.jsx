@@ -42,7 +42,7 @@ const HeroSliderMobile = ({ items }) => {
             <div className="w-full h-[250px] sm:h-[350px] lg:h-[780px] relative bg-black">
               <Image
                 className="w-full h-full object-cover opacity-60"
-                src={process.env.NEXT_APP_STORAGE_URL + item.img}
+                src={process.env.NEXT_APP_STORAGE_URL + item.image}
                 alt="services photo"
                 fill
               />
@@ -51,12 +51,12 @@ const HeroSliderMobile = ({ items }) => {
             <div className="w-full p-4 sm:px-[60px]">
               <div className="w-[239px] h-[66px] pb-5 flex items-center">
                 <h1 className="w-full text-[18px] font-bold break-words">
-                  {item[`text_${locale}`]}
+                  {item.title}
                 </h1>
               </div>
 
               <Link
-                href={`/${locale}/${item.home_service_link}`}
+                href={`/${locale}${item.path}`}
                 locale={locale}
               >
                 <Button type="round">{t("main_button")}</Button>

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { useTranslation } from "next-i18next";
 import { motion } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
 
@@ -9,31 +8,13 @@ import Figure from "assets/icons/Figure";
 import { ServicesOverviewCard, TypingText } from "components";
 import { fade, fadeIn, staggerContainer } from "../utils/motions";
 
-const servicesIcons = [
-  {
-    index: 0,
-    link: "engineering",
-    icon: "../assets/images/Software engineer.png"
-  },
-  {
-    index: 1,
-    link: "houshold",
-    icon: "../assets/images/Software engineer-2.png"
-  },
-  { index: 2, link: "catering", icon: "../assets/images/Catering.png" },
-  { index: 3, link: "transportation", icon: "../assets/images/Bus driver.png" }
-];
-
-const OurMission = ({ data, homeService, icons }) => {
+const OurMission = ({ data, servicesMenu }) => {
   const { locale } = useRouter();
-  const { t } = useTranslation("");
-  const [heading, setHeading] = useState([]);
   const [moto, setMoto] = useState([]);
   const isDesktop = useMediaQuery({ query: `(min-width: 1280px` });
 
   useEffect(() => {
-    setHeading(data[`title_${locale}`].split(" "));
-    setMoto(data[`subtitle_${locale}`].split(" "));
+    setMoto(data.moto.split(" "));
   }, [locale]);
 
   return (
@@ -55,9 +36,8 @@ const OurMission = ({ data, homeService, icons }) => {
                 </motion.div>
 
                 <h2>
-                  {/* {heading[0]} <span className="text-green">{heading[1]}</span> */}
                   <TypingText
-                    title={data[`title_${locale}`]}
+                    title={data.title}
                     textStyles="text-[18px] sm:text-[34px] font-bold pt-[10px] pb-[20px]"
                   />
                 </h2>
@@ -67,7 +47,7 @@ const OurMission = ({ data, homeService, icons }) => {
                 variants={fadeIn("up", "tween", 0.3, 1)}
                 className="mission__text"
                 dangerouslySetInnerHTML={{
-                  __html: data[`text_${locale}`]
+                  __html: data.text
                 }}
               ></motion.div>
             </div>
@@ -97,8 +77,8 @@ const OurMission = ({ data, homeService, icons }) => {
           whileInView="show"
           viewport={{ once: true, amount: 0.5 }}
         >
-          {homeService &&
-            homeService.map((item, i) => {
+          {servicesMenu &&
+            servicesMenu.map((item, i) => {
               if (i & 1) {
                 return (
                   <motion.div
@@ -106,7 +86,7 @@ const OurMission = ({ data, homeService, icons }) => {
                     className="w-full mb-[20px] lg:mb-0"
                     key={i}
                   >
-                    <ServicesOverviewCard item={item} icon={servicesIcons[i]} />
+                    <ServicesOverviewCard item={item} />
                   </motion.div>
                 );
               } else {
@@ -116,7 +96,7 @@ const OurMission = ({ data, homeService, icons }) => {
                     className="w-full mb-[20px] lg:mb-0"
                     key={i}
                   >
-                    <ServicesOverviewCard item={item} icon={servicesIcons[i]} />
+                    <ServicesOverviewCard item={item} />
                   </motion.div>
                 );
               }

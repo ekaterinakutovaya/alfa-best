@@ -13,55 +13,48 @@ import {
 import { getData } from "services/data";
 
 
-export default function Home({ homeMenu,
-  homeContent,
-  homeService,
-  aboutCompany,
-  aim,
-  aimCategory,
-  history}) {
+export default function Home({ mainMenu, servicesMenu, heroContent, aboutCompany, ourAim, ourAimItems,  history}) {
   const { t } = useTranslation("");
-  
 
   return (
-    <Layout homeMenu={homeMenu.datas} homeService={homeService.datas}>
+    <Layout mainMenu={mainMenu.data} servicesMenu={servicesMenu.data}>
 
-      <Hero data={homeContent.datas} />
-
-      {Object.keys(aboutCompany).length ? <AboutPreview data={aboutCompany.datas[0]} /> : ''}
-
+      <Hero data={heroContent.data} />
+      
+      {Object.keys(aboutCompany).length ? <AboutPreview data={aboutCompany.data[0]} /> : ''}
+      
       <Statistics />
-
-      {Object.keys(aim).length ? <OurAimSection data={aim.datas[0]} aimCategory={aimCategory.datas} /> : ''}
-
+      
+      {Object.keys(ourAim).length ? <OurAimSection data={ourAim.data[0]} aimItems={ourAimItems.data} /> : ''}
+      
       <HappyPartners
         title={t("happy_partners_title")}
         text={t("happy_partners_text")}
       />
-
-      {Object.keys(history).length ? <History data={history.datas} /> : ''}
+      
+      {Object.keys(history).length ? <History data={history.data} /> : ''}
 
     </Layout>
   );
 }
 
 export const getServerSideProps = async ({ locale }) => {
-  const homeMenu = await getData("home_menu", locale);
-  const homeContent = await getData("home_content", locale);
-  const homeService = await getData("home_service", locale);
+  const mainMenu = await getData("main_menu", locale);
+  const servicesMenu = await getData("services_menu", locale);
+  const heroContent = await getData("hero_content", locale);
   const aboutCompany = await getData("about_company", locale);
-  const aim = await getData("aim", locale);
-  const aimCategory = await getData("aim_category", locale);
+  const ourAim = await getData("our_aim", locale);
+  const ourAimItems = await getData("our_aim_items", locale);
   const history = await getData("history", locale);
 
   return {
     props: {
-      homeMenu,
-      homeContent,
-      homeService,
+      mainMenu,
+      servicesMenu,
+      heroContent,
       aboutCompany,
-      aim,
-      aimCategory,
+      ourAim,
+      ourAimItems,
       history,
       ...await serverSideTranslations(locale, ['common'])
     }

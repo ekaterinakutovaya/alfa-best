@@ -1,6 +1,3 @@
-import React from "react";
-import { useRouter } from "next/router";
-import { useTranslation } from "next-i18next";
 import { motion } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
 
@@ -8,11 +5,12 @@ import Logo from "assets/icons/Logo";
 import SvgSelector from "assets/icons/SvgSelector";
 import { fade, fadeIn, staggerContainer } from "utils/motions";
 import { TypingText } from "components";
+import {useTranslation} from "next-i18next";
 
-const Advantages = ({ data }) => {
-  const { locale } = useRouter();
+const Advantages = ({ data = {} }) => {
   const { t } = useTranslation("");
   const isDesktop = useMediaQuery({ query: `(min-width: 1280px` });
+  const {title, advantages} = data;
 
   return (
     <section className="w-full my-[30px] lg:my-[0]">
@@ -29,21 +27,21 @@ const Advantages = ({ data }) => {
             <motion.div variants={fade(0.2, 1)}>
               <Logo type="dark" />
             </motion.div>
-
+      
             <h2 className="w-[240px] lg:w-auto text-[18px] lg:text-[34px] font-bold pt-0 pb-[20px] lg:py-[10px]">
               <TypingText
-                title={t("advantages")}
+                title={title}
                 textStyles="w-[240px] lg:w-auto text-[18px] sm:text-[34px] font-bold pt-[10px] pb-[20px]
                 "
               />
             </h2>
           </div>
         </div>
-
+      
         {/* Content */}
         <ul className="w-full lg:grid lg:grid-cols-2 lg:gap-x-[60px] lg:gap-y-[30px] lg:my-[30px]">
-          {data &&
-            data.map((item, i) => {
+          {advantages &&
+            advantages.map((item, i) => {
               if (i & 1) {
                 return (
                   <motion.li
@@ -57,7 +55,7 @@ const Advantages = ({ data }) => {
                         className="fill-green w-[30px] h-[30px] lg:w-[40px] lg:h-[40px]"
                       />
                     </div>
-                    <div className="font-medium">{item[`text_${locale}`]}</div>
+                    <div className="font-medium">{item}</div>
                   </motion.li>
                 );
               } else {
@@ -73,7 +71,7 @@ const Advantages = ({ data }) => {
                         className="fill-green w-[30px] h-[30px] lg:w-[40px] lg:h-[40px] mt-[6px]"
                       />
                     </div>
-                    <div className="font-medium">{item[`text_${locale}`]}</div>
+                    <div className="font-medium">{item}</div>
                   </motion.li>
                 );
               }

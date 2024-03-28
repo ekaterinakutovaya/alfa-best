@@ -1,63 +1,43 @@
 import React from 'react';
-import { useRouter } from "next/router";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 
-import { Layout } from "layout/Layout";
-import { ServicesPageWrapper } from "components";
-import { getData } from "services/data";
-
-
-const Transportation = ({ homeMenu,
-  homeService,
-  servicesCategory,
-  servicesSubCategory,
-  advantage,
-  gallery}) => {
-  const { locale } = useRouter();
-  const servicesCat = Object.keys(servicesCategory).length
-    ? servicesCategory.datas.filter(item => item.home_service_id === 4)[0]
-    : {};
-  const servicesDescription = Object.keys(servicesSubCategory).length ? servicesSubCategory.datas.filter(
-    item => item.services_category_id === 1
-  ) : [];
-  const advantages = Object.keys(advantage).length
-    ? advantage.datas.filter(item => item.services_category_id === 4)
-    : [];  
-  const images = Object.keys(gallery).length ? gallery.datas.filter(item => item.services_category_id === 1) : [];
+import {Layout} from "layout/Layout";
+import {ServicesPageWrapper} from "components";
+import {getData} from "services/data";
+import {useTranslation} from "next-i18next";
 
 
-    return (
-      <Layout homeMenu={homeMenu.datas} homeService={homeService.datas}>
-        <ServicesPageWrapper
-          title={servicesCat[`title_${locale}`] || ''}
-          text={servicesCat[`text_${locale}`] || ''}
-          image={servicesCat.image}
-          servicesDescription={servicesDescription}
-          advantages={advantages}
-          gallery={images}
-        />
+const Transportation = ({
+                          mainMenu, servicesMenu, servicesPage
+                        }) => {
+  const {t} = useTranslation("");
+  
+  return (
+      <Layout mainMenu={mainMenu.data} servicesMenu={servicesMenu.data}>
+        {servicesPage && (<ServicesPageWrapper
+            title={servicesPage.data[3].title}
+            text={servicesPage.data[3].text}
+            image={servicesPage.data[3].image}
+            servicesDescription={servicesPage.data[3].features}
+            advantages={{title: t('advantages'), advantages: servicesPage.data[3].advantages}}
+            gallery={servicesPage.data[3].gallery}
+        />)}
       </Layout>
-    );
+  );
 };
 
 export default Transportation;
 
-export const getServerSideProps = async ({ locale }) => {
-  const homeMenu = await getData("home_menu", locale);
-  const homeService = await getData("home_service", locale);
-  const servicesCategory = await getData("services_category", locale);
-  const servicesSubCategory = await getData("services_subcategory", locale);
-  const advantage = await getData("advantage", locale);
-  const gallery = await getData("gallery", locale);
-
+export const getServerSideProps = async ({locale}) => {
+  const mainMenu = await getData("main_menu", locale);
+  const servicesMenu = await getData("services_menu", locale);
+  const servicesPage = await getData("services_page", locale);
+  
   return {
     props: {
-      homeMenu,
-      homeService,
-      servicesCategory,
-      servicesSubCategory,
-      advantage,
-      gallery,
+      mainMenu,
+      servicesMenu,
+      servicesPage,
       ...(await serverSideTranslations(locale, ["common"]))
     }
   };

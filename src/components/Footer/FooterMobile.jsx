@@ -30,8 +30,8 @@ const FooterMobile = ({ navigation, subNavigation }) => {
                   className="font-arimo font-bold text-[18px] text-white"
                   key={index}
                 >
-                  <Link href={`/${locale}/${item.link}`} locale={locale}>
-                    {item[`title_${locale}`]}
+                  <Link href={`/${locale}${item.path}`} locale={locale}>
+                    {item.title}
                   </Link>
                 </div>
               ))}

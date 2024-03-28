@@ -1,24 +1,9 @@
-import React, { useState, useEffect, useRef } from "react";
-import { useRouter } from "next/router";
+import React, { useEffect, useRef } from "react";
 import { BsCaretDownFill, BsCaretUpFill } from "react-icons/bs";
 import { motion, AnimatePresence } from "framer-motion";
 
 const DropdownSelect = ({ items, onClick, visible, setVisible, label }) => {
-  const { locale } = useRouter();
   const ref = useRef(null);
-
-  const variants = {
-    exit: {
-      opacity: 0,
-      height: 0,
-      transition: {
-        ease: "easeInOut",
-        duration: 1,
-        delay: 1.2
-      }
-    }
-  };
-
   const toggleList = e => {
     setVisible(prevVisible => !prevVisible);
   };
@@ -75,7 +60,7 @@ const DropdownSelect = ({ items, onClick, visible, setVisible, label }) => {
                   data-index={index}
                   onClick={onClick}
                 >
-                  {item[`title_${locale}`]}
+                  {item.title}
                 </li>
               ))}
           </motion.ul>

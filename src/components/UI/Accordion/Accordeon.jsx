@@ -45,8 +45,8 @@ const Accordeon = ({ label, items }) => {
           {items &&
             items.map((item, index) => (
               <li key={index} className="text-grey">
-                <Link href={`/${locale}/${item.link}`} locale={locale}>
-                  {item[`title_${locale}`]}
+                <Link href={`/${locale}${item.path}`} locale={locale}>
+                  {item.title}
                 </Link>
               </li>
             ))}

@@ -10,16 +10,16 @@ import {
 } from "../components";
 import { useState, useEffect } from "react";
 
-export const Layout = ({ children, homeMenu, homeService }) => {
+export const Layout = ({ children, mainMenu, servicesMenu }) => {
   const { locale, pathname, events } = useRouter();
   const [loading, setLoading] = useState(false);
   const [pageTitle, setPageTitle] = useState("Alfa Best");
-  
 
   useEffect(() => {
-    if (pathname !== "/" && homeMenu.length > 0 && homeService.length > 0) {
-      let allRoutes = homeMenu.concat(homeService);
-      let title = allRoutes.find(item => item.link == pathname.substring(1))[`title_${locale}`];
+    if (pathname !== "/" && mainMenu.length > 0 && servicesMenu.length > 0) {
+      let allRoutes = mainMenu.concat(servicesMenu);
+      let title = "Title"
+      // let title = allRoutes.find(item => item.path == pathname.substring(1)).title;
 
       setPageTitle(`Alfa Best | ${title}`);
     } else {
@@ -47,8 +47,8 @@ export const Layout = ({ children, homeMenu, homeService }) => {
       </Head>
 
       <div className="header">
-        <Header navigation={homeMenu} subNavigation={homeService} />
-        <HeaderMobile navigation={homeMenu} subNavigation={homeService} />
+        <Header navigation={mainMenu} subNavigation={servicesMenu} />
+        <HeaderMobile navigation={mainMenu} subNavigation={servicesMenu} />
       </div>
 
       <div className="main">
@@ -56,8 +56,8 @@ export const Layout = ({ children, homeMenu, homeService }) => {
       </div>
 
       <div className="footer">
-        <FooterMobile navigation={homeMenu} subNavigation={homeService} />
-        <Footer navigation={homeMenu} subNavigation={homeService} />
+        <FooterMobile navigation={mainMenu} subNavigation={servicesMenu} />
+        <Footer navigation={mainMenu} subNavigation={servicesMenu} />
       </div>
 
       {loading && <PagePreloader />}

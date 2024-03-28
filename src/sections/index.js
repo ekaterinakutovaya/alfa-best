@@ -4,7 +4,6 @@ import HappyPartners from "./HappyPartners";
 import Hero from "./Hero";
 import History from "./History";
 import OurMission from "./OurMission";
-import OurTeam from "./OurTeam";
 import Partners from "./Partners";
 import Gallery from "./Gallery";
 import AboutHistory from "./AboutHistory";
@@ -26,7 +25,6 @@ export {
   Hero,
   CompanyProfile,
   OurMission,
-  OurTeam,
   Partners,
   Gallery,
   AboutHistory,

@@ -5,15 +5,16 @@ import { useMediaQuery } from "react-responsive";
 import { motion } from "framer-motion";
 
 import Logo from "assets/icons/Logo";
-import { fadeIn, staggerContainer } from "../utils/motions";
+import { fadeIn } from "../utils/motions";
+import process from "../../next.config";
 
-const OurAimSection = ({ data, aimCategory }) => {
+const OurAimSection = ({ data, aimItems }) => {
   const { locale } = useRouter();
   const [heading, setHeading] = useState([]);
   const isDesktop = useMediaQuery({ query: `(min-width: 1280px` });
 
   useEffect(() => {
-    setHeading(data[`title_${locale}`].split(" "));
+    setHeading(data.title.split(" "));
   }, [locale]);
 
   return (
@@ -36,24 +37,27 @@ const OurAimSection = ({ data, aimCategory }) => {
             <h2 className="text-[34px] font-bold py-[10px]">
               {heading[0]} <span className="text-green">{heading[1]}</span>
             </h2>
-            <div className="content flex flex-col gap-[15px] lg:max-w-[689px] pb-[30px]">
-              {data[`text_${locale}`]}
+            <div className="content flex flex-col gap-[15px] lg:max-w-[689px] pb-[30px]"
+                 dangerouslySetInnerHTML={{
+                   __html: data.text
+                 }}
+            >
             </div>
           </div>
         </motion.div>
 
         <div className="lg:w-[60%]">
-          {aimCategory &&
-            aimCategory.map((item, i) => (
+          {aimItems &&
+            aimItems.map((item, i) => (
               <motion.div
                 variants={fadeIn("up", "tween", 0.4 * i, 1)}
                 key={i}
                 className="w-full grid grid-cols-[0.3fr,2fr,1fr] py-[15px] border-solid border-b border-[#D9D9D9] last:border-b-0
                 flex items-center"
               >
-                <div className="text-green font-semibold">{`0${item.id}`}</div>
+                <div className="text-green font-semibold">{i+1}</div>
                 <div className="w-[184px] sm:w-full lg:w-auto">
-                  {item[`text_${locale}`]}
+                  {item.title}
                 </div>
                 <div className="sm:justify-self-end">
                   <div className="image w-[100px] h-[70px] lg:w-[110px] lg:h-[60px] rounded-[5px] overflow-hidden">

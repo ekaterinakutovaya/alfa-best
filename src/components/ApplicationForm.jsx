@@ -26,15 +26,14 @@ const ApplicationForm = ({ types }) => {
     reset,
     formState: { errors }
   } = useForm();
-  
 
   const onSubmit = data => {
     setLoading(true);
 
     const postData = {
-      service_id: dropdownLabel,
+      services_id: +dropdownLabel,
       full_name: data.username,
-      phone: data.userphone
+      phone_number: data.userphone.replace(/\D/g, '')
     };
 
     postCustomerService(postData).then(res => {
@@ -87,7 +86,7 @@ const ApplicationForm = ({ types }) => {
                     onClick={selectType}
                     visible={dropdownOpen}
                     setVisible={setDropdownOpen}
-                    label={types[dropdownLabel][`title_${locale}`]}
+                    label={types[dropdownLabel].title}
                   />
                 </div>
               </div>

@@ -1,12 +1,10 @@
 import React from "react";
-import { useRouter } from "next/router";
 import { motion } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
 
 import { fade, fadeIn, staggerContainer } from "utils/motions";
 
 const ServicesDescription = ({ data }) => {
-  const { locale } = useRouter();
   const isDesktop = useMediaQuery({ query: `(min-width: 1280px` });
 
   return (
@@ -36,9 +34,9 @@ const ServicesDescription = ({ data }) => {
                       alt="services icon"
                     />
                   </div>
-
+      
                   <div className="font-medium text-[15px]">
-                    {item[`text_${locale}`]}
+                    {item.text}
                   </div>
                 </motion.li>
               )
@@ -56,9 +54,9 @@ const ServicesDescription = ({ data }) => {
                       alt="services icon"
                     />
                   </div>
-
+      
                   <div className="font-medium text-[15px]">
-                    {item[`text_${locale}`]}
+                    {item.text}
                   </div>
                 </motion.li>
               );

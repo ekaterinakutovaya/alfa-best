@@ -7,7 +7,7 @@ import { useTranslation } from "next-i18next";
 import Logo from "assets/icons/Logo";
 import { Button, TypingText } from "components";
 import { fadeIn, staggerContainer } from "utils/motions";
-import aboutCompany from "assets/images/about_company.png";
+import process from "../../next.config";
 
 const AboutPreview = ({ data }) => {
   const { locale } = useRouter();
@@ -27,7 +27,7 @@ const AboutPreview = ({ data }) => {
               <div className="sm:flex justify-center items-center w-full lg:w-[445px] h-auto px-[17px] py-[20px] sm:px-0 sm:py-0 lg:p-0">
                 <Image
                   className="w-full h-full object-contain"
-                  src={aboutCompany}
+                  src={process.env.NEXT_APP_STORAGE_URL + data.home_page_image}
                   width={445}
                   height={600}
                   alt="about company picture"
@@ -43,7 +43,7 @@ const AboutPreview = ({ data }) => {
 
                 <h2 className="text-[18px] md:text-[34px] font-bold text-[#1B2330] pb-[4px] lg:pb-[20px]">
                   <TypingText
-                    title={data[`home_title_${locale}`]}
+                    title={data.title}
                     textStyles="text-[18px] md:text-[34px] font-bold text-[#1B2330] pb-[20px]"
                   />
                 </h2>
@@ -52,7 +52,7 @@ const AboutPreview = ({ data }) => {
                   variants={fadeIn("up", "tween", 0.2, 1)}
                   className="content flex flex-col gap-[15px] lg:max-w-[689px] pb-[30px]"
                   dangerouslySetInnerHTML={{
-                    __html: data[`home_text_${locale}`]
+                    __html: data.home_page_text
                   }}
                 ></motion.div>
 
@@ -72,7 +72,7 @@ const AboutPreview = ({ data }) => {
           <div className="w-full sm:w-[300px] lg:w-[445px] h-auto sm:my-0 sm:mx-auto sm:flex justify-center items-center px-[17px] py-[20px] sm:px-0 sm:py-0 lg:p-0">
             <Image
               className="w-full h-full object-contain"
-              src={aboutCompany}
+              src={process.env.NEXT_APP_STORAGE_URL + data.home_page_image}
               width={445}
               height={600}
               alt="about company picture"
@@ -87,7 +87,7 @@ const AboutPreview = ({ data }) => {
 
               <h2>
                 <TypingText
-                  title={data[`home_title_${locale}`]}
+                  title={data.title}
                   textStyles="text-[18px] sm:text-[34px] md:text-[34px] font-bold text-[#1B2330] pb-[20px]"
                 />
               </h2>
@@ -95,7 +95,7 @@ const AboutPreview = ({ data }) => {
               <div
                 className="content flex flex-col gap-[15px] lg:max-w-[689px] pb-[30px]"
                 dangerouslySetInnerHTML={{
-                  __html: data[`home_text_${locale}`]
+                  __html: data.home_page_text
                 }}
               ></div>
 

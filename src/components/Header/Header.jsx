@@ -121,11 +121,11 @@ const Header = ({navigation, subNavigation}) => {
                   <div
                     key={index}
                     className={
-                      pathname == `/${item.link}` ? activeLink : idleLink
+                      pathname == `${item.path}` ? activeLink : idleLink
                     }
                   >
-                    <Link href={`/${locale}/${item.link}`} locale={locale}>
-                      {item[`title_${locale}`]}
+                    <Link href={`/${locale}${item.path}`} locale={locale}>
+                      {item.title}
                     </Link>
                   </div>
                 ))}
@@ -145,13 +145,13 @@ const Header = ({navigation, subNavigation}) => {
                 <div
                   key={index}
                   className={
-                    pathname == `/${item.link}`
+                    pathname == `${item.path}`
                       ? subNavLinkActive
                       : subNavLinkIdle
                   }
                 >
-                  <Link href={`/${locale}/${item.link}`} locale={locale}>
-                    {item[`title_${locale}`]}
+                  <Link href={`/${locale}${item.path}`} locale={locale}>
+                    {item.title}
                   </Link>
                 </div>
               ))}

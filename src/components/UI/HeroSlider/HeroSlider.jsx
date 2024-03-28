@@ -21,7 +21,6 @@ export const SlickDots = ({ children }) => {
 const HeroSlider = ({ items }) => {
   const { locale } = useRouter();
   const { t } = useTranslation("");
-  console.log(items)
 
   const settings = {
     dots: true,
@@ -53,8 +52,7 @@ const HeroSlider = ({ items }) => {
             <div className="w-full h-[250px] sm:h-[350px] lg:h-full relative bg-black">
               <Image
                 className="w-full h-full object-cover opacity-60"
-                // src={env.NEXT_APP_STORAGE_URL + item.img}
-                  src={`https://alfabest.napaautomotive.uz/storage/${item.img}`}
+                src={process.env.NEXT_APP_STORAGE_URL + item.image}
                 alt="services photo"
                 fill
               />
@@ -68,12 +66,12 @@ const HeroSlider = ({ items }) => {
               >
                 <div className="w-[50%] h-[162px] pb-5 flex items-center">
                   <h1 className="w-full text-[36px] lg:text-[45px] text-white font-bold break-words">
-                    {item[`text_${locale}`]}
+                    {item.title}
                   </h1>
                 </div>
 
                 <Link
-                  href={`/${locale}/${item.home_service_link}`}
+                  href={`/${locale}${item.path}`}
                   locale={locale}
                 >
                   <Button type="round">{t("main_button")}</Button>

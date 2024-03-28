@@ -1,88 +1,65 @@
-import { Layout } from "layout/Layout";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { useTranslation } from "next-i18next";
+import {Layout} from "layout/Layout";
+import {serverSideTranslations} from "next-i18next/serverSideTranslations";
+import {useTranslation} from "next-i18next";
 
-import {
-  CompanyProfile,
-  OurMission,
-  Partners,
-  OurTeam,
-  Gallery,
-  HappyPartners,
-  History
-} from "sections";
-import { getData } from "services/data";
+import {CompanyProfile, Gallery, HappyPartners, OurMission, Partners} from "sections";
+import {getData} from "services/data";
 
 const About = ({
-  homeMenu,
-  homeService,
-  aboutCompany,
-  mission,
-  team,
-  iconGallery,
-  photoGallery,
-  history
-}) => {
-  const { t } = useTranslation("");
-
+                 mainMenu,
+                 servicesMenu,
+                 aboutCompany,
+                 mission,
+                 gallery
+               }) => {
+  const {t} = useTranslation("");
+  
   return (
-    <Layout homeMenu={homeMenu.datas} homeService={homeService.datas}>
-      {Object.keys(aboutCompany).length ? (
-        <CompanyProfile data={aboutCompany.datas[0]} />
-      ) : (
-        <CompanyProfile data={{}} />
-      )}
-
-      {Object.keys(mission).length &&
-        Object.keys(homeService).length &&
-        Object.keys(iconGallery).length && (
-          <OurMission
-            data={mission.datas[0]}
-            homeService={homeService.datas}
-            icons={iconGallery.datas}
-          />
+      <Layout mainMenu={mainMenu.data} servicesMenu={servicesMenu.data}>
+        {Object.keys(aboutCompany).length ? (
+            <CompanyProfile data={aboutCompany.data[0]}/>
+        ) : (
+            <CompanyProfile data={{}}/>
         )}
-
-      {Object.keys(team).length && <OurTeam data={team.datas} />}
-
-      <HappyPartners
-        title={t("with_our_partners_title")}
-        text={t("with_our_partners_text")}
-      />
-
-      <Partners />
-
-      {Object.keys(photoGallery).length && (
-        <Gallery data={photoGallery.datas} />
-      )}
-
-      {Object.keys(photoGallery).length && <History data={history.datas} />}
-    </Layout>
+        
+        {Object.keys(mission).length &&
+          Object.keys(servicesMenu).length &&
+            (<OurMission
+              data={mission.data[0]}
+              servicesMenu={servicesMenu.data}
+            />
+          )}
+        
+        <HappyPartners
+          title={t("with_our_partners_title")}
+          text={t("with_our_partners_text")}
+        />
+        
+        <Partners />
+        
+        {Object.keys(gallery).length && (
+          <Gallery data={gallery.data} />
+        )}
+      </Layout>
   );
 };
 
 export default About;
 
-export const getServerSideProps = async ({ locale }) => {
-  const homeMenu = await getData("home_menu", locale);
-  const homeService = await getData("home_service", locale);
-  const mission = await getData("mission", locale);
+export const getServerSideProps = async ({locale}) => {
+  const mainMenu = await getData("main_menu", locale);
+  const servicesMenu = await getData("services_menu", locale);
   const aboutCompany = await getData("about_company", locale);
-  const team = await getData("team", locale);
-  const iconGallery = await getData("gallery", locale);
-  const photoGallery = await getData("photo_gallery", locale);
-  const history = await getData("history", locale);
-
+  const mission = await getData("mission", locale);
+  const gallery = await getData("gallery", locale);
+  
   return {
     props: {
-      homeMenu,
-      homeService,
-      mission,
+      mainMenu,
+      servicesMenu,
       aboutCompany,
-      team,
-      iconGallery,
-      photoGallery,
-      history,
+      mission,
+      gallery,
       ...(await serverSideTranslations(locale, ["common"]))
     }
   };

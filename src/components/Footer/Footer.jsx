@@ -28,8 +28,8 @@ const Footer = ({ navigation, subNavigation }) => {
                     className="font-semibold text-[15px] text-white pb-[16px] last:pb-0 ease-in-out duration-300 hover:text-green"
                     key={index}
                   >
-                    <Link href={`/${locale}/${item.link}`} locale={locale}>
-                      {item[`title_${locale}`]}
+                    <Link href={`/${locale}${item.path}`} locale={locale}>
+                      {item.title}
                     </Link>
                   </div>
                 ))}
@@ -42,8 +42,8 @@ const Footer = ({ navigation, subNavigation }) => {
                     className="font-semibold text-[15px] text-white pb-[16px] last:pb-0 ease-in-out duration-300 hover:text-green"
                     key={index}
                   >
-                    <Link href={`/${locale}/${item.link}`} locale={locale}>
-                      {item[`title_${locale}`]}
+                    <Link href={`/${locale}${item.path}`} locale={locale}>
+                      {item.title}
                     </Link>
                   </div>
                 ))}

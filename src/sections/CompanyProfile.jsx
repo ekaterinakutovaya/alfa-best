@@ -1,15 +1,14 @@
 import React from "react";
 import Image from "next/image";
-import { useRouter } from "next/router";
 import { motion } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
 
 import Logo from "assets/icons/Logo";
 import { fade, fadeIn, staggerContainer } from "utils/motions";
+import process from "../../next.config";
 
 const CompanyProfile = ({ data = {} }) => {
-  const { locale } = useRouter();
-  const { image } = data;
+  const { about_company_page_image } = data;
   const isDesktop = useMediaQuery({ query: `(min-width: 1280px` });
   
   return (
@@ -28,7 +27,7 @@ const CompanyProfile = ({ data = {} }) => {
           <div className="w-full h-full">
             <Image
               className="w-full h-full object-cover"
-              src={process.env.NEXT_APP_STORAGE_URL + image}
+              src={process.env.NEXT_APP_STORAGE_URL + about_company_page_image}
               fill
               alt="about company photo"
             />
@@ -46,7 +45,7 @@ const CompanyProfile = ({ data = {} }) => {
               variants={fadeIn("right", "tween", 0.4, 1)}
               className="text-[18px] sm:text-[28px] lg:text-[34px] text-white font-bold"
             >
-              {data[`home_title_${locale}`]}
+              {data.title}
             </motion.h2>
           </div>
         </motion.div>
@@ -55,7 +54,7 @@ const CompanyProfile = ({ data = {} }) => {
           variants={fadeIn("up", "tween", 0.5, 1)}
           className="content pt-[20px]"
           dangerouslySetInnerHTML={{
-            __html: data[`text_${locale}`]
+            __html: data.about_company_page_text
           }}
         ></motion.div>
       </div>

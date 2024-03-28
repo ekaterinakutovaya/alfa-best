@@ -2,35 +2,32 @@ import React from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 import { Layout } from "layout/Layout";
-import { CooperationSection, Advantages } from "sections";
-import { ApplicationForm } from "components";
+import { ContactsSection } from "sections";
 import { getData } from "services/data";
 
-const Cooperation = ({ mainMenu, servicesMenu, cooperation, advantage }) => {
-
+const Contacts = ({ mainMenu, servicesMenu, contactPage }) => {
+  
   return (
     <Layout mainMenu={mainMenu.data} servicesMenu={servicesMenu.data}>
-      {cooperation.data && <CooperationSection data={cooperation.data[0]} />}
-      {advantage.data && <Advantages data={advantage.data} />}
-      {servicesMenu.data && <ApplicationForm types={servicesMenu.data} />}
+      {contactPage && (<ContactsSection
+          contactPage={contactPage.data}
+      />)}
     </Layout>
   );
 };
 
-export default Cooperation;
+export default Contacts;
 
 export const getServerSideProps = async ({ locale }) => {
   const mainMenu = await getData("main_menu", locale);
   const servicesMenu = await getData("services_menu", locale);
-  const cooperation = await getData("cooperation", locale);
-  const advantage = await getData("outsourcing_advantages", locale);
+  const contactPage = await getData("company_contacts", locale);
 
   return {
     props: {
       mainMenu,
       servicesMenu,
-      cooperation,
-      advantage,
+      contactPage,
       ...(await serverSideTranslations(locale, ["common"]))
     }
   };

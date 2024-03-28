@@ -3,7 +3,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation, Autoplay } from "swiper";
-import Image from "next/image";
 import { useTranslation } from "next-i18next";
 import { motion } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
@@ -11,6 +10,7 @@ import { useMediaQuery } from "react-responsive";
 import Logo from "assets/icons/Logo";
 import { ControlButton } from "components";
 import { fadeIn, staggerContainer } from "../utils/motions";
+import process from "../../next.config";
 
 const Gallery = ({ data }) => {
   const { t } = useTranslation("");
@@ -63,9 +63,7 @@ const Gallery = ({ data }) => {
             <ControlButton type="next" onClick={nextHandler} disabled={false} />
           </div>
         </motion.div>
-
-        {/* Swiper */}
-        {/* <div className="pl-[25px] lg:pl-[0] lg:py-[0] lg:px-[90px] lg:my-[0] lg:mx-[auto] lg:max-w-[1440px] mt-[20px]"> */}
+        
         <motion.div
           variants={staggerContainer}
           initial={isDesktop ? "hidden" : "show"}
@@ -74,8 +72,6 @@ const Gallery = ({ data }) => {
           className=" mt-[20px]"
         >
           <Swiper
-            // slidesPerView={2}
-            // spaceBetween={150}
             grabCursor={true}
             breakpoints={breakpoints}
             navigation={{
@@ -85,18 +81,18 @@ const Gallery = ({ data }) => {
             autoplay={{
               delay: 7000
             }}
-            // loop={true}
+            loop={true}
             modules={[Navigation, Autoplay]}
           >
             {data &&
               data.map((item, index) => (
                 <SwiperSlide key={index}>
                   <motion.div
-                    variants={fadeIn("right", "spring", item.id * 0.5, 0.75)}
+                    variants={fadeIn("right", "spring", (index+1) * 0.5, 0.75)}
                     className="w-[280px] lg:w-[500px] h-[172px] lg:h-[320px] overflow-hidden rounded-[10px]"
                   >
                     <img
-                      src={process.env.NEXT_APP_STORAGE_URL + item.image}
+                      src={process.env.NEXT_APP_STORAGE_URL + item}
                       alt="gallery photo"
                     />
                   </motion.div>

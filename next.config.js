@@ -7,7 +7,7 @@ const nextConfig = {
   i18n,
   trailingSlash: false,
   images: {
-    domains: ["alfabest.napaautomotive.uz"]
+    domains: ["127.0.0.1"]
   },
   env: {
     NEXT_APP_API_URL: process.env.NEXT_APP_API_URL,

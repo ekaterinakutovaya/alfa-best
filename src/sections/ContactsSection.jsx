@@ -1,16 +1,14 @@
 import React from "react";
 import Image from "next/image";
-import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import { motion } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
 
 import { ContactsForm } from "components";
-import contactsImage from "../assets/images/contacts.jpg";
-import { fade, fadeIn, staggerContainer } from "utils/motions";
+import contactsImage from "../assets/images/contact.jpg";
+import { fadeIn, staggerContainer } from "utils/motions";
 
-const ContactsSection = ({ contactPage, contactInfo }) => {
-  const { locale } = useRouter();
+const ContactsSection = ({ contactPage }) => {
   const { t } = useTranslation("");
   const isDesktop = useMediaQuery({ query: `(min-width: 1280px` });
 
@@ -22,7 +20,7 @@ const ContactsSection = ({ contactPage, contactInfo }) => {
         whileInView="show"
         viewport={{ once: true, amount: 0.5 }}
       >
-        <div className="container lg:flex justify-between items-end">
+        <div className="container lg:flex justify-between items-start">
           <div>
             {/* Head */}
             <div className="max-w-[651px]">
@@ -30,26 +28,26 @@ const ContactsSection = ({ contactPage, contactInfo }) => {
                 variants={fadeIn("up", "tween", 0.2, 1)}
                 className="text-[18px] sm:text-[36px] font-bold mb-[20px]"
               >
-                {contactPage[`title_${locale}`]}
+                {contactPage.title}
               </motion.h2>
-
+        
               <motion.div variants={fadeIn("up", "tween", 0.3, 1)}
                 className="leading-[140%]"
                 dangerouslySetInnerHTML={{
-                  __html: contactPage[`text_${locale}`]
+                  __html: contactPage.text
                 }}
               >
-                
+              
               </motion.div>
             </div>
-
+        
             {/* Form */}
             <motion.div
               variants={fadeIn("up", "tween", 0.4, 1)}
             >
               <ContactsForm />
             </motion.div>
-
+        
             {/* Contacts info */}
             <motion.div
               variants={fadeIn("up", "tween", 0.5, 1)}
@@ -63,23 +61,16 @@ const ContactsSection = ({ contactPage, contactInfo }) => {
                     {t("telephone")}
                   </label>
                   <div className="flex gap-x-[30px]">
-                    <a
-                      href={`tel:${contactInfo.phone
-                        .slice(-17)
-                        .replace(/\s/g, "")}`}
-                    >
-                      {contactInfo.phone.slice(-17)}
-                    </a>
-                    <a
-                      href={`tel:${contactInfo.phone
-                        .slice(0, 17)
-                        .replace(/\s/g, "")}`}
-                    >
-                      {contactInfo.phone.slice(0, 17)}
-                    </a>
+                    {contactPage.company_phones.map(item => (
+                        <a
+                            href={`tel:${item.slice(-17).replace(/\s/g, "")}`}
+                        >
+                          {item}
+                        </a>
+                    ))}
                   </div>
                 </div>
-  
+        
                 <div className="mt-[15px]">
                   <label
                     className="text-[14px] leading-[140%] text-grey"
@@ -88,13 +79,13 @@ const ContactsSection = ({ contactPage, contactInfo }) => {
                     {t("address")}
                   </label>
                   <div className="flex gap-x-[30px]">
-                    <span>{contactInfo[`address_${locale}`]}</span>
+                    <span>{contactPage.address}</span>
                   </div>
                 </div>
               </div>
             </motion.div>
           </div>
-
+        
           {/* Image */}
           <motion.div
             variants={fadeIn("left", "tween", 0.2, 1)}

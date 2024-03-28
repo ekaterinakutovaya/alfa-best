@@ -1,3 +1,5 @@
+import process from "../../next.config";
+
 export async function getData(endpoint, locale) {
     try {
         const response = await fetch(`${process.env.NEXT_APP_API_URL}${endpoint}`, {
@@ -17,7 +19,7 @@ export async function getData(endpoint, locale) {
 
 export async function postCustomerService(data) {
     try {
-        const res = await fetch(`${process.env.NEXT_APP_API_URL}service_consumer`, {
+        const res = await fetch(`${process.env.NEXT_APP_API_URL}services_query`, {
             method: "POST",
             headers: {
                 Accept: "application/json",
@@ -34,7 +36,7 @@ export async function postCustomerService(data) {
 
 export async function postCustomerContacts(data) {
     try {
-        const res = await fetch(`${process.env.NEXT_APP_API_URL}contact`, {
+        const res = await fetch(`${process.env.NEXT_APP_API_URL}customer_contacts`, {
             method: "POST",
             headers: {
                 Accept: "application/json",
