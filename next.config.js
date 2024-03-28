@@ -7,7 +7,7 @@ const nextConfig = {
   i18n,
   trailingSlash: false,
   images: {
-    domains: ["127.0.0.1"]
+    domains: ["https://alfabest-api.kutovaya.uz/"]
   },
   env: {
     NEXT_APP_API_URL: process.env.NEXT_APP_API_URL,
